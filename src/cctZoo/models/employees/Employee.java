@@ -8,8 +8,10 @@ package cctZoo.models.employees;
 import cctZoo.models.Model;
 
 /**
- *
+ * This abstract class represents a generic Employee and will be extended by
+ * the concrete ones, such as ZooKeeper.
  * @author rbsrafa
+ * @author Gustavo Lessa
  */
 public abstract class Employee extends Model{
     private static int lastId;

@@ -24,10 +24,19 @@ public class ZooKeeper extends Employee{
         caredAnimals = new ArrayList<>();
     }
     
+    /**
+     * This method returns the qualifications of a zoo keeper, stored in an ArrayList.
+     * @return ArrayList of Enums representing the keeper's qualifications.
+     */
     public ArrayList getQualifications(){
         return qualifications;
     }
     
+    /**
+     * This method verifies adds a qualification to the keeper, after verifying
+     * if the limit of 3 qualifications was already reached.
+     * @param Qualification (Enum) - representing the desired qualification to add.
+     */
     public void addQualification(Qualification q){
         if (qualifications.size()<3){
             qualifications.add(q);
@@ -36,6 +45,11 @@ public class ZooKeeper extends Employee{
         }
     }
     
+    /**
+     * This method removes a qualification after checking if it was in the
+     * keeper's records.
+     * @param Qualification (Enum) - representing the qualification to be removed.
+     */
     public void removeQualification(Qualification q){
         if (qualifications.contains(q)){
             qualifications.remove(q);
@@ -44,6 +58,11 @@ public class ZooKeeper extends Employee{
         }
     }
     
+    /**
+     * This method adds an animal to the keeper's cared animals list, after checking
+     * if the 10 animals limit was reached.
+     * @param Animal - the animal to be added to keeper's cared animals list.
+     */
     public void addAnimal(Animal a){
         if(caredAnimals.size()<10){
             caredAnimals.add(a);
@@ -52,10 +71,19 @@ public class ZooKeeper extends Employee{
         }
     }
     
+    /**
+     * This method returns an ArrayList of the cared animals.
+     * @return ArrayList of animals, representing the cared animals.
+     */
     public ArrayList getAnimals(){
         return caredAnimals;
     }
     
+    /**
+     * This method removes an animal from the cared animals list after checking
+     * if it was there in the first place.
+     * @param Animal - the animal object to be removed from the list.
+     */
     public void removeAnimal(Animal a){
         if(caredAnimals.contains(a)){
             caredAnimals.remove(a);
