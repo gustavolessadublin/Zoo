@@ -42,7 +42,7 @@ public class AnimalFactory {
         String[] gender = {"Male", "Female"};
         String[] species = {"Dolphin", "Whale", "Crocodile", "Penguin", "Dragonfly",
                             "Beetle", "Tiger", "Zebra", "Lion", "Snake", "Komodo Dragon",
-                            "Seagull", "Owl", "Bat"};
+                            "Seagull", "Owl", "Bat", "Shark", "Octopus"};
         
         String specie = species[rand.nextInt(species.length)];
         
@@ -62,6 +62,8 @@ public class AnimalFactory {
             a = new GenericAvian(specie, gender[rand.nextInt(gender.length)]);
         }else if(specie.equals("Bat")){
             a = new AvianMammal(specie, gender[rand.nextInt(gender.length)]);
+        }else if(specie.equals("Shark") || specie.equals("Octopus")){
+            a = new GenericAquatic(specie, gender[rand.nextInt(gender.length)]);
         }
               
         ((AbstractAnimal)a).setName(rw.getRandomName(((AbstractAnimal)a).getGender()));       
