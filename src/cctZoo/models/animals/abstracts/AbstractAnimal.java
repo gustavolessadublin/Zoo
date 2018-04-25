@@ -7,6 +7,7 @@ package cctZoo.models.animals.abstracts;
 
 import cctZoo.models.Model;
 import cctZoo.models.animals.interfaces.Animal;
+import cctZoo.models.employees.zooKeeper.ZooKeeper;
 
 /**
  *
@@ -14,7 +15,8 @@ import cctZoo.models.animals.interfaces.Animal;
  */
 public abstract class AbstractAnimal extends Model implements Animal{
     private static int lastId;
-    private String species, name, gender;  
+    private String species, name, gender, DOB, dateOfArrival;
+    private ZooKeeper keeper;
     private Offspring offspring;
     
     public AbstractAnimal(String species, String name, String gender) {
@@ -50,6 +52,20 @@ public abstract class AbstractAnimal extends Model implements Animal{
 
     public String getGender() { return gender; }
     public void setGender(String gender) { this.gender = gender; }
+
+    public String getDOB() { return DOB; }
+    public void setDOB(String DOB) { this.DOB = DOB; }
+
+    public String getDateOfArrival() { return dateOfArrival; }
+    public void setDateOfArrival(String dateOfArrival) { this.dateOfArrival = dateOfArrival; }
+
+    public ZooKeeper getKeeper() { return keeper; }
+    public void setKeeper(ZooKeeper keeper) { this.keeper = keeper; }
+
+    public Offspring getOffspring() { return offspring; }
+    public void setOffspring(Offspring offspring) { this.offspring = offspring; }
+    
+    
     
     
     private class Offspring{
@@ -58,9 +74,7 @@ public abstract class AbstractAnimal extends Model implements Animal{
         public Offspring(){
             
         }
-        
-        
-        
+ 
     }
  
 }
