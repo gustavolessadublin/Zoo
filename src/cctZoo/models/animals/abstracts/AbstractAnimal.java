@@ -15,6 +15,7 @@ import cctZoo.models.animals.interfaces.Animal;
 public abstract class AbstractAnimal extends Model implements Animal{
     private static int lastId;
     private String species, name, gender;  
+    private Offspring offspring;
     
     public AbstractAnimal(String species, String name, String gender) {
         super(++lastId);
@@ -49,5 +50,17 @@ public abstract class AbstractAnimal extends Model implements Animal{
 
     public String getGender() { return gender; }
     public void setGender(String gender) { this.gender = gender; }
+    
+    
+    private class Offspring{
+       
+        
+        public Offspring(){
+            
+        }
+        
+        
+        
+    }
  
 }

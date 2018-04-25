@@ -9,6 +9,6 @@ package cctZoo.menus;
  *
  * @author rbsrafa
  */
-public class EmployeeMenu {
-    //TODO implement employee Menu
+public class MainMenu {
+    //TODO implement Main Menu
 }

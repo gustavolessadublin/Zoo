@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cctZoo.menus;
+package cctZoo.controllers;
 
 /**
  *
  * @author rbsrafa
  */
-public class EmployeeMenu {
-    //TODO implement employee Menu
+public class EmployeesController {
+    //TODO implement EmployeesController
 }

@@ -39,7 +39,6 @@ public class AnimalFactory {
     private Animal generateRandomAnimal(){
         Animal a = null;
         Random rand = new Random();
-        int type = rand.nextInt(8);
         String[] gender = {"Male", "Female"};
         String[] species = {"Dolphin", "Whale", "Crocodile", "Penguin", "Dragonfly",
                             "Beetle", "Tiger", "Zebra", "Lion", "Snake", "Komodo Dragon",
