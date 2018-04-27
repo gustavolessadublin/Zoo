@@ -18,6 +18,9 @@ public abstract class Menu {
     protected boolean exit;
     protected Scanner in;
     
+    /**
+     * Default Menu constructor.
+     */
     public Menu(){
         this.options = new ArrayList<>();
         this.in = new Scanner(System.in);
@@ -27,6 +30,9 @@ public abstract class Menu {
     
     public abstract void setOptions();
     
+    /**
+     * This method displays the menu options on CLI.
+     */
     public void displayMenu(){
         for(int i = 0; i < this.options.size(); i++){
             System.out.println((i+1) + " - " + this.options.get(i));

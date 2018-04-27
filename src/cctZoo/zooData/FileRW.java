@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cctZoo.zooData;
 
 import java.io.IOException;
@@ -14,7 +9,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- *
+ * This class reads and writes contents of a file.
  * @author rbsrafa
  */
 public class FileRW {
@@ -23,6 +18,9 @@ public class FileRW {
     Path femalePath;
     Path surnamesPath;
     
+    /**
+     * Default constructor. Sets the path of the files that contain a set of names and surnames.
+     */
     public FileRW(){
         rand = new Random();
         malePath = Paths.get("src", "Data", "maleFirstNames.txt");
@@ -30,6 +28,11 @@ public class FileRW {
         surnamesPath = Paths.get("src", "Data", "surnames.txt");
     }
     
+    /**
+     * This method randomly generates a name based in the specified gender.
+     * @param gender
+     * @return String name.
+     */
     public String getRandomName(String gender){
         List<String> names = new ArrayList<>();
         String name;
@@ -40,10 +43,13 @@ public class FileRW {
         } catch (IOException ex) {
             System.out.println("Could not read file.");
         }  
-
         return name = names.get(rand.nextInt(names.size()));
     }
     
+    /**
+     * This method randomly generates a surname.
+     * @return String surname.
+     */
     public String getRandomSurname(){
         List<String> surnames = new ArrayList<>();
         String surname;
@@ -52,8 +58,7 @@ public class FileRW {
             surnames = Files.readAllLines(this.surnamesPath);
         } catch (IOException ex) {
             System.out.println("Could not read file.");
-        }
-        
+        }        
         return surname = surnames.get(rand.nextInt(surnames.size()));
     }
     

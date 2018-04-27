@@ -8,7 +8,7 @@ package cctZoo.views.interfaces;
 import cctZoo.models.Model;
 
 /**
- *
+ * 
  * @author rbsrafa
  */
 public interface Displayable {
