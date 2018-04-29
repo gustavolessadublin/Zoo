@@ -1,23 +1,38 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cctZoo.menus;
+
+import cctZoo.zooData.ZooData;
 
 /**
  *
  * @author rbsrafa
  */
-public class MainMenu extends Menu{
+public class MainMenu extends Menu{    
+    private ZooData zooData;
     
-    public MainMenu(){
-        
+    public MainMenu(ZooData zooData){
+        this.zooData = zooData;
+        String[] options = {"Animal Menu", "Employee Menu", "Exit Program"};
+        this.setOptions(options);
+        this.setTitle("Main Menu");
+        this.startMenu();
     }
 
+    /**
+     * This method is responsible for linking the menu options with their
+     * respective actions.
+     */
     @Override
     public void optionSelector() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("\nPlease select an option:");
+        int option = this.in.nextInt();
+        switch(option){
+            case 1: new AnimalMenu(this.zooData);
+                break;
+            case 2: new EmployeeMenu();
+                break;
+            case 3: System.exit(0);
+                break;
+        }
     }
 
 }

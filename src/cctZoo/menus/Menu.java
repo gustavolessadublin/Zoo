@@ -30,6 +30,10 @@ public abstract class Menu {
     
     public abstract void optionSelector();
     
+    /**
+     * This method displays and activate the menu option selector.
+     * While the exit option is not chosen it will keep the menu on a loop.
+     */
     public void startMenu(){
         while(!this.exit){
             this.displayMenu();
@@ -37,10 +41,12 @@ public abstract class Menu {
         }
     }
     
+    /**
+     * This method sets the menu's options
+     * @param options (String[])
+     */
     public void setOptions(String[] options){
-        for(String s: options){
-            this.options.add(s);
-        }
+        for(String s: options) this.options.add(s);
     }
     
     /**
@@ -55,6 +61,10 @@ public abstract class Menu {
         }
     }
     
+    /**
+     * This method sets the menu's title
+     * @param title 
+     */
     public void setTitle(String title){
         this.title = title;
     }
