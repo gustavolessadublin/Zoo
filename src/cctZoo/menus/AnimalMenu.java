@@ -18,13 +18,13 @@ public class AnimalMenu extends Menu{
     
     public AnimalMenu(ZooData zooData){
         this.animals = new AnimalsController(zooData.getAnimals(), new View());
-        this.setOptions();
-        while(!this.exit){
-            System.out.println("\nAnimal Menu\n-----------\n");
-            this.displayMenu();
-            this.optionSelector();
-        }
-        
+        String[] options = {"Show Animals", "Add Animal", "Search Animal",
+                            "Update Animal", "Show Mammals", "Show Reptiles",
+                            "Show Avians", "Show Insects", "Show Aquatics",
+                            "Return to Main Menu", "Exit Program"};
+        this.setOptions(options);
+        this.setTitle("Animal Menu");
+        this.startMenu();
     }
 
     @Override
@@ -50,19 +50,10 @@ public class AnimalMenu extends Menu{
                 break;
             case 9: this.showAquatics();
                 break;
-            case 10: System.exit(0);
-                break;    
-        }
-    }
-
-    @Override
-    public void setOptions() {
-        String[] options = {"Show Animals", "Add Animal", "Search Animal",
-                            "Update Animal", "Show Mammals", "Show Reptiles",
-                            "Show Avians", "Show Insects", "Show Aquatics",
-                            "Exit Program"};
-        for(String s: options){
-            this.options.add(s);
+            case 10: this.returnToMain();
+                break;
+            case 11: System.exit(0);
+                break;
         }
     }
     
@@ -100,6 +91,10 @@ public class AnimalMenu extends Menu{
     
     public void showAquatics(){
         this.animals.displayAquatics();
+    }
+    
+    public void returnToMain(){
+        
     }
     
 }

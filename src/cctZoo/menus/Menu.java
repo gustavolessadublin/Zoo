@@ -14,6 +14,7 @@ import java.util.Scanner;
  * @author rbsrafa
  */
 public abstract class Menu {
+    protected String title;
     protected List<String> options;
     protected boolean exit;
     protected Scanner in;
@@ -22,20 +23,39 @@ public abstract class Menu {
      * Default Menu constructor.
      */
     public Menu(){
+        this.title = "Default title";
         this.options = new ArrayList<>();
         this.in = new Scanner(System.in);
     }
     
     public abstract void optionSelector();
     
-    public abstract void setOptions();
+    public void startMenu(){
+        while(!this.exit){
+            this.displayMenu();
+            this.optionSelector();
+        }
+    }
+    
+    public void setOptions(String[] options){
+        for(String s: options){
+            this.options.add(s);
+        }
+    }
     
     /**
      * This method displays the menu options on CLI.
      */
-    public void displayMenu(){
+    private void displayMenu(){
+        System.out.println(this.title);
+        for(int i = 0; i < this.title.length(); i++) System.out.print("-");
+        System.out.println("\n");
         for(int i = 0; i < this.options.size(); i++){
             System.out.println((i+1) + " - " + this.options.get(i));
         }
+    }
+    
+    public void setTitle(String title){
+        this.title = title;
     }
 }

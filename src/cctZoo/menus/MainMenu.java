@@ -9,6 +9,15 @@ package cctZoo.menus;
  *
  * @author rbsrafa
  */
-public class MainMenu {
-    //TODO implement Main Menu
+public class MainMenu extends Menu{
+    
+    public MainMenu(){
+        
+    }
+
+    @Override
+    public void optionSelector() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
