@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cctZoo.menus;
 
 import cctZoo.controllers.AnimalsController;
@@ -14,11 +9,10 @@ import cctZoo.zooData.ZooData;
  * @author rbsrafa
  */
 public class AnimalMenu extends Menu{
-    private ZooData zooData;
     private AnimalsController animals;
     
     public AnimalMenu(ZooData zooData){
-        this.zooData = zooData;
+        super(zooData);
         this.animals = new AnimalsController(this.zooData.getAnimals(), new View());
         String[] options = {"Show Animals", "Add Animal", "Search Animal",
                             "Update Animal", "Show Mammals", "Show Reptiles",

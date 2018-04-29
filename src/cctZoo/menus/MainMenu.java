@@ -7,10 +7,9 @@ import cctZoo.zooData.ZooData;
  * @author rbsrafa
  */
 public class MainMenu extends Menu{    
-    private ZooData zooData;
     
     public MainMenu(ZooData zooData){
-        this.zooData = zooData;
+        super(zooData);
         String[] options = {"Animal Menu", "Employee Menu", "Exit Program"};
         this.setOptions(options);
         this.setTitle("Main Menu");
