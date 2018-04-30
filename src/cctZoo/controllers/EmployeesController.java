@@ -5,10 +5,33 @@
  */
 package cctZoo.controllers;
 
+import cctZoo.models.Model;
+import cctZoo.models.employees.zooKeeper.ZooKeeper;
+import cctZoo.views.View;
+import java.util.ArrayList;
+
 /**
  *
- * @author rbsrafa
+ * @author Gustavo Lessa
  */
 public class EmployeesController {
-    //TODO implement EmployeesController
+    private ArrayList<ZooKeeper> keepers;
+    private View view;
+    
+    public EmployeesController(ArrayList<ZooKeeper> keepers, View view){
+        this.keepers = keepers;
+        this.view = view;
+    }
+    
+    public void display(){
+        for(ZooKeeper k: keepers){
+            this.view.display((Model) k);
+        }
+    }
+    
+    public void add(ZooKeeper k){
+        this.keepers.add(k);
+    }
+
+
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cctZoo.menus;
 
 import cctZoo.controllers.AnimalsController;
@@ -17,22 +12,28 @@ public class AnimalMenu extends Menu{
     private AnimalsController animals;
     
     public AnimalMenu(ZooData zooData){
-        this.animals = new AnimalsController(zooData.getAnimals(), new View());
-        this.setOptions();
-        while(!this.exit){
-            System.out.println("\nAnimal Menu\n-----------\n");
-            this.displayMenu();
-            this.optionSelector();
-        }
+        super(zooData);
+        this.animals = new AnimalsController(this.zooData.getAnimals(), new View());
+        String[] options = {"Show Animals", "Add Animal", "Search Animal",
+                            "Update Animal", "Show Mammals", "Show Reptiles",
+                            "Show Avians", "Show Insects", "Show Aquatics",
+                            "Return to Main Menu", "Exit Program"};
         
+        this.setOptions(options);
+        this.setTitle("Animal Menu");
+        this.startMenu();
     }
 
+    /**
+     * This method is responsible for linking the menu options with their
+     * respective actions.
+     */
     @Override
     public void optionSelector() {
         System.out.println("\nPlease select an option:");
         int option = this.in.nextInt();
         switch(option){
-            case 1: this.showAnimals();
+            case 1: this.animals.display();
                 break;
             case 2: this.addAnimal();
                 break;
@@ -40,34 +41,21 @@ public class AnimalMenu extends Menu{
                 break;
             case 4: this.updateAnimal();
                 break;
-            case 5: this.showMammals();
+            case 5: this.animals.displayMammals();
                 break;
-            case 6: this.showReptiles();
+            case 6: this.animals.displayReptiles();
                 break;
-            case 7: this.showAvians();
+            case 7: this.animals.displayAvians();
                 break;
-            case 8: this.showInsects();
+            case 8: this.animals.displayInsects();
                 break;
-            case 9: this.showAquatics();
+            case 9: this.animals.displayAquatics();
                 break;
-            case 10: System.exit(0);
-                break;    
+            case 10: new MainMenu(this.zooData);
+                break;
+            case 11: System.exit(0);
+                break;
         }
-    }
-
-    @Override
-    public void setOptions() {
-        String[] options = {"Show Animals", "Add Animal", "Search Animal",
-                            "Update Animal", "Show Mammals", "Show Reptiles",
-                            "Show Avians", "Show Insects", "Show Aquatics",
-                            "Exit Program"};
-        for(String s: options){
-            this.options.add(s);
-        }
-    }
-    
-    public void showAnimals(){
-        this.animals.display();
     }
     
     public void addAnimal(){
@@ -82,24 +70,8 @@ public class AnimalMenu extends Menu{
         
     }
     
-    public void showMammals(){
-        this.animals.displayMammals();
-    }
-    
-    public void showReptiles(){
-        this.animals.displayReptiles();
-    }
-    
-    public void showAvians(){
-        this.animals.displayAvians();
-    }
-    
-    public void showInsects(){
-        this.animals.displayInsects();
-    }
-    
-    public void showAquatics(){
-        this.animals.displayAquatics();
+    public void returnToMain(){
+        
     }
     
 }

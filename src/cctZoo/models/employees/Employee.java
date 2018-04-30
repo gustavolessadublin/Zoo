@@ -22,6 +22,12 @@ public abstract class Employee extends Model{
         super(++lastId);
         this.gender = gender;
     }
+    
+    public Employee(String gender, String name) {
+        super(++lastId);
+        this.gender = gender;
+        this.name = name;
+    }
 
     public String getName() {
         return name;

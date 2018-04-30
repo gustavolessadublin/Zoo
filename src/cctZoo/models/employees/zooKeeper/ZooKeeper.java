@@ -24,6 +24,12 @@ public class ZooKeeper extends Employee{
         caredAnimals = new ArrayList<>();
     }
     
+    public ZooKeeper(String gender, String name, ArrayList<Qualification> qualifications){
+        super(gender, name);
+        this.qualifications = qualifications;
+        caredAnimals = new ArrayList<>();
+    }
+    
     /**
      * This method returns the qualifications of a zoo keeper, stored in an ArrayList.
      * @return ArrayList of Enums representing the keeper's qualifications.
@@ -94,7 +100,12 @@ public class ZooKeeper extends Employee{
     
     @Override
     public String toString() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Keeper\n" +
+       "------\n" +
+       "Id: " + this.getId() + "\n" +
+       "Name: " + this.getName() + "\n" +
+       "Gender: " + this.getGender() + "\n" +
+       "Qualifications: "+ this.getQualifications();
     }
     
 }
