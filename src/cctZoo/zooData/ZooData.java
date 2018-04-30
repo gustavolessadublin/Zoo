@@ -27,12 +27,17 @@ public class ZooData {
     private List<ZooKeeper> zooKeepers;
     private AnimalFactory animalFactory;
     private KeeperFactory keeperFactory;
+    private DataFactory dataFactory;
     
     public ZooData(){
         this.animalFactory = new AnimalFactory();
         this.keeperFactory = new KeeperFactory();
-        this.animals = new ArrayList<>(animalFactory.getRandomAnimals(100));
-        this.zooKeepers = new ArrayList<>(keeperFactory.getRandomKeepers(40));
+        this.animals = new ArrayList<>();
+        this.zooKeepers = new ArrayList<>();
+        this.dataFactory = new DataFactory(this);
+        //this.animals = new ArrayList<>(animalFactory.getRandomAnimals(100));
+      //  this.zooKeepers = new ArrayList<>(keeperFactory.getRandomKeepers(40));
+        this.dataFactory.getRandomAnimals(100);
     }
 
     public List<Animal> getAnimals() { return animals; }
@@ -41,7 +46,7 @@ public class ZooData {
     public List<ZooKeeper> getZooKeepers() { return zooKeepers; }
     public void setZooKeepers(List<ZooKeeper> zooKeepers) { this.zooKeepers = zooKeepers; }
     
-    public void assignAnimal(Animal a){
+    public void assignAnimal(Animal a, List<ZooKeeper> zooKeepers){
         ArrayList<Qualification> animalTypes = new ArrayList<>();
         if (a instanceof Mammal){ animalTypes.add(Qualification.MAMMAL);}
         if (a instanceof Reptile){ animalTypes.add(Qualification.REPTILE);}
