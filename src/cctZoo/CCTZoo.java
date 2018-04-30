@@ -6,6 +6,7 @@
 package cctZoo;
 
 import cctZoo.menus.AnimalMenu;
+import cctZoo.menus.EmployeeMenu;
 import cctZoo.zooData.ZooData;
 
 /**
@@ -19,7 +20,7 @@ public class CCTZoo {
      */
     public static void main(String[] args) {
         ZooData zooData = new ZooData();
-        new AnimalMenu(zooData);
+        new EmployeeMenu(zooData);
     }
     
 }
