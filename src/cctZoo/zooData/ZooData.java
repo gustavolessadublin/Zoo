@@ -30,14 +30,17 @@ public class ZooData {
     private DataFactory dataFactory;
     
     public ZooData(){
-        this.animalFactory = new AnimalFactory();
-        this.keeperFactory = new KeeperFactory();
+//        this.animalFactory = new AnimalFactory();
+//        this.keeperFactory = new KeeperFactory();
         this.animals = new ArrayList<>();
         this.zooKeepers = new ArrayList<>();
         this.dataFactory = new DataFactory(this);
         //this.animals = new ArrayList<>(animalFactory.getRandomAnimals(100));
       //  this.zooKeepers = new ArrayList<>(keeperFactory.getRandomKeepers(40));
         this.dataFactory.getRandomAnimals(100);
+        this.zooKeepers.addAll(this.dataFactory.getRandomKeepers(40 - zooKeepers.size()));
+        //TODO check the use of Animal or Abstract animal (getters not present in Animal interface)
+        //TODO check if we need a Setup class, to keep this ZooData class clean
     }
 
     public List<Animal> getAnimals() { return animals; }
@@ -45,16 +48,4 @@ public class ZooData {
 
     public List<ZooKeeper> getZooKeepers() { return zooKeepers; }
     public void setZooKeepers(List<ZooKeeper> zooKeepers) { this.zooKeepers = zooKeepers; }
-    
-    public void assignAnimal(Animal a, List<ZooKeeper> zooKeepers){
-        ArrayList<Qualification> animalTypes = new ArrayList<>();
-        if (a instanceof Mammal){ animalTypes.add(Qualification.MAMMAL);}
-        if (a instanceof Reptile){ animalTypes.add(Qualification.REPTILE);}
-        if (a instanceof Avian){ animalTypes.add(Qualification.AVIAN);}
-        if (a instanceof Aquatic){ animalTypes.add(Qualification.AQUATIC);}
-        if (a instanceof Insect){ animalTypes.add(Qualification.INSECT);}
-        
-    }
-    
-
 }

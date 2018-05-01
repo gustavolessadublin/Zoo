@@ -5,6 +5,7 @@
  */
 package cctZoo.models.employees.zooKeeper;
 
+import cctZoo.models.animals.abstracts.AbstractAnimal;
 import cctZoo.models.animals.interfaces.Animal;
 import cctZoo.models.employees.Employee;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 public class ZooKeeper extends Employee{
 
     ArrayList<Qualification> qualifications;
-    ArrayList<Animal> caredAnimals;
+    ArrayList<AbstractAnimal> caredAnimals;
     
     public ZooKeeper(String gender){
         super(gender);
@@ -69,7 +70,7 @@ public class ZooKeeper extends Employee{
      * if the 10 animals limit was reached.
      * @param Animal - the animal to be added to keeper's cared animals list.
      */
-    public void addAnimal(Animal a){
+    public void addAnimal(AbstractAnimal a){
         if(caredAnimals.size()<10){
             caredAnimals.add(a);
         } else {
@@ -98,14 +99,23 @@ public class ZooKeeper extends Employee{
         }
     }
     
+    public String caredAnimals(){
+        String ans = "";
+        for(AbstractAnimal a : caredAnimals){
+           ans = ans.concat(a.getId()+ " ");
+        }
+        return ans;
+    }
+    
     @Override
     public String toString() {
-        return "Keeper\n" +
+        return "\nKeeper\n" +
        "------\n" +
        "Id: " + this.getId() + "\n" +
        "Name: " + this.getName() + "\n" +
        "Gender: " + this.getGender() + "\n" +
-       "Qualifications: "+ this.getQualifications();
+       "Qualifications: "+ this.getQualifications() + "\n" +
+       "Animals: "+ caredAnimals();
     }
     
 }
