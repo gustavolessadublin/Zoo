@@ -39,7 +39,9 @@ public abstract class AbstractAnimal extends Model implements Animal{
                "Id: " + this.getId() + "\n" +
                "Species: " + this.species + "\n" +
                "Name: " + this.name + "\n" +
-               "Gender: " + this.gender + "\n";
+               "Gender: " + this.gender + "\n"+
+               "Keeper: " + this.keeper.getName() + "\n";
+        
     }
 
     public static int getLastId() { return lastId; }
