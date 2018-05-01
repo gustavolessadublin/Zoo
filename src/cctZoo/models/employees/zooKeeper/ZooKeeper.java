@@ -70,9 +70,9 @@ public class ZooKeeper extends Employee{
      * if the 10 animals limit was reached.
      * @param Animal - the animal to be added to keeper's cared animals list.
      */
-    public void addAnimal(AbstractAnimal a){
+    public void addAnimal(Animal a){
         if(caredAnimals.size()<10){
-            caredAnimals.add(a);
+            caredAnimals.add(((AbstractAnimal)a));
         } else {
             System.out.println("Keeper is already taking care of 10 animals");
         }

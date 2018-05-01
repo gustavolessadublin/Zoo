@@ -42,7 +42,8 @@ public class FileRW {
             else if(gender.equals("Female")){ names = Files.readAllLines(femalePath); }  
         } catch (IOException ex) {
             System.out.println("Could not read file.");
-        }  
+        }
+        
         return name = names.get(rand.nextInt(names.size()));
     }
     

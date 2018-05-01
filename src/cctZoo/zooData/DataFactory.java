@@ -23,9 +23,7 @@ import cctZoo.models.animals.interfaces.Mammal;
 import cctZoo.models.animals.interfaces.Reptile;
 import cctZoo.models.employees.zooKeeper.Qualification;
 import cctZoo.models.employees.zooKeeper.ZooKeeper;
-import cctZoo.zooData.FileRW;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import org.apache.commons.collections4.CollectionUtils;
@@ -54,7 +52,7 @@ public class DataFactory {
         }
     }
     
-    private AbstractAnimal generateRandomAnimal(){
+    private Animal generateRandomAnimal(){
         AbstractAnimal a = null;
         Random rand = new Random();
         String[] gender = {"Male", "Female"};
@@ -91,7 +89,7 @@ public class DataFactory {
     
     
     
-    private void assignKeeper(AbstractAnimal a){
+    private void assignKeeper(Animal a){
         ArrayList<Qualification> animalTypes = new ArrayList<>();
         if (a instanceof Mammal){ animalTypes.add(Qualification.MAMMAL);}
         if (a instanceof Reptile){ animalTypes.add(Qualification.REPTILE);}
@@ -100,17 +98,18 @@ public class DataFactory {
         if (a instanceof Insect){ animalTypes.add(Qualification.INSECT);}
 
         //TODO check statement
+        //
         boolean done = false;
         while(!done){
             for(ZooKeeper z : zooData.getZooKeepers()){
                 if (CollectionUtils.containsAll(z.getQualifications(),animalTypes) && (z.getAnimals()==null || z.getAnimals().size()<10)){
                     z.addAnimal(a);
-                    a.setKeeper(z);
+                    ((AbstractAnimal)a).setKeeper(z);
                     done = true;
                     break;
                 } 
             }
-            if(a.getKeeper()==null){
+            if(((AbstractAnimal)a).getKeeper()==null){
                 zooData.getZooKeepers().add(this.generateRandomKeeper(animalTypes));
             }
         }
