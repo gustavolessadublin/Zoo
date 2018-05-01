@@ -58,7 +58,7 @@ public abstract class Menu {
     private final void displayMenu(){
         System.out.println(this.title);
         for(int i = 0; i < this.title.length(); i++) System.out.print("-");
-        System.out.println("\n");
+        System.out.println("");
         for(int i = 0; i < this.options.size(); i++){
             System.out.println((i+1) + " - " + this.options.get(i));
         }
