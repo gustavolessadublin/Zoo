@@ -9,6 +9,7 @@ import cctZoo.models.animals.abstracts.AbstractAnimal;
 import cctZoo.models.animals.interfaces.Animal;
 import cctZoo.models.employees.Employee;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -16,8 +17,8 @@ import java.util.ArrayList;
  */
 public class ZooKeeper extends Employee{
 
-    ArrayList<Qualification> qualifications;
-    ArrayList<AbstractAnimal> caredAnimals;
+    List<Qualification> qualifications;
+    List<AbstractAnimal> caredAnimals;
     
     public ZooKeeper(String gender){
         super(gender);
@@ -35,7 +36,7 @@ public class ZooKeeper extends Employee{
      * This method returns the qualifications of a zoo keeper, stored in an ArrayList.
      * @return ArrayList of Enums representing the keeper's qualifications.
      */
-    public ArrayList getQualifications(){
+    public List getQualifications(){
         return qualifications;
     }
     
@@ -82,7 +83,7 @@ public class ZooKeeper extends Employee{
      * This method returns an ArrayList of the cared animals.
      * @return ArrayList of animals, representing the cared animals.
      */
-    public ArrayList getAnimals(){
+    public List getAnimals(){
         return caredAnimals;
     }
     
@@ -101,21 +102,20 @@ public class ZooKeeper extends Employee{
     
     public String caredAnimals(){
         String ans = "";
-        for(AbstractAnimal a : caredAnimals){
-           ans = ans.concat(a.getId()+ " ");
+        for(Animal a : caredAnimals){
+           ans = ans.concat(((AbstractAnimal)a).getId()+ " ");
         }
         return ans;
     }
     
     @Override
     public String toString() {
-        return "\nKeeper\n" +
+        return "Keeper\n" +
        "------\n" +
        "Id: " + this.getId() + "\n" +
        "Name: " + this.getName() + "\n" +
        "Gender: " + this.getGender() + "\n" +
        "Qualifications: "+ this.getQualifications() + "\n" +
-       "Animals: "+ caredAnimals();
+       "Animals: "+ caredAnimals()+"\n";
     }
-    
 }
