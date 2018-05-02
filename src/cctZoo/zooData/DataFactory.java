@@ -14,8 +14,7 @@ import cctZoo.models.animals.GenericAvian;
 import cctZoo.models.animals.GenericInsect;
 import cctZoo.models.animals.GenericMammal;
 import cctZoo.models.animals.GenericReptile;
-import cctZoo.models.animals.abstracts.AbstractAnimal;
-import cctZoo.models.animals.interfaces.Animal;
+import cctZoo.models.animals.abstracts.Animal;
 import cctZoo.models.animals.interfaces.Aquatic;
 import cctZoo.models.animals.interfaces.Avian;
 import cctZoo.models.animals.interfaces.Insect;
@@ -48,7 +47,7 @@ public class DataFactory {
     }
     
     private Animal generateRandomAnimal(){
-        AbstractAnimal a = null;
+        Animal a = null;
         Random rand = new Random();
         String[] gender = {"Male", "Female"};
         String[] species = {"Dolphin", "Whale", "Crocodile", "Penguin", "Dragonfly",
@@ -97,12 +96,12 @@ public class DataFactory {
             for(ZooKeeper z : zooData.getZooKeepers()){
                 if (CollectionUtils.containsAll(z.getQualifications(),animalTypes) && (z.getAnimals()==null || z.getAnimals().size()<10)){
                     z.addAnimal(a);
-                    ((AbstractAnimal)a).setKeeper(z);
+                    ((Animal)a).setKeeper(z);
                     done = true;
                     break;
                 } 
             }
-            if(((AbstractAnimal)a).getKeeper()==null){
+            if(((Animal)a).getKeeper()==null){
                 zooData.getZooKeepers().add(this.generateRandomKeeper(animalTypes));
             }
         }

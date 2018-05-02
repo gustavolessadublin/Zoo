@@ -5,8 +5,7 @@
  */
 package cctZoo.models.employees.zooKeeper;
 
-import cctZoo.models.animals.abstracts.AbstractAnimal;
-import cctZoo.models.animals.interfaces.Animal;
+import cctZoo.models.animals.abstracts.Animal;
 import cctZoo.models.employees.Employee;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +17,7 @@ import java.util.List;
 public class ZooKeeper extends Employee{
 
     List<Qualification> qualifications;
-    List<AbstractAnimal> caredAnimals;
+    List<Animal> caredAnimals;
     
     public ZooKeeper(String gender){
         super(gender);
@@ -73,7 +72,7 @@ public class ZooKeeper extends Employee{
      */
     public void addAnimal(Animal a){
         if(caredAnimals.size()<10){
-            caredAnimals.add(((AbstractAnimal)a));
+            caredAnimals.add(((Animal)a));
         } else {
             System.out.println("Keeper is already taking care of 10 animals");
         }
@@ -103,7 +102,7 @@ public class ZooKeeper extends Employee{
     public String caredAnimals(){
         String ans = "";
         for(Animal a : caredAnimals){
-           ans = ans.concat(((AbstractAnimal)a).getId()+ " ");
+           ans = ans.concat(((Animal)a).getId()+ " ");
         }
         if(ans.isEmpty()){
             ans = "no animals assigned.";

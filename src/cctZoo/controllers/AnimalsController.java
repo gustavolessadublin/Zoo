@@ -1,7 +1,7 @@
 package cctZoo.controllers;
 
 import cctZoo.models.Model;
-import cctZoo.models.animals.interfaces.Animal;
+import cctZoo.models.animals.abstracts.Animal;
 import cctZoo.models.animals.interfaces.Aquatic;
 import cctZoo.models.animals.interfaces.Avian;
 import cctZoo.models.animals.interfaces.Insect;

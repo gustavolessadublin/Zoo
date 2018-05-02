@@ -6,27 +6,26 @@
 package cctZoo.models.animals.abstracts;
 
 import cctZoo.models.Model;
-import cctZoo.models.animals.interfaces.Animal;
 import cctZoo.models.employees.zooKeeper.ZooKeeper;
 
 /**
  *
  * @author rbsrafa
  */
-public abstract class AbstractAnimal extends Model implements Animal{
+public abstract class Animal extends Model{
     private static int lastId;
     private String species, name, gender, DOB, dateOfArrival;
     private ZooKeeper keeper;
     private Offspring offspring;
     
-    public AbstractAnimal(String species, String name, String gender) {
+    public Animal(String species, String name, String gender) {
         super(++lastId);
         this.species = species;
         this.name = name;
         this.gender = gender;
     }
     
-    public AbstractAnimal(String species, String gender) {
+    public Animal(String species, String gender) {
         super(++lastId);
         this.species = species;
         this.gender = gender;

@@ -5,14 +5,14 @@
  */
 package cctZoo.models.animals;
 
-import cctZoo.models.animals.abstracts.AbstractAnimal;
+import cctZoo.models.animals.abstracts.Animal;
 import cctZoo.models.animals.interfaces.Insect;
 
 /**
  *
  * @author rbsrafa
  */
-public class GenericInsect extends AbstractAnimal implements Insect{
+public class GenericInsect extends Animal implements Insect{
     
     public GenericInsect(String species, String name, String gender) {
         super(species, name, gender);

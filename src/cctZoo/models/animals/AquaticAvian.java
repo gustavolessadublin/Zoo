@@ -5,7 +5,7 @@
  */
 package cctZoo.models.animals;
 
-import cctZoo.models.animals.abstracts.AbstractAnimal;
+import cctZoo.models.animals.abstracts.Animal;
 import cctZoo.models.animals.interfaces.Aquatic;
 import cctZoo.models.animals.interfaces.Avian;
 
@@ -13,7 +13,7 @@ import cctZoo.models.animals.interfaces.Avian;
  *
  * @author rbsrafa
  */
-public class AquaticAvian extends AbstractAnimal implements Aquatic, Avian{
+public class AquaticAvian extends Animal implements Aquatic, Avian{
     
     public AquaticAvian(String species, String name, String gender) {
         super(species, name, gender);

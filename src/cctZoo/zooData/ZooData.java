@@ -5,7 +5,7 @@
  */
 package cctZoo.zooData;
 
-import cctZoo.models.animals.interfaces.Animal;
+import cctZoo.models.animals.abstracts.Animal;
 import cctZoo.models.employees.zooKeeper.ZooKeeper;
 import java.util.ArrayList;
 import java.util.List;
