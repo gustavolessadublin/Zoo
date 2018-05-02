@@ -41,11 +41,6 @@ public class DataFactory {
         this.zooData = zooData;
     }
     
-//    public Animal getRandomAnimal(){
-//        Animal a = this.generateRandomAnimal();
-//        return a;
-//    }
-    
     public void getRandomAnimals(int amount){
         for(int i = 0; i < amount; i++){
             zooData.getAnimals().add(this.generateRandomAnimal());
@@ -89,7 +84,7 @@ public class DataFactory {
     
     
     
-    private void assignKeeper(Animal a){
+    private void assignKeeper(Animal a){    
         ArrayList<Qualification> animalTypes = new ArrayList<>();
         if (a instanceof Mammal){ animalTypes.add(Qualification.MAMMAL);}
         if (a instanceof Reptile){ animalTypes.add(Qualification.REPTILE);}
@@ -97,8 +92,6 @@ public class DataFactory {
         if (a instanceof Aquatic){ animalTypes.add(Qualification.AQUATIC);}
         if (a instanceof Insect){ animalTypes.add(Qualification.INSECT);}
 
-        //TODO check statement
-        //
         boolean done = false;
         while(!done){
             for(ZooKeeper z : zooData.getZooKeepers()){

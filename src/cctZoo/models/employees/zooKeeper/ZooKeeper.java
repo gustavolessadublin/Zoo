@@ -105,6 +105,9 @@ public class ZooKeeper extends Employee{
         for(Animal a : caredAnimals){
            ans = ans.concat(((AbstractAnimal)a).getId()+ " ");
         }
+        if(ans.isEmpty()){
+            ans = "no animals assigned.";
+        }
         return ans;
     }
     

@@ -20,6 +20,10 @@ public class View implements Displayable{
     @Override
     public void display(Model m) {
         System.out.println(m.toString());
+        for(Class c: m.getClass().getInterfaces()){
+            System.out.println(c);
+            System.out.println("-----");
+        }
     }
 
 }

@@ -75,6 +75,7 @@ public abstract class AbstractAnimal extends Model implements Animal{
         
         public Offspring(){
             
+            
         }
  
     }
