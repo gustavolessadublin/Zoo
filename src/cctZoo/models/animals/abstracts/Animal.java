@@ -7,6 +7,8 @@ package cctZoo.models.animals.abstracts;
 
 import cctZoo.models.Model;
 import cctZoo.models.employees.zooKeeper.ZooKeeper;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -15,8 +17,9 @@ import cctZoo.models.employees.zooKeeper.ZooKeeper;
 public abstract class Animal extends Model{
     private static int lastId;
     private String species, name, gender, DOB, dateOfArrival;
+    private boolean offspring = false;
     private ZooKeeper keeper;
-    private Offspring offspring;
+    private Offspring offsprings;
     
     public Animal(String species, String name, String gender) {
         super(++lastId);
@@ -30,6 +33,25 @@ public abstract class Animal extends Model{
         this.species = species;
         this.gender = gender;
     }
+    public Animal(String species, String gender, Animal offspring1, Animal offspring2) {
+        super(++lastId);
+        this.species = species;
+        this.gender = gender;
+        offsprings = new Offspring(offspring1, offspring2);
+    }
+    public Animal(String species, String gender, Animal offspring1) {
+        super(++lastId);
+        this.species = species;
+        this.gender = gender;
+        offsprings = new Offspring(offspring1);
+    }
+    public Animal(String species, String gender, boolean offspring) {
+        super(++lastId);
+        this.species = species;
+        this.gender = gender;
+        this.offspring = offspring;
+        
+    }
 
     @Override
     public String toString() {
@@ -39,6 +61,7 @@ public abstract class Animal extends Model{
                "Species: " + this.species + "\n" +
                "Name: " + this.name + "\n" +
                "Gender: " + this.gender + "\n"+
+               "Offspring: " + this.offspring + "\n"+
                "Keeper: " + this.keeper.getName() + "\n";
         
     }
@@ -60,20 +83,30 @@ public abstract class Animal extends Model{
     public String getDateOfArrival() { return dateOfArrival; }
     public void setDateOfArrival(String dateOfArrival) { this.dateOfArrival = dateOfArrival; }
 
+    public boolean isOffspring() { return offspring;}
+    public void setOffspring(boolean offspring) { this.offspring = offspring;}
+
     public ZooKeeper getKeeper() { return keeper; }
     public void setKeeper(ZooKeeper keeper) { this.keeper = keeper; }
 
-    public Offspring getOffspring() { return offspring; }
-    public void setOffspring(Offspring offspring) { this.offspring = offspring; }
+    public Offspring getOffsprings() { return offsprings; }
+    public void setOffsprings(Offspring offsprings) { this.offsprings = offsprings; }
     
     
     
     
     private class Offspring{
-       
+       private List<Animal> offspringList;
         
-        public Offspring(){
+        public Offspring(Animal offspring1, Animal offspring2){
+            this.offspringList = new ArrayList<>();
+            offspringList.add(offspring1);
+            offspringList.add(offspring2);
             
+        }
+        public Offspring(Animal offspring1){
+            this.offspringList = new ArrayList<>();
+            offspringList.add(offspring1);
             
         }
  

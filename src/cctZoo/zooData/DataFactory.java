@@ -42,38 +42,104 @@ public class DataFactory {
     
     public void getRandomAnimals(int amount){
         for(int i = 0; i < amount; i++){
-            zooData.getAnimals().add(this.generateRandomAnimal());
+            zooData.getAnimals().add(this.defineRandomAnimal());
         }
     }
     
-    private Animal generateRandomAnimal(){
+    private Animal defineRandomAnimal(){
         Animal a = null;
         Random rand = new Random();
-        String[] gender = {"Male", "Female"};
+        String[] genders = {"Male", "Female"};
         String[] species = {"Dolphin", "Whale", "Crocodile", "Penguin", "Dragonfly",
                             "Beetle", "Tiger", "Zebra", "Lion", "Snake", "Komodo Dragon",
                             "Seagull", "Owl", "Bat", "Shark", "Octopus"};
         
         String specie = species[rand.nextInt(species.length)];
+        String gender = genders[rand.nextInt(genders.length)];
+        int offsprings = 0;
+        //check if female will have offsprings
+        //when offsprings > 0, creates offsprings(max 2) 
+        //and then creates the mother
+        if(gender.equals("Female")){
+            offsprings = hasOffsprings();
+            for(int i=0; i<offsprings; i++){
+                a = this.generateAnimal(specie, gender, -1);
+                zooData.getAnimals().add(a);
+            }
+            return this.generateAnimal(specie, gender, offsprings);
+        }
+        a = this.generateAnimal(specie, gender, 0);
+        return a;
+    }
+    
+    private int hasOffsprings(){
+        Random rand = new Random();
+        return rand.nextInt(3);
+    }
         
-        if(specie.equals("Dolphin") || specie.equals("Whale")){
-            a = new AquaticMammal(specie, gender[rand.nextInt(gender.length)]);
-        }else if(specie.equals("Crocodile")){
-            a = new AquaticReptile(specie, gender[rand.nextInt(gender.length)]);
-        }else if(specie.equals("Penguin")){
-            a = new AquaticAvian(specie, gender[rand.nextInt(gender.length)]);
-        }else if(specie.equals("Dragonfly") || specie.equals("Beetle")){
-            a = new GenericInsect(specie, gender[rand.nextInt(gender.length)]);
-        }else if(specie.equals("Tiger") || specie.equals("Zebra") || specie.equals("Lion")){
-            a = new GenericMammal(specie, gender[rand.nextInt(gender.length)]);
-        }else if(specie.equals("Snake") || specie.equals("Komodo Dragon")){
-            a = new GenericReptile(specie, gender[rand.nextInt(gender.length)]);
-        }else if(specie.equals("Seagull") || specie.equals("Owl")){
-            a = new GenericAvian(specie, gender[rand.nextInt(gender.length)]);
-        }else if(specie.equals("Bat")){
-            a = new AvianMammal(specie, gender[rand.nextInt(gender.length)]);
-        }else if(specie.equals("Shark") || specie.equals("Octopus")){
-            a = new GenericAquatic(specie, gender[rand.nextInt(gender.length)]);
+    private Animal generateAnimal(String specie, String gender, int offsprings){
+        Animal a = null;
+        switch (specie) {
+            case "Dolphin":
+            case "Whale":
+                switch(offsprings){
+                    case(2): a = new AquaticMammal(specie, gender,
+                            zooData.getAnimals().get(zooData.getAnimals().size()-1),
+                            zooData.getAnimals().get(zooData.getAnimals().size()-2));
+                    break;
+                    case(1): a = new AquaticMammal(specie, gender,
+                            zooData.getAnimals().get(zooData.getAnimals().size()-1));
+                    break;
+                    case(0): a = new AquaticMammal(specie, gender);
+                    break;
+                    default: a = new AquaticMammal(specie, gender, true);
+                    break;
+                }   
+                break;
+            case "Crocodile":
+                switch(offsprings){
+                    case(2): a = new AquaticReptile(specie, gender,
+                            zooData.getAnimals().get(zooData.getAnimals().size()-1),
+                            zooData.getAnimals().get(zooData.getAnimals().size()-2));
+                    break;
+                    case(1): a = new AquaticReptile(specie, gender,
+                            zooData.getAnimals().get(zooData.getAnimals().size()-1));
+                    break;
+                    case(0): a = new AquaticReptile(specie, gender);
+                    break;
+                    default: a = new AquaticReptile(specie, gender, true);
+                    break;
+                }
+                break;
+            case "Penguin":
+                a = new AquaticAvian(specie, gender);
+                break;
+            case "Dragonfly":
+            case "Beetle":
+                a = new GenericInsect(specie, gender);
+                break;
+            case "Tiger":
+            case "Zebra":
+            case "Lion":
+                a = new GenericMammal(specie, gender);
+                break;
+            case "Snake":
+            case "Komodo Dragon":
+                a = new GenericReptile(specie, gender);
+                break;
+            case "Seagull":
+            case "Owl":
+                a = new GenericAvian(specie, gender);
+                break;
+            case "Bat":
+                a = new AvianMammal(specie, gender);
+                break;
+            case "Shark":
+            case "Octopus":
+                a = new GenericAquatic(specie, gender);
+                break;
+            default:
+                break;
         }
               
         a.setName(rw.getRandomName(a.getGender()));       
