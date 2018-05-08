@@ -42,7 +42,7 @@ public class DataFactory {
     
     public void getRandomAnimals(int amount){
         for(int i = 0; i < amount; i++){
-            zooData.getAnimals().add(this.generateRandomAnimal());
+            zooData.getAnimals().add(this.defineRandomAnimal());
         }
     }
     
@@ -56,11 +56,22 @@ public class DataFactory {
         
         String specie = species[rand.nextInt(species.length)];
         String gender = genders[rand.nextInt(genders.length)];
-        int cubs = 0;
+        int offsprings = 0;
+        if(gender.equals("female")){
+            offsprings = this.hasOffspring();
+            for(int i=0; i<offsprings; i++){
+                zooData.getAnimals().add(this.defineRandomAnimal());
+            }
+        }
+        a = this.generateAnimal(specie, gender, 0);
         return a;
     }
+    private int hasOffspring(){
+        Random rand = new Random();
+        return rand.nextInt(3);
+    }
         
-    private Animal generateAnimal(String specie, String gender){
+    private Animal generateAnimal(String specie, String gender, int offsprings){
         Animal a = null;
         if(specie.equals("Dolphin") || specie.equals("Whale")){
             a = new AquaticMammal(specie, gender);
