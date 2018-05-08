@@ -22,4 +22,16 @@ public class GenericReptile extends Animal implements Reptile{
         super(species, gender);
     }
     
+    public GenericReptile(String species, String gender, Animal offspring1, Animal offspring2) {
+        super(species, gender, offspring1, offspring2);
+    }
+    
+    public GenericReptile(String species, String gender, Animal offspring1) {
+        super(species, gender, offspring1);
+    }
+    
+    public GenericReptile(String species, String gender, boolean isOffspring) {
+        super(species, gender, isOffspring);
+    }
+    
 }
