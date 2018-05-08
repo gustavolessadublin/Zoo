@@ -99,6 +99,11 @@ public class ZooKeeper extends Employee{
         }
     }
     
+    /**
+     * This method returns a String listing the ID of all animals under care of 
+     * the keeper.
+     * @return String - concatenated animal IDs.
+     */
     public String caredAnimals(){
         String ans = "";
         for(Animal a : caredAnimals){
@@ -110,6 +115,10 @@ public class ZooKeeper extends Employee{
         return ans;
     }
     
+    /**
+     * This method overrides the toString() to display the keeper's info.
+     * @return String - representing the keeper's info.
+     */
     @Override
     public String toString() {
         return "Keeper\n" +

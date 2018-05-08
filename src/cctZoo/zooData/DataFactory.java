@@ -30,10 +30,12 @@ import org.apache.commons.collections4.CollectionUtils;
 /**
  *
  * @author rbsrafa
+ * @author Gustavo Lessa
  */
 public class DataFactory {
-    FileRW rw;
-    ZooData zooData;
+    
+    FileRW rw; 
+    ZooData zooData; //object that holds access to the 
     
     public DataFactory(ZooData zooData){
         rw = new FileRW();
@@ -101,7 +103,7 @@ public class DataFactory {
                     break;
                 } 
             }
-            if(((Animal)a).getKeeper()==null){
+            if(a.getKeeper()==null){
                 zooData.getZooKeepers().add(this.generateRandomKeeper(animalTypes));
             }
         }
