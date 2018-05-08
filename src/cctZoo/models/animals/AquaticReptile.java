@@ -21,6 +21,16 @@ public class AquaticReptile extends Animal implements Aquatic, Reptile{
     
     public AquaticReptile(String species, String gender) {
         super(species, gender);
+    }    
+    
+    public AquaticReptile(String species, String gender, Animal offspring1, Animal offspring2) {
+        super(species, gender, offspring1, offspring2);
+    }
+    public AquaticReptile(String species, String gender, Animal offspring1) {
+        super(species, gender, offspring1);
+    }
+    public AquaticReptile(String species, String gender, boolean isOffspring) {
+        super(species, gender, isOffspring);
     }
     
 }

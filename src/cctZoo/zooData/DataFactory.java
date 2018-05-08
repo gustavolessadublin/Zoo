@@ -57,40 +57,89 @@ public class DataFactory {
         String specie = species[rand.nextInt(species.length)];
         String gender = genders[rand.nextInt(genders.length)];
         int offsprings = 0;
-        if(gender.equals("female")){
-            offsprings = this.hasOffspring();
+        //check if female will have offsprings
+        //when offsprings > 0, creates offsprings(max 2) 
+        //and then creates the mother
+        if(gender.equals("Female")){
+            offsprings = hasOffsprings();
             for(int i=0; i<offsprings; i++){
-                zooData.getAnimals().add(this.defineRandomAnimal());
+                a = this.generateAnimal(specie, gender, -1);
+                zooData.getAnimals().add(a);
             }
+            return this.generateAnimal(specie, gender, offsprings);
         }
         a = this.generateAnimal(specie, gender, 0);
         return a;
     }
-    private int hasOffspring(){
+    
+    private int hasOffsprings(){
         Random rand = new Random();
         return rand.nextInt(3);
     }
         
     private Animal generateAnimal(String specie, String gender, int offsprings){
         Animal a = null;
-        if(specie.equals("Dolphin") || specie.equals("Whale")){
-            a = new AquaticMammal(specie, gender);
-        }else if(specie.equals("Crocodile")){
-            a = new AquaticReptile(specie, gender);
-        }else if(specie.equals("Penguin")){
-            a = new AquaticAvian(specie, gender);
-        }else if(specie.equals("Dragonfly") || specie.equals("Beetle")){
-            a = new GenericInsect(specie, gender);
-        }else if(specie.equals("Tiger") || specie.equals("Zebra") || specie.equals("Lion")){
-            a = new GenericMammal(specie, gender);
-        }else if(specie.equals("Snake") || specie.equals("Komodo Dragon")){
-            a = new GenericReptile(specie, gender);
-        }else if(specie.equals("Seagull") || specie.equals("Owl")){
-            a = new GenericAvian(specie, gender);
-        }else if(specie.equals("Bat")){
-            a = new AvianMammal(specie, gender);
-        }else if(specie.equals("Shark") || specie.equals("Octopus")){
-            a = new GenericAquatic(specie, gender);
+        switch (specie) {
+            case "Dolphin":
+            case "Whale":
+                switch(offsprings){
+                    case(2): a = new AquaticMammal(specie, gender,
+                            zooData.getAnimals().get(zooData.getAnimals().size()-1),
+                            zooData.getAnimals().get(zooData.getAnimals().size()-2));
+                    break;
+                    case(1): a = new AquaticMammal(specie, gender,
+                            zooData.getAnimals().get(zooData.getAnimals().size()-1));
+                    break;
+                    case(0): a = new AquaticMammal(specie, gender);
+                    break;
+                    default: a = new AquaticMammal(specie, gender, true);
+                    break;
+                }   
+                break;
+            case "Crocodile":
+                switch(offsprings){
+                    case(2): a = new AquaticReptile(specie, gender,
+                            zooData.getAnimals().get(zooData.getAnimals().size()-1),
+                            zooData.getAnimals().get(zooData.getAnimals().size()-2));
+                    break;
+                    case(1): a = new AquaticReptile(specie, gender,
+                            zooData.getAnimals().get(zooData.getAnimals().size()-1));
+                    break;
+                    case(0): a = new AquaticReptile(specie, gender);
+                    break;
+                    default: a = new AquaticReptile(specie, gender, true);
+                    break;
+                }
+                break;
+            case "Penguin":
+                a = new AquaticAvian(specie, gender);
+                break;
+            case "Dragonfly":
+            case "Beetle":
+                a = new GenericInsect(specie, gender);
+                break;
+            case "Tiger":
+            case "Zebra":
+            case "Lion":
+                a = new GenericMammal(specie, gender);
+                break;
+            case "Snake":
+            case "Komodo Dragon":
+                a = new GenericReptile(specie, gender);
+                break;
+            case "Seagull":
+            case "Owl":
+                a = new GenericAvian(specie, gender);
+                break;
+            case "Bat":
+                a = new AvianMammal(specie, gender);
+                break;
+            case "Shark":
+            case "Octopus":
+                a = new GenericAquatic(specie, gender);
+                break;
+            default:
+                break;
         }
               
         a.setName(rw.getRandomName(a.getGender()));       
