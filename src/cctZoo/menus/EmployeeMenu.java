@@ -5,10 +5,9 @@
  */
 package cctZoo.menus;
 
-import cctZoo.controllers.AnimalsController;
 import cctZoo.controllers.EmployeesController;
 import cctZoo.models.employees.zooKeeper.ZooKeeper;
-import cctZoo.views.View;
+import cctZoo.views.ZooKeeperView;
 import cctZoo.zooData.ZooData;
 import java.util.ArrayList;
 
@@ -22,7 +21,7 @@ public class EmployeeMenu extends Menu{
    
     public EmployeeMenu(ZooData zooData){
         super(zooData);
-        this.keepers = new EmployeesController((ArrayList<ZooKeeper>) zooData.getZooKeepers(), new View());
+        this.keepers = new EmployeesController((ArrayList<ZooKeeper>) zooData.getZooKeepers(), new ZooKeeperView());
         String[] options = {"List Keepers","Add Keeper","Search Keepers"};
         this.setOptions(options);
         this.setTitle("Keeper Menu");
