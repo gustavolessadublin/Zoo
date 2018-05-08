@@ -46,34 +46,40 @@ public class DataFactory {
         }
     }
     
-    private Animal generateRandomAnimal(){
+    private Animal defineRandomAnimal(){
         Animal a = null;
         Random rand = new Random();
-        String[] gender = {"Male", "Female"};
+        String[] genders = {"Male", "Female"};
         String[] species = {"Dolphin", "Whale", "Crocodile", "Penguin", "Dragonfly",
                             "Beetle", "Tiger", "Zebra", "Lion", "Snake", "Komodo Dragon",
                             "Seagull", "Owl", "Bat", "Shark", "Octopus"};
         
         String specie = species[rand.nextInt(species.length)];
+        String gender = genders[rand.nextInt(genders.length)];
+        int cubs = 0;
+        return a;
+    }
         
+    private Animal generateAnimal(String specie, String gender){
+        Animal a = null;
         if(specie.equals("Dolphin") || specie.equals("Whale")){
-            a = new AquaticMammal(specie, gender[rand.nextInt(gender.length)]);
+            a = new AquaticMammal(specie, gender);
         }else if(specie.equals("Crocodile")){
-            a = new AquaticReptile(specie, gender[rand.nextInt(gender.length)]);
+            a = new AquaticReptile(specie, gender);
         }else if(specie.equals("Penguin")){
-            a = new AquaticAvian(specie, gender[rand.nextInt(gender.length)]);
+            a = new AquaticAvian(specie, gender);
         }else if(specie.equals("Dragonfly") || specie.equals("Beetle")){
-            a = new GenericInsect(specie, gender[rand.nextInt(gender.length)]);
+            a = new GenericInsect(specie, gender);
         }else if(specie.equals("Tiger") || specie.equals("Zebra") || specie.equals("Lion")){
-            a = new GenericMammal(specie, gender[rand.nextInt(gender.length)]);
+            a = new GenericMammal(specie, gender);
         }else if(specie.equals("Snake") || specie.equals("Komodo Dragon")){
-            a = new GenericReptile(specie, gender[rand.nextInt(gender.length)]);
+            a = new GenericReptile(specie, gender);
         }else if(specie.equals("Seagull") || specie.equals("Owl")){
-            a = new GenericAvian(specie, gender[rand.nextInt(gender.length)]);
+            a = new GenericAvian(specie, gender);
         }else if(specie.equals("Bat")){
-            a = new AvianMammal(specie, gender[rand.nextInt(gender.length)]);
+            a = new AvianMammal(specie, gender);
         }else if(specie.equals("Shark") || specie.equals("Octopus")){
-            a = new GenericAquatic(specie, gender[rand.nextInt(gender.length)]);
+            a = new GenericAquatic(specie, gender);
         }
               
         a.setName(rw.getRandomName(a.getGender()));       
