@@ -82,7 +82,7 @@ public class DataFactory {
     }
     
     
-    
+    //teste
     private void assignKeeper(Animal a){    
         ArrayList<Qualification> animalTypes = new ArrayList<>();
         if (a instanceof Mammal){ animalTypes.add(Qualification.MAMMAL);}
