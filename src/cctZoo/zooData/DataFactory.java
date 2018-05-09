@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cctZoo.zooData;
 
 import cctZoo.models.animals.AquaticAvian;
@@ -54,7 +49,7 @@ public class DataFactory {
         String[] genders = {"Male", "Female"};
         String[] species = {"Dolphin", "Whale", "Crocodile", "Penguin", "Dragonfly",
                             "Beetle", "Tiger", "Zebra", "Lion", "Snake", "Komodo Dragon",
-                            "Seagull", "Owl", "Bat", "Shark", "Octopus"};
+                            "Seagull", "Owl", "Bat", "Shark", "Octopus", "Ant"};
         
         String specie = species[rand.nextInt(species.length)];
         String gender = genders[rand.nextInt(genders.length)];
@@ -210,6 +205,7 @@ public class DataFactory {
                 break;
             case "Dragonfly":
             case "Beetle":
+            case "Ant":
                 a = new GenericInsect(specie, gender);
                 break;
             default:

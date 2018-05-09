@@ -39,6 +39,7 @@ public class AnimalView extends View{
     public void display(){        
         this.table.print();
         this.table.removeAll();
+        System.out.println("");
     }
     
 }
