@@ -51,7 +51,14 @@ public class EmployeeMenu extends Menu{
     }
 
     private void addKeeper() {
+        System.out.println("Add Keeper Wizard");
+        System.out.println("");
+                
 
+    }
+    
+    private void chooseName() {
+        System.out.println("Please choose");
     }
 
     private void searchKeeper() {
