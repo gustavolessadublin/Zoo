@@ -53,6 +53,7 @@ public class AnimalsController {
             String[] row = {Integer.toString(a.getId()), a.getName(), a.getGender(), Boolean.toString(a.isOffspring()), a.getKeeper().getName()};
             table.addRow(row);
         }
+        table.sortBy(0);
         table.print();        
     }
     
