@@ -80,9 +80,12 @@ public class AnimalsController {
      */
     public void displayMammals(){
         List<Animal> mammals = this.getMammals();
-        this.printTitle();
-        for(Animal a: mammals) this.view.display((Model) a);
-        System.out.println("");
+        for(Animal a: mammals) {
+            String[] row = {Integer.toString(a.getId()), a.getName(), a.getGender(), Boolean.toString(a.isOffspring()), a.getKeeper().getName()};
+            table.addRow(row);
+        }
+        table.sortBy(0);
+        table.print();
     }
     
     /**
@@ -100,9 +103,12 @@ public class AnimalsController {
      */
     public void displayReptiles(){
         List<Animal> reptiles = this.getReptiles();
-        this.printTitle();
-        for(Animal a: reptiles) this.view.display((Model) a);
-        System.out.println("");
+        for(Animal a: reptiles) {
+            String[] row = {Integer.toString(a.getId()), a.getName(), a.getGender(), Boolean.toString(a.isOffspring()), a.getKeeper().getName()};
+            table.addRow(row);
+        }
+        table.sortBy(0);
+        table.print();
     }
     
     /**
@@ -121,8 +127,12 @@ public class AnimalsController {
     public void displayAvians(){
         List<Animal> avians = this.getAvians();
         this.printTitle();
-        for(Animal a: avians) this.view.display((Model) a);
-        System.out.println("");
+        for(Animal a: avians) {
+            String[] row = {Integer.toString(a.getId()), a.getName(), a.getGender(), Boolean.toString(a.isOffspring()), a.getKeeper().getName()};
+            table.addRow(row);
+        }
+        table.sortBy(0);
+        table.print();
     }
     
     /**
@@ -141,8 +151,12 @@ public class AnimalsController {
     public void displayInsects(){
         List<Animal> insects = this.getInsects();
         this.printTitle();
-        for(Animal a: insects) this.view.display((Model) a);
-        System.out.println("");
+        for(Animal a: insects) {
+            String[] row = {Integer.toString(a.getId()), a.getName(), a.getGender(), Boolean.toString(a.isOffspring()), a.getKeeper().getName()};
+            table.addRow(row);
+        }
+        table.sortBy(0);
+        table.print();
     }
     
     /**
@@ -161,8 +175,12 @@ public class AnimalsController {
     public void displayAquatics(){
         List<Animal> aquatics = this.getAquatics();
         this.printTitle();
-        for(Animal a: aquatics) this.view.display((Model) a);
-        System.out.println("");
+        for(Animal a: aquatics) {
+            String[] row = {Integer.toString(a.getId()), a.getName(), a.getGender(), Boolean.toString(a.isOffspring()), a.getKeeper().getName()};
+            table.addRow(row);
+        }
+        table.sortBy(0);
+        table.print();
     }
     
 }
