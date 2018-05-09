@@ -17,9 +17,16 @@ import cctZoo.models.animals.interfaces.Mammal;
 import cctZoo.models.animals.interfaces.Reptile;
 import cctZoo.models.employees.zooKeeper.Qualification;
 import cctZoo.models.employees.zooKeeper.ZooKeeper;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.commons.collections4.CollectionUtils;
 
 /**
@@ -28,13 +35,14 @@ import org.apache.commons.collections4.CollectionUtils;
  * @author Gustavo Lessa
  */
 public class DataFactory {
-    
     FileRW rw; 
     ZooData zooData; //object that holds access to the 
+    DateFormat dateFormat;
     
     public DataFactory(ZooData zooData){
         rw = new FileRW();
         this.zooData = zooData;
+        dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     }
     
     public void getRandomAnimals(int amount){
@@ -43,6 +51,22 @@ public class DataFactory {
         }
     }
     
+    public Date getRandomDate(){
+        Random rand = new Random();
+        //DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        GregorianCalendar gc = new GregorianCalendar();
+        gc.add(GregorianCalendar.MONTH, -rand.nextInt(12));
+        gc.add(GregorianCalendar.DAY_OF_MONTH, -rand.nextInt(20));
+        gc.add(GregorianCalendar.YEAR, -rand.nextInt(4));
+        Date date = gc.getTime();
+        //String formatedDate = dateFormat.format(date);
+        return date;
+    }
+    
+//    public String getRandomDateOfArrival(){
+//        
+//    }
+    
     private Animal defineRandomAnimal(){
         Animal a = null;
         Random rand = new Random();
@@ -50,6 +74,8 @@ public class DataFactory {
         String[] species = {"Dolphin", "Whale", "Crocodile", "Penguin", "Dragonfly",
                             "Beetle", "Tiger", "Zebra", "Lion", "Snake", "Komodo Dragon",
                             "Seagull", "Owl", "Bat", "Shark", "Octopus", "Ant"};
+        
+        
         
         String specie = species[rand.nextInt(species.length)];
         String gender = genders[rand.nextInt(genders.length)];
@@ -212,7 +238,20 @@ public class DataFactory {
                 break;
         }
               
-        a.setName(rw.getRandomName(a.getGender()));       
+        a.setName(rw.getRandomName(a.getGender())); 
+        
+        
+        Date DOB = this.getRandomDate();
+        Date dateOfArrival = this.getRandomDate();
+        
+        if(DOB.compareTo(dateOfArrival) > 0){
+            DOB = dateOfArrival;
+        }
+        
+        a.setDOB(this.dateFormat.format(DOB));
+        a.setDateOfArrival(this.dateFormat.format(dateOfArrival));
+        
+        
         assignKeeper(a);
         return a;
     }
