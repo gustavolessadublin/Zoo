@@ -34,37 +34,36 @@ public abstract class Animal extends Model{
         this.species = species;
         this.gender = gender;
     }
+    
     public Animal(String species, String gender, Animal offspring1, Animal offspring2) {
         super(++lastId);
         this.species = species;
         this.gender = gender;
         offsprings = new Offspring(offspring1, offspring2);
     }
+    
     public Animal(String species, String gender, Animal offspring1) {
         super(++lastId);
         this.species = species;
         this.gender = gender;
         offsprings = new Offspring(offspring1);
     }
+    
     public Animal(String species, String gender, boolean offspring) {
         super(++lastId);
         this.species = species;
         this.gender = gender;
         this.offspring = offspring;
-        
     }
 
     @Override
     public String toString() {
-//        return "Animal\n" +
-//               "------\n" +
-//               "Id: " + this.getId() + "\n" +
-//               "Species: " + this.species + "\n" +
-//               "Name: " + this.name + "\n" +
-//               "Gender: " + this.gender + "\n"+
-//               "Offspring: " + this.offspring + "\n"+
-//               "Keeper: " + this.keeper.getName() + "\n";
-        return this.getId() + "    " + this.getSpecies() + "     " + this.name + "     " + this.gender + "   " + this.offspring + "      " + this.keeper.getName();
+        return this.getId() + "    " 
+               + this.getSpecies() + "     " 
+               + this.name + "     " 
+               + this.gender + "   " 
+               + this.offspring + "      " 
+               + this.keeper.getName();
         
     }
 
@@ -94,6 +93,17 @@ public abstract class Animal extends Model{
     public Offspring getOffsprings() { return offsprings; }
     public void setOffsprings(Offspring offsprings) { this.offsprings = offsprings; }
     
+    /**
+     * This method returns the number of animals as offspring
+     * @return (int)
+     */
+    public int getNumberOfOffspring(){ 
+        if(this.offsprings == null){
+            return 0;
+        }else{
+            return this.offsprings.getNumberOfOffspring();
+        }
+    }
     
     
     
@@ -120,6 +130,14 @@ public abstract class Animal extends Model{
 
         public void setOffspringList(List<Animal> offspringList) {
             this.offspringList = offspringList;
+        }
+        
+        /**
+         * This method returns the number of animals as offspring
+         * @return (int) number of offspring 
+         */
+        public int getNumberOfOffspring(){
+            return this.offspringList.size();
         }
  
     }

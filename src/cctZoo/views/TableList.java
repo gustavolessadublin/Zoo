@@ -112,6 +112,14 @@ public class TableList {
 		updateSizes(elements);
 		return this;
 	}
+        
+        /**
+         * This method remove all elements of the list
+         * @author rbsrafa
+         */
+        public void removeAll(){
+            table.removeAll(table);
+        }
 
 	public TableList filterBy(int par0, String pattern) {
 		this.findex = par0;
