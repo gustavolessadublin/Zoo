@@ -251,29 +251,30 @@ public class DataFactory {
         return keepers;
     }
     
-    private ZooKeeper generateRandomKeeper(){
+    public String getRandomName(String gender){
+        return rw.getRandomName(gender).concat(" ").concat(rw.getRandomSurname());
+    }
+    
+    public ZooKeeper generateRandomKeeper(){
         String gender = randomGender();
-        String name = rw.getRandomName(gender).concat(" ").concat(rw.getRandomSurname());        
+        String name = getRandomName(gender);        
         return new ZooKeeper(gender, name, randomQualifications());
     }
     
-    private ZooKeeper generateRandomKeeper(ArrayList<Qualification> qualifications){
+    public ZooKeeper generateRandomKeeper(ArrayList<Qualification> qualifications){
         String gender = randomGender();
-        String name = rw.getRandomName(gender).concat(" ").concat(rw.getRandomSurname());        
+        String name = getRandomName(gender);
         return new ZooKeeper(gender, name, qualifications);
     }
     
-    private String randomGender(){
+    public String randomGender(){
         String[] gender = {"Male", "Female"};
         return gender[new Random().nextInt(2)];
     }
     
-    private ArrayList<Qualification> randomQualifications(){
-        ArrayList<Qualification> options = new ArrayList<>();
+    public List<Qualification> randomQualifications(){
+        List<Qualification> options = Qualification.getQualifications();
         ArrayList<Qualification> selectedQualifications = new ArrayList<>();
-        for(Qualification q : Qualification.values()){
-            options.add(q);
-        }
         while(selectedQualifications.size()<3){
             selectedQualifications.add(options.remove(new Random().nextInt(options.size())));
         }

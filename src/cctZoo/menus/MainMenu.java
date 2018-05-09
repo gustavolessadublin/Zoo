@@ -10,7 +10,7 @@ public class MainMenu extends Menu{
     
     public MainMenu(ZooData zooData){
         super(zooData);
-        String[] options = {"Animal Menu", "Employee Menu", "Exit Program"};
+        String[] options = {"Animal Menu", "Keeper Menu", "Exit Program"};
         this.setOptions(options);
         this.setTitle("Main Menu");
         this.startMenu();

@@ -25,7 +25,7 @@ public class ZooKeeper extends Employee{
         caredAnimals = new ArrayList<>();
     }
     
-    public ZooKeeper(String gender, String name, ArrayList<Qualification> qualifications){
+    public ZooKeeper(String gender, String name, List<Qualification> qualifications){
         super(gender, name);
         this.qualifications = qualifications;
         caredAnimals = new ArrayList<>();
