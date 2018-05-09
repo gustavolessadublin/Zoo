@@ -239,25 +239,26 @@ public class DataFactory {
         }
               
         a.setName(rw.getRandomName(a.getGender())); 
-        
-        
-        Date DOB = this.getRandomDate();
-        Date dateOfArrival = this.getRandomDate();
-        
-        if(DOB.compareTo(dateOfArrival) > 0){
-            DOB = dateOfArrival;
-        }
-        
-        a.setDOB(this.dateFormat.format(DOB));
-        a.setDateOfArrival(this.dateFormat.format(dateOfArrival));
-        
-        
+        this.assingDatesToAnimal(a);
         assignKeeper(a);
         return a;
     }
     
+    /**
+     * This method assigns random date of birth and date of arrival to animals.
+     * @param a 
+     */
+    public void assingDatesToAnimal(Animal a){
+        Date DOB = this.getRandomDate();
+        Date dateOfArrival = this.getRandomDate();
+        
+        if(DOB.compareTo(dateOfArrival) > 0) DOB = dateOfArrival;
+        
+        a.setDOB(this.dateFormat.format(DOB));
+        a.setDateOfArrival(this.dateFormat.format(dateOfArrival));
+    }
     
-    //teste
+    
     private void assignKeeper(Animal a){    
         ArrayList<Qualification> animalTypes = new ArrayList<>();
         if (a instanceof Mammal){ animalTypes.add(Qualification.MAMMAL);}
