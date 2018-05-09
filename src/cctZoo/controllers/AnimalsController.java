@@ -24,11 +24,18 @@ public class AnimalsController {
         this.view = view;
     }
     
+    public void printTitle(){
+        System.out.println("ID   Species     Name    Gender   Offspring   Zoo Keeper");
+        System.out.println("--   -------     ----    ------   ---------   ----------");
+    }
+    
     /**
      * This method displays a list of animals on CLI.
      */
     public void display(){
+        this.printTitle();
         for(Animal a: animals) this.view.display((Model) a);
+        System.out.println("");
     }
     
     /**
@@ -54,7 +61,9 @@ public class AnimalsController {
      */
     public void displayMammals(){
         List<Animal> mammals = this.getMammals();
+        this.printTitle();
         for(Animal a: mammals) this.view.display((Model) a);
+        System.out.println("");
     }
     
     /**
@@ -72,7 +81,9 @@ public class AnimalsController {
      */
     public void displayReptiles(){
         List<Animal> reptiles = this.getReptiles();
+        this.printTitle();
         for(Animal a: reptiles) this.view.display((Model) a);
+        System.out.println("");
     }
     
     /**
@@ -90,7 +101,9 @@ public class AnimalsController {
      */
     public void displayAvians(){
         List<Animal> avians = this.getAvians();
+        this.printTitle();
         for(Animal a: avians) this.view.display((Model) a);
+        System.out.println("");
     }
     
     /**
@@ -108,7 +121,9 @@ public class AnimalsController {
      */
     public void displayInsects(){
         List<Animal> insects = this.getInsects();
+        this.printTitle();
         for(Animal a: insects) this.view.display((Model) a);
+        System.out.println("");
     }
     
     /**
@@ -126,7 +141,9 @@ public class AnimalsController {
      */
     public void displayAquatics(){
         List<Animal> aquatics = this.getAquatics();
+        this.printTitle();
         for(Animal a: aquatics) this.view.display((Model) a);
+        System.out.println("");
     }
     
 }

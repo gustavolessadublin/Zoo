@@ -56,14 +56,15 @@ public abstract class Animal extends Model{
 
     @Override
     public String toString() {
-        return "Animal\n" +
-               "------\n" +
-               "Id: " + this.getId() + "\n" +
-               "Species: " + this.species + "\n" +
-               "Name: " + this.name + "\n" +
-               "Gender: " + this.gender + "\n"+
-               "Offspring: " + this.offspring + "\n"+
-               "Keeper: " + this.keeper.getName() + "\n";
+//        return "Animal\n" +
+//               "------\n" +
+//               "Id: " + this.getId() + "\n" +
+//               "Species: " + this.species + "\n" +
+//               "Name: " + this.name + "\n" +
+//               "Gender: " + this.gender + "\n"+
+//               "Offspring: " + this.offspring + "\n"+
+//               "Keeper: " + this.keeper.getName() + "\n";
+        return this.getId() + "    " + this.getSpecies() + "     " + this.name + "     " + this.gender + "   " + this.offspring + "      " + this.keeper.getName();
         
     }
 
