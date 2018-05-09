@@ -37,7 +37,7 @@ public class AnimalMenu extends Menu{
                 break;
             case 3: this.updateAnimal();
                 break;
-            case 4: new AnimalSubMenu(this.zooData);
+            case 4: new AnimalSearchMenu(this.zooData);
                 break;
             case 5: new MainMenu(this.zooData);
                 break;

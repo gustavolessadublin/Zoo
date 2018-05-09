@@ -8,10 +8,10 @@ import cctZoo.zooData.ZooData;
  *
  * @author rbsrafa
  */
-public class AnimalSubMenu extends Menu{
+public class AnimalSearchMenu extends Menu{
     private AnimalsController animals;
 
-    public AnimalSubMenu(ZooData zooData) {
+    public AnimalSearchMenu(ZooData zooData) {
         super(zooData);
         this.animals = new AnimalsController(zooData.getAnimals(), new AnimalView());
         String[] options = {"Show Mammals", "Show Reptiles", "Show Avians",
