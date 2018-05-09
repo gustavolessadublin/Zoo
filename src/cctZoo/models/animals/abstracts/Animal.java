@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cctZoo.models.animals.abstracts;
 
 import cctZoo.models.Model;
@@ -55,16 +50,14 @@ public abstract class Animal extends Model{
         this.gender = gender;
         this.offspring = offspring;
     }
-
-    @Override
-    public String toString() {
-        return this.getId() + "    " 
-               + this.getSpecies() + "     " 
-               + this.name + "     " 
-               + this.gender + "   " 
-               + this.offspring + "      " 
-               + this.keeper.getName();
-        
+    
+    /**
+     * This method returns the number of animals as offspring
+     * @return (int)
+     */
+    public int getNumberOfOffspring(){ 
+        if(this.offsprings == null) return 0;
+        else return this.offsprings.getNumberOfOffspring();
     }
 
     public static int getLastId() { return lastId; }
@@ -93,20 +86,7 @@ public abstract class Animal extends Model{
     public Offspring getOffsprings() { return offsprings; }
     public void setOffsprings(Offspring offsprings) { this.offsprings = offsprings; }
     
-    /**
-     * This method returns the number of animals as offspring
-     * @return (int)
-     */
-    public int getNumberOfOffspring(){ 
-        if(this.offsprings == null){
-            return 0;
-        }else{
-            return this.offsprings.getNumberOfOffspring();
-        }
-    }
-    
-    
-    
+
     private class Offspring{
         
        private List<Animal> offspringList;

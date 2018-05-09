@@ -33,5 +33,10 @@ public class GenericAquatic extends Animal implements Aquatic{
     public GenericAquatic(String species, String gender, boolean isOffspring) {
         super(species, gender, isOffspring);
     }
+
+    @Override
+    public String toString() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
