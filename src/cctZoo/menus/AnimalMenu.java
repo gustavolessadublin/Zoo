@@ -1,7 +1,7 @@
 package cctZoo.menus;
 
 import cctZoo.controllers.AnimalsController;
-import cctZoo.views.View;
+import cctZoo.views.AnimalView;
 import cctZoo.zooData.ZooData;
 
 /**
@@ -13,11 +13,9 @@ public class AnimalMenu extends Menu{
     
     public AnimalMenu(ZooData zooData){
         super(zooData);
-        this.animals = new AnimalsController(this.zooData.getAnimals(), new View());
-        String[] options = {"Show Animals", "Add Animal", "Search Animal",
-                            "Update Animal", "Show Mammals", "Show Reptiles",
-                            "Show Avians", "Show Insects", "Show Aquatics",
-                            "Return to Main Menu", "Exit Program"};
+        this.animals = new AnimalsController(this.zooData.getAnimals(), new AnimalView());
+        String[] options = {"Show Animals", "Add Animal", "Update Animal",
+                            "Search Options", "Return to Main Menu", "Exit Program"};
         
         this.setOptions(options);
         this.setTitle("Animal Menu");
@@ -37,32 +35,18 @@ public class AnimalMenu extends Menu{
                 break;
             case 2: this.addAnimal();
                 break;
-            case 3: this.searchAnimal();
+            case 3: this.updateAnimal();
                 break;
-            case 4: this.updateAnimal();
+            case 4: new AnimalSearchMenu(this.zooData);
                 break;
-            case 5: this.animals.displayMammals();
+            case 5: new MainMenu(this.zooData);
                 break;
-            case 6: this.animals.displayReptiles();
-                break;
-            case 7: this.animals.displayAvians();
-                break;
-            case 8: this.animals.displayInsects();
-                break;
-            case 9: this.animals.displayAquatics();
-                break;
-            case 10: new MainMenu(this.zooData);
-                break;
-            case 11: System.exit(0);
+            case 6: System.exit(0);
                 break;
         }
     }
     
     public void addAnimal(){
-        
-    }
-    
-    public void searchAnimal(){
         
     }
     

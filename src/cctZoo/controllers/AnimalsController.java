@@ -1,29 +1,14 @@
 package cctZoo.controllers;
 
-import cctZoo.models.Model;
 import cctZoo.models.animals.abstracts.Animal;
 import cctZoo.models.animals.interfaces.Aquatic;
 import cctZoo.models.animals.interfaces.Avian;
 import cctZoo.models.animals.interfaces.Insect;
 import cctZoo.models.animals.interfaces.Mammal;
 import cctZoo.models.animals.interfaces.Reptile;
-import cctZoo.views.TableList;
-import cctZoo.views.View;
+import cctZoo.views.AnimalView;
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- *
- * @author therealfarfetchd
- * 
- * TableList tl = new TableList(3, "ID", "String 1", "String 2").sortBy(0).withUnicode(true);
-// from a list
-yourListOrWhatever.forEach(element -> tl.addRow(element.getID(), element.getS1(), element.getS2()));
-// or manually
-tl.addRow("Hi", "I am", "Bob");
-
-tl.print();
- */
 
 /**
  *
@@ -31,30 +16,19 @@ tl.print();
  */
 public class AnimalsController {
     private List<Animal> animals;
-    private View view;
-    TableList table;
+    private AnimalView view;
     
-    public AnimalsController(List<Animal> animals, View view){
+    public AnimalsController(List<Animal> animals, AnimalView view){
         this.animals = animals;
         this.view = view;
-        table = new TableList(5, "ID", "Name", "Gender", "Offspring", "ZooKeeper").sortBy(0).withUnicode(true);
-    }
-    
-    public void printTitle(){
-        System.out.println("ID   Species     Name    Gender   Offspring   Zoo Keeper");
-        System.out.println("--   -------     ----    ------   ---------   ----------");
     }
     
     /**
      * This method displays a list of animals on CLI.
      */
-    public void display(){        
-        for(Animal a: animals){
-            String[] row = {Integer.toString(a.getId()), a.getName(), a.getGender(), Boolean.toString(a.isOffspring()), a.getKeeper().getName()};
-            table.addRow(row);
-        }
-        table.sortBy(0);
-        table.print();        
+    public void display(){  
+        for(Animal a: animals) this.view.addAnimalToTable(a);
+        this.view.display();
     }
     
     /**
@@ -80,9 +54,8 @@ public class AnimalsController {
      */
     public void displayMammals(){
         List<Animal> mammals = this.getMammals();
-        this.printTitle();
-        for(Animal a: mammals) this.view.display((Model) a);
-        System.out.println("");
+        for(Animal a: mammals) this.view.addAnimalToTable(a);
+        this.view.display();
     }
     
     /**
@@ -100,9 +73,8 @@ public class AnimalsController {
      */
     public void displayReptiles(){
         List<Animal> reptiles = this.getReptiles();
-        this.printTitle();
-        for(Animal a: reptiles) this.view.display((Model) a);
-        System.out.println("");
+        for(Animal a: reptiles) this.view.addAnimalToTable(a);
+        this.view.display();
     }
     
     /**
@@ -120,9 +92,8 @@ public class AnimalsController {
      */
     public void displayAvians(){
         List<Animal> avians = this.getAvians();
-        this.printTitle();
-        for(Animal a: avians) this.view.display((Model) a);
-        System.out.println("");
+        for(Animal a: avians) this.view.addAnimalToTable(a);
+        this.view.display();
     }
     
     /**
@@ -140,9 +111,8 @@ public class AnimalsController {
      */
     public void displayInsects(){
         List<Animal> insects = this.getInsects();
-        this.printTitle();
-        for(Animal a: insects) this.view.display((Model) a);
-        System.out.println("");
+        for(Animal a: insects) this.view.addAnimalToTable(a);
+        this.view.display();
     }
     
     /**
@@ -160,9 +130,8 @@ public class AnimalsController {
      */
     public void displayAquatics(){
         List<Animal> aquatics = this.getAquatics();
-        this.printTitle();
-        for(Animal a: aquatics) this.view.display((Model) a);
-        System.out.println("");
+        for(Animal a: aquatics) this.view.addAnimalToTable(a);
+        this.view.display();
     }
     
 }
