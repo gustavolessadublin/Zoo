@@ -22,4 +22,16 @@ public class GenericMammal extends Animal implements Mammal{
         super(species, gender);
     }
     
+    public GenericMammal(String species, String gender, Animal offspring1, Animal offspring2) {
+        super(species, gender, offspring1, offspring2);
+    }
+    
+    public GenericMammal(String species, String gender, Animal offspring1) {
+        super(species, gender, offspring1);
+    }
+    
+    public GenericMammal(String species, String gender, boolean isOffspring) {
+        super(species, gender, isOffspring);
+    }
+    
 }

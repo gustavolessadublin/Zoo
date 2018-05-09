@@ -23,5 +23,17 @@ public class AquaticAvian extends Animal implements Aquatic, Avian{
         super(species, gender);
     }
     
+    public AquaticAvian(String species, String gender, Animal offspring1, Animal offspring2) {
+        super(species, gender, offspring1, offspring2);
+    }
+    
+    public AquaticAvian(String species, String gender, Animal offspring1) {
+        super(species, gender, offspring1);
+    }
+    
+    public AquaticAvian(String species, String gender, boolean isOffspring) {
+        super(species, gender, isOffspring);
+    }
+    
     
 }

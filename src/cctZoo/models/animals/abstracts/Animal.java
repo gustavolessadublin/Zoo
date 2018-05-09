@@ -15,6 +15,7 @@ import java.util.List;
  * @author rbsrafa
  */
 public abstract class Animal extends Model{
+    
     private static int lastId;
     private String species, name, gender, DOB, dateOfArrival;
     private boolean offspring = false;
@@ -96,6 +97,7 @@ public abstract class Animal extends Model{
     
     
     private class Offspring{
+        
        private List<Animal> offspringList;
         
         public Offspring(Animal offspring1, Animal offspring2){
@@ -104,10 +106,19 @@ public abstract class Animal extends Model{
             offspringList.add(offspring2);
             
         }
+        
         public Offspring(Animal offspring1){
             this.offspringList = new ArrayList<>();
             offspringList.add(offspring1);
             
+        }
+
+        public List<Animal> getOffspringList() { 
+            return offspringList;
+        }
+
+        public void setOffspringList(List<Animal> offspringList) {
+            this.offspringList = offspringList;
         }
  
     }
