@@ -9,16 +9,17 @@ import cctZoo.models.Model;
 import cctZoo.models.employees.zooKeeper.ZooKeeper;
 import cctZoo.views.View;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Gustavo Lessa
  */
 public class EmployeesController {
-    private ArrayList<ZooKeeper> keepers;
+    private List<ZooKeeper> keepers;
     private View view;
     
-    public EmployeesController(ArrayList<ZooKeeper> keepers, View view){
+    public EmployeesController(List<ZooKeeper> keepers, View view){
         this.keepers = keepers;
         this.view = view;
     }
