@@ -7,9 +7,23 @@ import cctZoo.models.animals.interfaces.Avian;
 import cctZoo.models.animals.interfaces.Insect;
 import cctZoo.models.animals.interfaces.Mammal;
 import cctZoo.models.animals.interfaces.Reptile;
+import cctZoo.views.TableList;
 import cctZoo.views.View;
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ *
+ * @author therealfarfetchd
+ * 
+ * TableList tl = new TableList(3, "ID", "String 1", "String 2").sortBy(0).withUnicode(true);
+// from a list
+yourListOrWhatever.forEach(element -> tl.addRow(element.getID(), element.getS1(), element.getS2()));
+// or manually
+tl.addRow("Hi", "I am", "Bob");
+
+tl.print();
+ */
 
 /**
  *
@@ -18,10 +32,12 @@ import java.util.List;
 public class AnimalsController {
     private List<Animal> animals;
     private View view;
+    TableList table;
     
     public AnimalsController(List<Animal> animals, View view){
         this.animals = animals;
         this.view = view;
+        table = new TableList(5, "ID", "Name", "Gender", "Offspring", "ZooKeeper").sortBy(0).withUnicode(true);
     }
     
     public void printTitle(){
@@ -32,10 +48,12 @@ public class AnimalsController {
     /**
      * This method displays a list of animals on CLI.
      */
-    public void display(){
-        this.printTitle();
-        for(Animal a: animals) this.view.display((Model) a);
-        System.out.println("");
+    public void display(){        
+        for(Animal a: animals){
+            String[] row = {Integer.toString(a.getId()), a.getName(), a.getGender(), Boolean.toString(a.isOffspring()), a.getKeeper().getName()};
+            table.addRow(row);
+        }
+        table.print();        
     }
     
     /**
