@@ -7,7 +7,7 @@ import cctZoo.views.interfaces.Displayable;
  * This class provides a CLI for models.
  * @author rbsrafa
  */
-public abstract class View implements Displayable{
+public class View implements Displayable{
     // TODO implement table mode on View
     public View(){
         
@@ -18,5 +18,7 @@ public abstract class View implements Displayable{
      * @param m (Model)
      */
     @Override
-    public abstract void display(Model m);
+    public void display(Model m){
+        System.out.println(m);
+    }
 }

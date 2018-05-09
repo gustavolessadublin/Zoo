@@ -1,7 +1,7 @@
 package cctZoo.menus;
 
 import cctZoo.controllers.AnimalsController;
-import cctZoo.views.AnimalView;
+import cctZoo.views.View;
 import cctZoo.zooData.ZooData;
 
 /**
@@ -13,7 +13,7 @@ public class AnimalMenu extends Menu{
     
     public AnimalMenu(ZooData zooData){
         super(zooData);
-        this.animals = new AnimalsController(this.zooData.getAnimals(), new AnimalView());
+        this.animals = new AnimalsController(this.zooData.getAnimals(), new View());
         String[] options = {"Show Animals", "Add Animal", "Search Animal",
                             "Update Animal", "Show Mammals", "Show Reptiles",
                             "Show Avians", "Show Insects", "Show Aquatics",
