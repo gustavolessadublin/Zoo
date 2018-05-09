@@ -25,7 +25,7 @@ public class EmployeesController {
     
     public void display(){
         for(ZooKeeper k: keepers){
-            this.view.display((Model) k);
+            this.view.display(k);
         }
     }
     
