@@ -16,7 +16,7 @@ public class AnimalView extends View{
     
     public AnimalView(){
         table = new TableList("ID", "Species", "Name", "Gender", "Offspring", "ZooKeeper").sortBy(0).withUnicode(true);
-        table.sortBy(2);
+        table.sortBy(1);
     }
     
     /**
@@ -33,6 +33,9 @@ public class AnimalView extends View{
         table.addRow(row);
     }
     
+    /**
+     * This method prints the animals table on CLI
+     */
     public void display(){        
         this.table.print();
         this.table.removeAll();
