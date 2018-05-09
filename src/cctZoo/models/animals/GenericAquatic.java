@@ -22,4 +22,16 @@ public class GenericAquatic extends Animal implements Aquatic{
         super(species, gender);
     }
     
+    public GenericAquatic(String species, String gender, Animal offspring1, Animal offspring2) {
+        super(species, gender, offspring1, offspring2);
+    }
+    
+    public GenericAquatic(String species, String gender, Animal offspring1) {
+        super(species, gender, offspring1);
+    }
+    
+    public GenericAquatic(String species, String gender, boolean isOffspring) {
+        super(species, gender, isOffspring);
+    }
+    
 }

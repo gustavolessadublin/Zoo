@@ -22,4 +22,16 @@ public class GenericAvian extends Animal implements Avian{
         super(species, gender);
     }
     
+    public GenericAvian(String species, String gender, Animal offspring1, Animal offspring2) {
+        super(species, gender, offspring1, offspring2);
+    }
+    
+    public GenericAvian(String species, String gender, Animal offspring1) {
+        super(species, gender, offspring1);
+    }
+    
+    public GenericAvian(String species, String gender, boolean isOffspring) {
+        super(species, gender, isOffspring);
+    }
+    
 }

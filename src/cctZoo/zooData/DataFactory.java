@@ -112,31 +112,103 @@ public class DataFactory {
                 }
                 break;
             case "Penguin":
-                a = new AquaticAvian(specie, gender);
-                break;
-            case "Dragonfly":
-            case "Beetle":
-                a = new GenericInsect(specie, gender);
+                switch(offsprings){
+                    case(2): a = new AquaticAvian(specie, gender,
+                            zooData.getAnimals().get(zooData.getAnimals().size()-1),
+                            zooData.getAnimals().get(zooData.getAnimals().size()-2));
+                    break;
+                    case(1): a = new AquaticAvian(specie, gender,
+                            zooData.getAnimals().get(zooData.getAnimals().size()-1));
+                    break;
+                    case(0): a = new AquaticAvian(specie, gender);
+                    break;
+                    default: a = new AquaticAvian(specie, gender, true);
+                    break;
+                }
                 break;
             case "Tiger":
             case "Zebra":
             case "Lion":
-                a = new GenericMammal(specie, gender);
+                switch(offsprings){
+                    case(2): a = new GenericMammal(specie, gender,
+                            zooData.getAnimals().get(zooData.getAnimals().size()-1),
+                            zooData.getAnimals().get(zooData.getAnimals().size()-2));
+                    break;
+                    case(1): a = new GenericMammal(specie, gender,
+                            zooData.getAnimals().get(zooData.getAnimals().size()-1));
+                    break;
+                    case(0): a = new GenericMammal(specie, gender);
+                    break;
+                    default: a = new GenericMammal(specie, gender, true);
+                    break;
+                }
                 break;
             case "Snake":
             case "Komodo Dragon":
-                a = new GenericReptile(specie, gender);
+                switch(offsprings){
+                    case(2): a = new GenericReptile(specie, gender,
+                            zooData.getAnimals().get(zooData.getAnimals().size()-1),
+                            zooData.getAnimals().get(zooData.getAnimals().size()-2));
+                    break;
+                    case(1): a = new GenericReptile(specie, gender,
+                            zooData.getAnimals().get(zooData.getAnimals().size()-1));
+                    break;
+                    case(0): a = new GenericReptile(specie, gender);
+                    break;
+                    default: a = new GenericReptile(specie, gender, true);
+                    break;
+                }
                 break;
             case "Seagull":
             case "Owl":
-                a = new GenericAvian(specie, gender);
+                switch(offsprings){
+                    case(2): a = new GenericAvian(specie, gender,
+                            zooData.getAnimals().get(zooData.getAnimals().size()-1),
+                            zooData.getAnimals().get(zooData.getAnimals().size()-2));
+                    break;
+                    case(1): a = new GenericAvian(specie, gender,
+                            zooData.getAnimals().get(zooData.getAnimals().size()-1));
+                    break;
+                    case(0): a = new GenericAvian(specie, gender);
+                    break;
+                    default: a = new GenericAvian(specie, gender, true);
+                    break;
+                }
                 break;
             case "Bat":
-                a = new AvianMammal(specie, gender);
+                switch(offsprings){
+                    case(2): a = new AvianMammal(specie, gender,
+                            zooData.getAnimals().get(zooData.getAnimals().size()-1),
+                            zooData.getAnimals().get(zooData.getAnimals().size()-2));
+                    break;
+                    case(1): a = new AvianMammal(specie, gender,
+                            zooData.getAnimals().get(zooData.getAnimals().size()-1));
+                    break;
+                    case(0): a = new AvianMammal(specie, gender);
+                    break;
+                    default: a = new AvianMammal(specie, gender, true);
+                    break;
+                }
                 break;
             case "Shark":
             case "Octopus":
-                a = new GenericAquatic(specie, gender);
+                switch(offsprings){
+                    case(2): a = new GenericAquatic(specie, gender,
+                            zooData.getAnimals().get(zooData.getAnimals().size()-1),
+                            zooData.getAnimals().get(zooData.getAnimals().size()-2));
+                    break;
+                    case(1): a = new GenericAquatic(specie, gender,
+                            zooData.getAnimals().get(zooData.getAnimals().size()-1));
+                    break;
+                    case(0): a = new GenericAquatic(specie, gender);
+                    break;
+                    default: a = new GenericAquatic(specie, gender, true);
+                    break;
+                }
+                break;
+            case "Dragonfly":
+            case "Beetle":
+                a = new GenericInsect(specie, gender);
                 break;
             default:
                 break;
