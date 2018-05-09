@@ -15,7 +15,7 @@ public class AnimalView extends View{
     private TableList table;
     
     public AnimalView(){
-        table = new TableList("ID", "Species", "Name", "Gender", "Offspring", "ZooKeeper").sortBy(0).withUnicode(true);
+        table = new TableList("ID", "Species", "Name", "Gender", "DOB", "Date of Arrival", "Offspring", "ZooKeeper").sortBy(0).withUnicode(true);
         table.sortBy(1);
     }
     
@@ -26,7 +26,7 @@ public class AnimalView extends View{
     public void addAnimalToTable(Animal a){
         String[] row = {
             Integer.toString(a.getId()), a.getSpecies(), 
-            a.getName(), a.getGender(), 
+            a.getName(), a.getGender(), a.getDOB(), a.getDateOfArrival(),
             Integer.toString(a.getNumberOfOffspring()), 
             a.getKeeper().getName()
         };
