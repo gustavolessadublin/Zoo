@@ -34,6 +34,11 @@ public class AnimalsController {
     public void display(){  
         for(Animal a: animals) this.view.addAnimalToTable(a);
         this.view.display();
+        
+    }
+    
+    public List<String> getAnimalTypes(){
+        return this.animals.get(0).getAnimalTypes();
     }
     
     /**

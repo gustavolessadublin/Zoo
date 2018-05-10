@@ -15,8 +15,9 @@ public class AnimalView extends View{
     private TableList table;
     
     public AnimalView(){
-        table = new TableList("ID", "Species", "Name", "Gender", "DOB", "Date of Arrival", "Offspring", "ZooKeeper").sortBy(0).withUnicode(true);
-        table.sortBy(1);
+        table = new TableList("ID", "Species", "Type", "Name", "Gender", 
+                              "DOB", "Date of Arrival", "Offspring", 
+                              "ZooKeeper").sortBy(1).withUnicode(true);
     }
     
     /**
@@ -25,7 +26,7 @@ public class AnimalView extends View{
      */
     public void addAnimalToTable(Animal a){
         String[] row = {
-            Integer.toString(a.getId()), a.getSpecies(), 
+            Integer.toString(a.getId()), a.getSpecies(), a.getAnimalTypes().toString(),
             a.getName(), a.getGender(), a.getDOB(), a.getDateOfArrival(),
             Integer.toString(a.getNumberOfOffspring()), 
             a.getKeeper().getName()
@@ -39,7 +40,7 @@ public class AnimalView extends View{
     public void display(){        
         this.table.print();
         this.table.removeAll();
-        System.out.println("");
+        System.out.println();
     }
     
 }

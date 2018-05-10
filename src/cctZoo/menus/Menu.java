@@ -5,6 +5,8 @@
  */
 package cctZoo.menus;
 
+import cctZoo.zooData.DataFactory;
+import cctZoo.zooData.DataValidation;
 import cctZoo.zooData.ZooData;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +22,16 @@ public abstract class Menu {
     protected List<String> options;
     protected boolean exit;
     protected Scanner in;
-    
+    protected DataValidation validate;
+    protected DataFactory dataFactory;
+
     /**
      * Default Menu constructor.
      */
     public Menu(ZooData zooData){
         this.zooData = zooData;
+        this.validate = new DataValidation();
+        this.dataFactory = new DataFactory(zooData);
         this.title = "Default title";
         this.options = new ArrayList<>();
         this.in = new Scanner(System.in);

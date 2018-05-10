@@ -68,8 +68,4 @@ public class AnimalMenu extends Menu{
         
     }
     
-    public void returnToMain(){
-        
-    }
-    
 }

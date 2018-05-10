@@ -5,10 +5,23 @@
  */
 package cctZoo.models.employees.zooKeeper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This enum represents the qualifications a zoo keeper can have.
  * @author Gustavo Lessa
  */
 public enum Qualification {
     AVIAN, REPTILE, MAMMAL, INSECT, AQUATIC;
+
+    public static List<Qualification> getQualifications(){
+        List<Qualification> qualifications = new ArrayList<>();
+        for(Qualification q : Qualification.values()){
+            qualifications.add(q);
+        }
+        return qualifications;
+    }
+
 }
+

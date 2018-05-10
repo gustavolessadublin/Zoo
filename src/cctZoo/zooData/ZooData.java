@@ -27,7 +27,7 @@ public class ZooData {
         this.zooKeepers.addAll(this.dataFactory.getRandomKeepers(40 - zooKeepers.size()));
         //TODO check if we need a Setup class, to keep this ZooData class clean
     }
-
+    
     public List<Animal> getAnimals() { return animals; }
     public void setAnimals(List<Animal> animals) { this.animals = animals; }
 
