@@ -59,6 +59,14 @@ public abstract class Animal extends Model{
         if(this.offsprings == null) return 0;
         else return this.offsprings.getNumberOfOffspring();
     }
+    
+    public List<String> getAnimalTypes(){
+        List<String> types = new ArrayList<>();
+        for(Class c: this.getClass().getInterfaces()){
+            types.add(c.getSimpleName());
+        }
+        return types;
+    }
 
     public static int getLastId() { return lastId; }
 
