@@ -1,6 +1,7 @@
 package cctZoo.models.animals.abstracts;
 
 import cctZoo.models.Model;
+import cctZoo.models.employees.zooKeeper.Qualification;
 import cctZoo.models.employees.zooKeeper.ZooKeeper;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
 public abstract class Animal extends Model{
     
     private static int lastId;
-    private String species, name, gender, DOB, dateOfArrival;
+    private String species, name, gender,doa, DOB, dateOfArrival;
     private boolean offspring = false;
     private ZooKeeper keeper;
     private Offspring offsprings;
@@ -49,6 +50,19 @@ public abstract class Animal extends Model{
         this.species = species;
         this.gender = gender;
         this.offspring = offspring;
+    }
+
+    
+
+    public Animal(String species, String name, String gender, String doa, String DOB){
+        super(++lastId);
+        this.species = species;
+        this.name = name;
+        this.gender = gender;
+        this.doa = doa;
+        this.DOB = DOB;
+        
+        
     }
     
     /**

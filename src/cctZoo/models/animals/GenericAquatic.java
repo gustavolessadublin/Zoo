@@ -33,6 +33,10 @@ public class GenericAquatic extends Animal implements Aquatic{
     public GenericAquatic(String species, String gender, boolean isOffspring) {
         super(species, gender, isOffspring);
     }
+    
+    public GenericAquatic(String species, String name, String gender, String doa, String DOB){
+        super(species, name, gender, doa, DOB);
+    }
 
     @Override
     public String toString() {

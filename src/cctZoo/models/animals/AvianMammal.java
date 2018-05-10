@@ -34,6 +34,10 @@ public class AvianMammal extends Animal implements Avian, Mammal{
     public AvianMammal(String species, String gender, boolean isOffspring) {
         super(species, gender, isOffspring);
     }
+    
+    public AvianMammal(String species, String name, String gender, String doa, String DOB){
+        super(species, name, gender, doa, DOB);
+    }
 
     @Override
     public String toString() {

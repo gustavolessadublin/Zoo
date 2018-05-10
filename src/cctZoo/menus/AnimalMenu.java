@@ -2,9 +2,12 @@ package cctZoo.menus;
 
 import cctZoo.controllers.AnimalsController;
 import cctZoo.models.animals.AquaticAvian;
+import cctZoo.models.animals.GenericMammal;
+import cctZoo.models.animals.GenericReptile;
 import cctZoo.models.animals.abstracts.Animal;
 import cctZoo.models.employees.zooKeeper.Qualification;
 import cctZoo.views.AnimalView;
+import cctZoo.zooData.DataFactory;
 import cctZoo.zooData.DataValidation;
 import cctZoo.zooData.ZooData;
 import java.util.ArrayList;
@@ -18,6 +21,7 @@ import java.util.Scanner;
 public class AnimalMenu extends Menu{
     private AnimalsController animals;
     DataValidation validation;
+    DataFactory data;
     
     
     public AnimalMenu(ZooData zooData){
@@ -26,9 +30,11 @@ public class AnimalMenu extends Menu{
         String[] options = {"Show Animals", "Add Animal", "Update Animal",
                             "Search Options", "Return to Main Menu", "Exit Program"};
         this.validation = new DataValidation();
+        this.data = new DataFactory(zooData);
         this.setOptions(options);
         this.setTitle("Animal Menu");
         this.startMenu();
+        
     }
 
     /**
@@ -74,12 +80,15 @@ public class AnimalMenu extends Menu{
         System.out.println("");
         List<Qualification> selectedTypes = this.chooseAnimalType();
         System.out.println("");
-        createAnimal(specie, name, gender, dob, dob, selectedTypes);
+        a = createAnimal(specie, name, gender, dob, dob, selectedTypes);
+        data.assignKeeper(a);
+        this.animals.add(a);
         
         
-        System.out.println("Does this animal have offspring?");
-        System.out.println("");
-        boolean answer = this.validation.checkForYes(in);
+        
+//        System.out.println("Does this animal have offspring?");
+//        System.out.println("");
+//        boolean answer = this.validation.checkForYes(in);
         
 //        AquaticAvian aqavian = new AquaticAvian(specie,name, gender);
 //        a = (Animal) aqavian;
@@ -132,15 +141,17 @@ public class AnimalMenu extends Menu{
    
     }
     public Animal createAnimal(String specie, String name, String gender, String doa, String dob, List<Qualification> selectedTypes ){
-        
+        Animal a = null;
         if(selectedTypes.size() == 1){
             String type = selectedTypes.get(0).toString();
             if(type.equalsIgnoreCase("mammal")){
-                
+              a = new GenericMammal(specie, name, gender, doa, dob);
+            }else if(type.equalsIgnoreCase("reptile")){
+              a = new GenericReptile(specie, name, gender, doa, dob);
             }
         }
         
-        return null;
+        return a;
         
     }
     

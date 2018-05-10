@@ -259,7 +259,7 @@ public class DataFactory {
     }
     
     
-    private void assignKeeper(Animal a){    
+    public void assignKeeper(Animal a){    
         ArrayList<Qualification> animalTypes = new ArrayList<>();
         if (a instanceof Mammal){ animalTypes.add(Qualification.MAMMAL);}
         if (a instanceof Reptile){ animalTypes.add(Qualification.REPTILE);}
