@@ -46,14 +46,14 @@ public class AnimalsController {
      * @param a 
      */
     public void add(Animal a){
-        Animal an = null;
+       Animal an = null;
        ZooKeeper zooKeeper = null;
-        this.animals.add(a);
-       
+        this.animals.add(a);   
+    }
+    
+    public Animal createAnimal(){
         
-       
-   
-      
+        return null;
         
     }
   

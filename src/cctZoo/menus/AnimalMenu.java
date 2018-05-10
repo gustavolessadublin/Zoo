@@ -3,8 +3,12 @@ package cctZoo.menus;
 import cctZoo.controllers.AnimalsController;
 import cctZoo.models.animals.AquaticAvian;
 import cctZoo.models.animals.abstracts.Animal;
+import cctZoo.models.employees.zooKeeper.Qualification;
 import cctZoo.views.AnimalView;
+import cctZoo.zooData.DataValidation;
 import cctZoo.zooData.ZooData;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -13,14 +17,15 @@ import java.util.Scanner;
  */
 public class AnimalMenu extends Menu{
     private AnimalsController animals;
-    private Animal a;
+    DataValidation validation;
+    
     
     public AnimalMenu(ZooData zooData){
         super(zooData);
         this.animals = new AnimalsController(this.zooData.getAnimals(), new AnimalView());
         String[] options = {"Show Animals", "Add Animal", "Update Animal",
                             "Search Options", "Return to Main Menu", "Exit Program"};
-        
+        this.validation = new DataValidation();
         this.setOptions(options);
         this.setTitle("Animal Menu");
         this.startMenu();
@@ -51,6 +56,9 @@ public class AnimalMenu extends Menu{
     }
     
     public void addAnimal(){
+        List<Qualification> types = Qualification.getQualifications();
+        
+        Animal a = null;
         System.out.println("Type here animal informataion: ");
         System.out.println("-----------------------------");
         System.out.println("Enter Animal Specie: ");
@@ -59,12 +67,80 @@ public class AnimalMenu extends Menu{
         String name = this.in.next();
         System.out.println("Enter Animal Gender");
         String gender = this.in.next();
+        System.out.println("Enter date of arrival");
+        String date = this.in.next();
+        System.out.println("Enter date of birth");
+        String dob = this.in.next();
+        System.out.println("");
+        List<Qualification> selectedTypes = this.chooseAnimalType();
+        System.out.println("");
+        createAnimal(specie, name, gender, dob, dob, selectedTypes);
         
-        AquaticAvian aqavian = new AquaticAvian(specie,name, gender);
-        a = (Animal) aqavian;
+        
+        System.out.println("Does this animal have offspring?");
+        System.out.println("");
+        boolean answer = this.validation.checkForYes(in);
+        
+//        AquaticAvian aqavian = new AquaticAvian(specie,name, gender);
+//        a = (Animal) aqavian;
     }
     
     public void updateAnimal(){
+        
+    }
+    private List chooseAnimalType(){
+        List<Qualification> types = Qualification.getQualifications();
+        List<Qualification> chosen = new ArrayList<>();
+        for (int x = 0; x<2; x++){
+            System.out.println("Select a type:");
+            chosen.add(types.remove(chooseOption(types)));
+            if (x < 1){
+                System.out.println("Would you like to add another one? (Y/N)");
+                if(!validate.checkForYes(in)){
+                    break;
+                }               
+            }
+        }
+        return chosen;
+    }
+    private int chooseOption(List options){
+        for(int x = 0; x < options.size(); x++){
+            System.out.println((x+1)+" - "+options.get(x));
+        }
+        System.out.println("Please choose an option: ");
+        return (validate.checkForInt(in, 1, options.size()))-1;
+    }
+    public void checkForOffSpring(boolean answer){
+        if(answer){
+            
+        }
+    }
+    public void addOffSpring(){
+        Animal a = null;
+        System.out.println("Type here animal informataion: ");
+        System.out.println("-----------------------------");
+        System.out.println("Enter Animal Specie: ");
+        String specie = this.in.next(); 
+        System.out.println("Enter Animal Name: ");
+        String name = this.in.next();
+        System.out.println("Enter Animal Gender");
+        String gender = this.in.next();
+        System.out.println("Enter date of arrival");
+        String date = this.in.next();
+        System.out.println("Enter date of birth");
+        String dob = this.in.next();
+   
+    }
+    public Animal createAnimal(String specie, String name, String gender, String doa, String dob, List<Qualification> selectedTypes ){
+        
+        if(selectedTypes.size() == 1){
+            String type = selectedTypes.get(0).toString();
+            if(type.equalsIgnoreCase("mammal")){
+                
+            }
+        }
+        
+        return null;
         
     }
     

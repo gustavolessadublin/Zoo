@@ -50,7 +50,7 @@ public class DataFactory {
             zooData.getAnimals().add(this.defineRandomAnimal());
         }
     }
-    
+      
     public Date getRandomDate(){
         Random rand = new Random();
         //DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
