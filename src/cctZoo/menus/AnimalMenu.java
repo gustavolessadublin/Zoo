@@ -2,6 +2,9 @@ package cctZoo.menus;
 
 import cctZoo.controllers.AnimalsController;
 import cctZoo.models.animals.AquaticAvian;
+import cctZoo.models.animals.GenericAquatic;
+import cctZoo.models.animals.GenericAvian;
+import cctZoo.models.animals.GenericInsect;
 import cctZoo.models.animals.GenericMammal;
 import cctZoo.models.animals.GenericReptile;
 import cctZoo.models.animals.abstracts.Animal;
@@ -80,18 +83,14 @@ public class AnimalMenu extends Menu{
         System.out.println("");
         List<Qualification> selectedTypes = this.chooseAnimalType();
         System.out.println("");
-        a = createAnimal(specie, name, gender, dob, dob, selectedTypes);
+        a = createAnimal(specie, name, gender, date, dob, selectedTypes);
         data.assignKeeper(a);
         this.animals.add(a);
-        
-        
-        
+
         System.out.println("Does this animal have offspring?");
         System.out.println("");
         boolean answer = this.validation.checkForYes(in);
-        
-//        AquaticAvian aqavian = new AquaticAvian(specie,name, gender);
-//        a = (Animal) aqavian;
+        addOffSpring(a);
     }
     
     public void updateAnimal(){
@@ -137,8 +136,8 @@ public class AnimalMenu extends Menu{
         System.out.println("Enter date of birth");
         String dob = this.in.next();
         
-        
-   
+        a = this.createAnimal(name, gender, dob, a);
+        this.data.assignKeeper(a);
     }
     public Animal createAnimal(String specie, String name, String gender, String doa, String dob, List<Qualification> selectedTypes ){
         Animal a = null;
@@ -148,11 +147,26 @@ public class AnimalMenu extends Menu{
               a = new GenericMammal(specie, name, gender, doa, dob);
             }else if(type.equalsIgnoreCase("reptile")){
               a = new GenericReptile(specie, name, gender, doa, dob);
+            }else if(type.equalsIgnoreCase("avian")){
+              a = new GenericAvian(specie, name, gender, doa, dob);
+            }
+            else if(type.equalsIgnoreCase("aquatic")){
+              a = new GenericAquatic(specie, name, gender, doa, dob);
+            }
+            else if(type.equalsIgnoreCase("insect")){
+              a = new GenericInsect(specie, name, gender, doa, dob);
             }
         }
         
         return a;
         
     }
-    
+    public Animal createAnimal(String name, String gender,String dob, Animal a){
+            if(a.equals("mammal")){
+              a = new GenericMammal(a.getSpecies(), name, gender,dob);
+            }else if(a.equals("reptile")){
+              a = new GenericReptile(a.getSpecies(), name, gender,dob);
+            }
+        return a;
+        }   
 }

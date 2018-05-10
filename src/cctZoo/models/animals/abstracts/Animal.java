@@ -60,9 +60,14 @@ public abstract class Animal extends Model{
         this.name = name;
         this.gender = gender;
         this.doa = doa;
-        this.DOB = DOB;
-        
-        
+        this.DOB = DOB;    
+    }
+    public Animal(String species, String name, String gender, String DOB){
+        super(++lastId);
+        this.species = species;
+        this.name = name;
+        this.gender = gender;
+        this.DOB = DOB;    
     }
     
     /**

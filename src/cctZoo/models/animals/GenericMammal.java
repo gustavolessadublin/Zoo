@@ -37,6 +37,9 @@ public class GenericMammal extends Animal implements Mammal{
     public GenericMammal(String species, String name, String gender, String doa, String DOB){
         super(species, name, gender, doa, DOB);
     }
+    public GenericMammal(String species, String name, String gender, String DOB){
+        super(species, name, gender, DOB);
+    }
 
     @Override
     public String toString() {

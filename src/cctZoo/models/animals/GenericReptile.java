@@ -37,6 +37,9 @@ public class GenericReptile extends Animal implements Reptile{
     public GenericReptile(String species, String name, String gender, String doa, String DOB){
         super(species, name, gender, doa, DOB);
     }
+    public GenericReptile(String species, String name, String gender,String DOB){
+        super(species, name, gender,DOB);
+    }
 
     @Override
     public String toString() {
