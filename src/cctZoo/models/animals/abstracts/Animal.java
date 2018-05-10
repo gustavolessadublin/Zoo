@@ -108,6 +108,9 @@ public abstract class Animal extends Model{
     public Offspring getOffsprings() { return offsprings; }
     public void setOffsprings(Offspring offsprings) { this.offsprings = offsprings; }
     
+    public void setOffSpring(List<Animal> offspringList){
+        this.offsprings.setOffspringList(offspringList);
+    }
 
     private class Offspring{
         

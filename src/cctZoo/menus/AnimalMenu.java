@@ -86,9 +86,9 @@ public class AnimalMenu extends Menu{
         
         
         
-//        System.out.println("Does this animal have offspring?");
-//        System.out.println("");
-//        boolean answer = this.validation.checkForYes(in);
+        System.out.println("Does this animal have offspring?");
+        System.out.println("");
+        boolean answer = this.validation.checkForYes(in);
         
 //        AquaticAvian aqavian = new AquaticAvian(specie,name, gender);
 //        a = (Animal) aqavian;
@@ -124,12 +124,10 @@ public class AnimalMenu extends Menu{
             
         }
     }
-    public void addOffSpring(){
-        Animal a = null;
+    public void addOffSpring(Animal a){
+        
         System.out.println("Type here animal informataion: ");
-        System.out.println("-----------------------------");
-        System.out.println("Enter Animal Specie: ");
-        String specie = this.in.next(); 
+        System.out.println("-----------------------------"); 
         System.out.println("Enter Animal Name: ");
         String name = this.in.next();
         System.out.println("Enter Animal Gender");
@@ -138,6 +136,8 @@ public class AnimalMenu extends Menu{
         String date = this.in.next();
         System.out.println("Enter date of birth");
         String dob = this.in.next();
+        
+        
    
     }
     public Animal createAnimal(String specie, String name, String gender, String doa, String dob, List<Qualification> selectedTypes ){
