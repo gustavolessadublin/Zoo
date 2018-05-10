@@ -1,14 +1,17 @@
 package cctZoo.controllers;
 
+import cctZoo.models.animals.AquaticAvian;
 import cctZoo.models.animals.abstracts.Animal;
 import cctZoo.models.animals.interfaces.Aquatic;
 import cctZoo.models.animals.interfaces.Avian;
 import cctZoo.models.animals.interfaces.Insect;
 import cctZoo.models.animals.interfaces.Mammal;
 import cctZoo.models.animals.interfaces.Reptile;
+import cctZoo.models.employees.zooKeeper.ZooKeeper;
 import cctZoo.views.AnimalView;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -17,6 +20,8 @@ import java.util.List;
 public class AnimalsController {
     private List<Animal> animals;
     private AnimalView view;
+    AnimalView animal;
+    ZooKeeper zooKeeper;
     
     public AnimalsController(List<Animal> animals, AnimalView view){
         this.animals = animals;
@@ -36,8 +41,17 @@ public class AnimalsController {
      * @param a 
      */
     public void add(Animal a){
+        Animal an = null;
+       ZooKeeper zooKeeper = null;
         this.animals.add(a);
+       
+        
+       
+   
+      
+        
     }
+  
     
     /**
      * This method returns a list of mammals from the animals list.
