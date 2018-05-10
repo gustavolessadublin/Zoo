@@ -27,7 +27,7 @@ public class EmployeeMenu extends Menu{
         super(zooData);
         validate = new DataValidation();
         this.keepers = new EmployeesController((ArrayList<ZooKeeper>) zooData.getZooKeepers(), new View());
-        String[] options = {"List Keepers","Add Keeper","Search Keepers","Return to main menu"};
+        String[] options = {"List Keepers","Add Keeper","Search Keepers","Return to main menu", "Exit Program"};
         this.setOptions(options);
         this.setTitle("Keeper Menu");
         this.startMenu();
@@ -49,6 +49,9 @@ public class EmployeeMenu extends Menu{
                 break;
             case 4:
                 new MainMenu(this.zooData);
+                break;
+            case 5:
+                System.exit(0);
                 break;
         }
     }
