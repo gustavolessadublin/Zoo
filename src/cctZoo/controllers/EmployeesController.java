@@ -6,6 +6,7 @@
 package cctZoo.controllers;
 
 import cctZoo.models.employees.zooKeeper.ZooKeeper;
+import cctZoo.views.KeeperView;
 import cctZoo.views.View;
 import java.util.List;
 
@@ -15,22 +16,26 @@ import java.util.List;
  */
 public class EmployeesController {
     private List<ZooKeeper> keepers;
-    private View view;
+    private KeeperView view;
     
-    public EmployeesController(List<ZooKeeper> keepers, View view){
+    public EmployeesController(List<ZooKeeper> keepers, KeeperView view){
         this.keepers = keepers;
         this.view = view;
     }
     
-    public void display(){
+    public void displayAll(){
         for(ZooKeeper k: keepers){
-            this.view.display(k);
+            this.view.addKeeperToTable(k);
         }
+        this.view.displayTable();
     }
     
     public void add(ZooKeeper k){
         this.keepers.add(k);
     }
 
+    public void display(ZooKeeper k) {
+        this.view.display(k);
+    }
 
 }
