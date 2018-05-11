@@ -11,7 +11,6 @@ import cctZoo.models.animals.abstracts.Animal;
 import cctZoo.models.employees.zooKeeper.Qualification;
 import cctZoo.views.AnimalView;
 import cctZoo.zooData.DataFactory;
-import cctZoo.zooData.DataValidation;
 import cctZoo.zooData.ZooData;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,16 +21,14 @@ import java.util.List;
  */
 public class AnimalMenu extends Menu{
     private AnimalsController animals;
-    DataValidation validation;
     DataFactory data;
     
     
     public AnimalMenu(ZooData zooData){
         super(zooData);
         this.animals = new AnimalsController(this.zooData.getAnimals(), new AnimalView());
-        String[] options = {"Show Animals", "Add Animal", "Update Animal",
+        String[] options = {"Show Animals", "Add Animal", "Medicate Animal",
                             "Search Options", "Return to Main Menu", "Exit Program"};
-        this.validation = new DataValidation();
         this.data = new DataFactory(zooData);
         this.setOptions(options);
         this.setTitle("Animal Menu");
@@ -46,13 +43,13 @@ public class AnimalMenu extends Menu{
     @Override
     public void optionSelector() {
         System.out.println("\nPlease select an option:");
-        int option = this.in.nextInt();
+        int option = this.validate.checkForInt(in);
         switch(option){
             case 1: this.animals.display();
                 break;
             case 2: this.addAnimal();
                 break;
-            case 3: this.updateAnimal();
+            case 3: this.medicateAnimal();
                 break;
             case 4: new AnimalSearchMenu(this.zooData);
                 break;
@@ -61,6 +58,16 @@ public class AnimalMenu extends Menu{
             case 6: System.exit(0);
                 break;
         }
+    }
+    
+    /**
+     * This method sets the animal medication to true;
+     */
+    public void medicateAnimal(){
+        System.out.println("Please type the ID of the animal to medicate");
+        Animal a = this.animals.findAnimal(this.validate.checkForInt(in));
+        a.setMedicated(true);
+        System.out.println("");
     }
     
     public void addAnimal(){
@@ -88,12 +95,8 @@ public class AnimalMenu extends Menu{
 
         System.out.println("Does this animal have offspring?");
         System.out.println("");
-        boolean answer = this.validation.checkForYes(in);
+        boolean answer = this.validate.checkForYes(in);
         addOffSpring(a);
-    }
-    
-    public void updateAnimal(){
-        
     }
     
     private List chooseAnimalType(){
