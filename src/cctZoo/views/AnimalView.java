@@ -27,7 +27,7 @@ public class AnimalView extends View{
     public void addAnimalToTable(Animal a){
         String[] row = {
             Integer.toString(a.getId()), a.getSpecies(), a.getAnimalTypes().toString(),
-            a.getName(), a.getGender(), a.getDOB(), a.getDateOfArrival(), a.getVaccines(),
+            a.getName(), a.getGender(), a.getDOB(), a.getDateOfArrival(), a.getVaccines().toString(),
             this.medicated(a), Integer.toString(a.getNumberOfOffspring()), 
             a.getKeeper().getName()
         };

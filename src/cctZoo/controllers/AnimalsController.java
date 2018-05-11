@@ -7,6 +7,7 @@ import cctZoo.models.animals.interfaces.Insect;
 import cctZoo.models.animals.interfaces.Mammal;
 import cctZoo.models.animals.interfaces.Reptile;
 import cctZoo.models.employees.zooKeeper.ZooKeeper;
+import cctZoo.models.vaccine.Vaccine;
 import cctZoo.views.AnimalView;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,7 @@ public class AnimalsController {
     public void display(){  
         for(Animal a: animals) this.view.addAnimalToTable(a);
         this.view.display();
+  
     }
     
     public void display(Animal a){
@@ -51,6 +53,18 @@ public class AnimalsController {
     public List<String> getAnimalTypes(){
         return this.animals.get(0).getAnimalTypes();
     }
+    
+    public List<String> getAnimalTypes(Animal a){
+        List<String> types = new ArrayList<>();
+        if (a instanceof Mammal){ types.add("Mammal");}
+        if (a instanceof Reptile){ types.add("Mammal");}
+        if (a instanceof Avian){ types.add("Mammal");}
+        if (a instanceof Aquatic){ types.add("Mammal");}
+        if (a instanceof Insect){ types.add("Mammal");}
+        return types;
+    }
+    
+
     
     /**
      * This method adds a new animal to the list of animals.

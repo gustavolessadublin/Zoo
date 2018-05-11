@@ -17,6 +17,7 @@ import cctZoo.models.animals.interfaces.Mammal;
 import cctZoo.models.animals.interfaces.Reptile;
 import cctZoo.models.employees.zooKeeper.Qualification;
 import cctZoo.models.employees.zooKeeper.ZooKeeper;
+import cctZoo.models.vaccine.Vaccine;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -239,7 +240,10 @@ public class DataFactory {
         a.setName(rw.getRandomName(a.getGender())); 
         this.assingDatesToAnimal(a);
         this.assignKeeper(a);
+        this.generateRandomlyVaccines(a);
         this.setMedication(a);
+        this.assingDatesToAnimal(a);
+        
         return a;
     }
     
@@ -288,8 +292,8 @@ public class DataFactory {
             }
         }
     }
-    
-    public List<ZooKeeper> getRandomKeepers(int amount){
+
+    public List<ZooKeeper> getRandomKeepers (int amount){
         List<ZooKeeper> keepers = new ArrayList<>();
         for(int i = 0; i < amount; i++){
             keepers.add(this.generateRandomKeeper());
@@ -326,4 +330,35 @@ public class DataFactory {
         }
         return selectedQualifications;
     }
+    public void generateRandomlyVaccines(Animal a){
+        List<Vaccine> vaccines = zooData.getVaccines();
+        List<Vaccine> options = new ArrayList<>();
+        List<String> types = a.getAnimalTypes();
+        
+        
+        for(Vaccine v : vaccines){
+            
+            for(String s : types){
+               
+                if (s.equalsIgnoreCase(v.getType())){
+                    options.add(v);
+                }               
+            }
+        }
+            Random rand = new Random();
+            if(options.size()>0){
+             a.addVaccines(options.get(rand.nextInt(options.size())));   
+            }
+            
+         
+    }
+    public  List<Vaccine> generateVaccines() {
+       List<Vaccine> vaccines = new ArrayList<>();
+       
+       vaccines.add(new Vaccine("Pest Control","Mammal"));
+       vaccines.add(new Vaccine("Flu","Avian"));
+       vaccines.add(new Vaccine("Parasit Control","Aquatic"));
+       vaccines.add(new Vaccine("Parasit","Reptile"));
+       return vaccines;  
+      }
 }

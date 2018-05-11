@@ -2,6 +2,7 @@ package cctZoo.models.animals.abstracts;
 
 import cctZoo.models.Model;
 import cctZoo.models.employees.zooKeeper.ZooKeeper;
+import cctZoo.models.vaccine.Vaccine;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,11 +12,14 @@ import java.util.List;
  */
 public abstract class Animal extends Model{
     private static int lastId;
-    private String species, name, gender, DOB, dateOfArrival, vaccines;  
+    private String species, name, gender, DOB, dateOfArrival;  
     private boolean offspring = false;
     private ZooKeeper keeper;
     private Offspring offsprings;
     private Medication medication = new Medication("Antibiotic");
+    private List<Vaccine>vaccines = new ArrayList<>();
+
+    
     
     public Animal(String species, String name, String gender) {
         super(++lastId);
@@ -73,8 +77,8 @@ public abstract class Animal extends Model{
         this.species = species;
         this.name = name;
         this.gender = gender;
-        this.DOB = DOB;    
-        this.vaccines = vaccine;
+        this.DOB = DOB; 
+        
     }
 
     /**
@@ -90,6 +94,7 @@ public abstract class Animal extends Model{
                "Gender: " + this.getGender() + "\n" +
                "Date of Arrival: " + this.getDateOfArrival() +"\n" +
                "Date of Birth: " + this.getDOB() + "\n" +
+               "Vaccine:" +this.vaccines.toString().getBytes()+ "\n" +
                "Medicated: " + this.isMedicated() + "\n" +
                "Offspring: " + this.getNumberOfOffspring() + "\n" +
                "Keeper: " + "ID - " + this.keeper.getId() + " " + this.keeper.getName() + "\n";     
@@ -139,7 +144,7 @@ public abstract class Animal extends Model{
     public String getDateOfArrival() { return dateOfArrival; }
     public void setDateOfArrival(String dateOfArrival) { this.dateOfArrival = dateOfArrival; }
     
-    public String getVaccines() {return vaccines;}
+    
 
     public boolean isOffspring() { return offspring;}
     public void setOffspring(boolean offspring) { this.offspring = offspring;}
@@ -153,6 +158,10 @@ public abstract class Animal extends Model{
     public void setOffSpring(List<Animal> offspringList){
         this.offsprings.setOffspringList(offspringList);
     }
+
+    public List<Vaccine> getVaccines() {return vaccines;}
+
+    public void addVaccines(Vaccine vaccine) {this.vaccines.add(vaccine);}
 
     private class Offspring{
         
