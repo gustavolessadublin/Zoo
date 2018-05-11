@@ -25,8 +25,6 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apache.commons.collections4.CollectionUtils;
 
 /**
@@ -240,8 +238,16 @@ public class DataFactory {
               
         a.setName(rw.getRandomName(a.getGender())); 
         this.assingDatesToAnimal(a);
-        assignKeeper(a);
+        this.assignKeeper(a);
+        this.setMedication(a);
         return a;
+    }
+    
+    public void setMedication(Animal a){
+        Random rand = new Random();
+        boolean medicated = false;
+        if(rand.nextInt() % 2 == 0) medicated = true;
+        a.setMedicated(medicated);
     }
     
     /**

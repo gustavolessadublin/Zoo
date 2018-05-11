@@ -4,13 +4,9 @@
  * and open the template in the editor.
  */
 package cctZoo.controllers;
-import cctZoo.models.Model;
-import cctZoo.models.animals.AquaticMammal;
-import cctZoo.models.animals.GenericMammal;
+
 import cctZoo.models.animals.abstracts.Animal;
-import cctZoo.models.animals.interfaces.Mammal;
 import cctZoo.models.employees.zooKeeper.Qualification;
-import cctZoo.models.employees.zooKeeper.VaccineQualification;
 import cctZoo.views.AnimalView;
 import cctZoo.views.View;
 import cctZoo.zooData.DataFactory;

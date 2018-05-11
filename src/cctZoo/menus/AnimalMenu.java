@@ -1,7 +1,7 @@
 package cctZoo.menus;
 
 import cctZoo.controllers.AnimalsController;
-import cctZoo.models.animals.AquaticAvian;
+
 import cctZoo.models.animals.GenericAquatic;
 import cctZoo.models.animals.GenericAvian;
 import cctZoo.models.animals.GenericInsect;
@@ -15,7 +15,6 @@ import cctZoo.zooData.DataValidation;
 import cctZoo.zooData.ZooData;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  *
@@ -96,6 +95,7 @@ public class AnimalMenu extends Menu{
     public void updateAnimal(){
         
     }
+    
     private List chooseAnimalType(){
         List<Qualification> types = Qualification.getQualifications();
         List<Qualification> chosen = new ArrayList<>();
@@ -111,6 +111,7 @@ public class AnimalMenu extends Menu{
         }
         return chosen;
     }
+    
     private int chooseOption(List options){
         for(int x = 0; x < options.size(); x++){
             System.out.println((x+1)+" - "+options.get(x));
@@ -118,11 +119,13 @@ public class AnimalMenu extends Menu{
         System.out.println("Please choose an option: ");
         return (validate.checkForInt(in, 1, options.size()))-1;
     }
+    
     public void checkForOffSpring(boolean answer){
         if(answer){
             
         }
     }
+    
     public void addOffSpring(Animal a){
         
         System.out.println("Type here animal informataion: ");
@@ -139,6 +142,7 @@ public class AnimalMenu extends Menu{
         a = this.createAnimal(name, gender, dob, a);
         this.data.assignKeeper(a);
     }
+    
     public Animal createAnimal(String specie, String name, String gender, String doa, String dob, List<Qualification> selectedTypes ){
         Animal a = null;
         if(selectedTypes.size() == 1){
@@ -161,6 +165,7 @@ public class AnimalMenu extends Menu{
         return a;
         
     }
+    
     public Animal createAnimal(String name, String gender,String dob, Animal a){
             if(a.equals("mammal")){
               a = new GenericMammal(a.getSpecies(), name, gender,dob);
@@ -168,5 +173,5 @@ public class AnimalMenu extends Menu{
               a = new GenericReptile(a.getSpecies(), name, gender,dob);
             }
         return a;
-        }   
+    }   
 }

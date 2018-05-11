@@ -20,14 +20,13 @@ import java.util.List;
  */
 public class EmployeeMenu extends Menu{
     private EmployeesController keepers;
-    private String[] options;
     private DataValidation validate;
    
     public EmployeeMenu(ZooData zooData){
         super(zooData);
         validate = new DataValidation();
         this.keepers = new EmployeesController((ArrayList<ZooKeeper>) zooData.getZooKeepers(), new View());
-        String[] options = {"List Keepers","Add Keeper","Search Keepers","Return to main menu", "Exit Program"};
+        String[] options = {"List Keepers","Add Keeper","Search Keepers","Search Options", "Return to main menu", "Exit Program"};
         this.setOptions(options);
         this.setTitle("Keeper Menu");
         this.startMenu();
@@ -38,30 +37,25 @@ public class EmployeeMenu extends Menu{
         System.out.println("\nPlease select an option:");
         int option = this.in.nextInt();
         switch(option){
-            case 1:
-                this.showKeepers();
+            case 1: this.showKeepers();
                 break;
-            case 2:
-                this.addKeeper();
+            case 2: this.addKeeper();
                 break;
-            case 3:
-                this.searchKeeper();
+            case 3: this.searchKeeper();
                 break;
-            case 4:
-                new MainMenu(this.zooData);
+            case 4: new MainMenu(this.zooData);
                 break;
-            case 5:
-                System.exit(0);
+            case 5: System.exit(0);
                 break;
         }
     }
 
 
-    private void showKeepers() {
+    protected void showKeepers() {
         this.keepers.display();
     }
 
-    private void addKeeper() {
+    protected void addKeeper() {
         
         System.out.println("Add Keeper Wizard");
   
@@ -154,7 +148,7 @@ public class EmployeeMenu extends Menu{
         return in.nextLine();
     }
 
-    private void searchKeeper() {
+    protected void searchKeeper() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

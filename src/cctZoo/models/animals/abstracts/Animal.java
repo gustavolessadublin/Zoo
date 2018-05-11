@@ -10,14 +10,12 @@ import java.util.List;
  * @author rbsrafa
  */
 public abstract class Animal extends Model{
-    
     private static int lastId;
-    private String species, name, gender,doa, DOB, dateOfArrival, vaccines;
-
-    
+    private String species, name, gender, DOB, dateOfArrival, vaccines;  
     private boolean offspring = false;
     private ZooKeeper keeper;
     private Offspring offsprings;
+    private Medication medication = new Medication("Antibiotic");
     
     public Animal(String species, String name, String gender) {
         super(++lastId);
@@ -58,17 +56,18 @@ public abstract class Animal extends Model{
         this.species = species;
         this.name = name;
         this.gender = gender;
-        this.doa = doa;
+        this.dateOfArrival = doa;
         this.DOB = DOB;    
     }
+    
     public Animal(String species, String name, String gender, String DOB){
         super(++lastId);
         this.species = species;
         this.name = name;
         this.gender = gender;
-        this.DOB = DOB;    
-        
+        this.DOB = DOB;          
     }
+    
     public Animal(String species, String name, String gender,String doa, String DOB, String vaccine){
         super(++lastId);
         this.species = species;
@@ -78,13 +77,12 @@ public abstract class Animal extends Model{
         this.vaccines = vaccine;
     }
 
+    /**
+     * This method displays a single animal on CLI.
+     * @return 
+     */
     @Override
     public String toString() {
-//        return "Animal{" + "species=" + species + ", name=" + name 
-//                         + ", gender=" + gender + ", doa=" + doa 
-//                         + ", DOB=" + DOB + ", dateOfArrival=" + dateOfArrival 
-//                         + ", offspring=" + offspring + ", keeper=" 
-//                         + keeper + ", offsprings=" + offsprings + '}';
         return "Animal\n------\n" +
                "ID: " + this.getId() + "\n" +
                "Species: " + this.getSpecies() + "\n" +
@@ -92,6 +90,7 @@ public abstract class Animal extends Model{
                "Gender: " + this.getGender() + "\n" +
                "Date of Arrival: " + this.getDateOfArrival() +"\n" +
                "Date of Birth: " + this.getDOB() + "\n" +
+               "Medicated: " + this.isMedicated() + "\n" +
                "Offspring: " + this.getNumberOfOffspring() + "\n" +
                "Keeper: " + "ID - " + this.keeper.getId() + " " + this.keeper.getName() + "\n";     
     }
@@ -116,7 +115,13 @@ public abstract class Animal extends Model{
         }
         return types;
     }
+    
+    public boolean isMedicated(){ return this.medication.isMedicated(); }
+    public void setMedicated(boolean b) {this.medication.setMedicated(b);}
 
+    public void setMedicationName(String name){ this.medication.setName(name); }
+    public String getMedicationName(){ return this.medication.getName(); }
+    
     public static int getLastId() { return lastId; }
 
     public String getSpecies() { return species; }
@@ -182,6 +187,35 @@ public abstract class Animal extends Model{
             return this.offspringList.size();
         }
  
+    }
+    
+    
+    /**
+     *
+     * @author rbsrafa
+    */
+    private class Medication{
+        private String name;
+        private boolean medicated;
+
+        public Medication(String name) {
+            this.name = name;
+            this.medicated = false;
+        }
+
+        @Override
+        public String toString() {
+            return "Medication\n" +
+                   "Name: " + this.name + "\n" +
+                   "Medicated: " + this.medicated;
+        }
+
+        public String getName() { return name; }
+        public void setName(String name) { this.name = name; }
+
+        public boolean isMedicated() { return medicated; }
+        public void setMedicated(boolean medicated) { this.medicated = medicated; }
+
     }
  
 }
