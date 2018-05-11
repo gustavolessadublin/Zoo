@@ -6,9 +6,14 @@
 package cctZoo.controllers;
 import cctZoo.models.Model;
 import cctZoo.models.animals.AquaticMammal;
+import cctZoo.models.animals.GenericMammal;
 import cctZoo.models.animals.abstracts.Animal;
 import cctZoo.models.animals.interfaces.Mammal;
+import cctZoo.models.employees.zooKeeper.Qualification;
+import cctZoo.models.employees.zooKeeper.VaccineQualification;
+import cctZoo.views.AnimalView;
 import cctZoo.views.View;
+import cctZoo.zooData.DataFactory;
 import cctZoo.zooData.ZooData;
 
 import java.util.List;
@@ -25,49 +30,52 @@ public class VaccineControler {
     private List<Vaccine> listVacine;
     private View view;
     private List<Animal> animals;
+    DataFactory data;
 
-    public VaccineControler(List<Vaccine> listVacine, View view) {
+    public VaccineControler(List<Vaccine> listVacine, AnimalView view) {
         this.listVacine = listVacine;
         this.view=view;
     }
-    public void Vaccine(){
-        List<Animal>vacc = this.add();
-        vacc.forEach((a) -> {
-            this.view.display((Model)a);
-        });
-        this.listVacine.add((Vaccine) vacc);
-       
-        
-    }
-    public List<Animal> randomVacine(){
+//    public void Vaccine(){
+//        List<Animal>vacc = this.add();
+//        vacc.forEach((a) -> {
+//            this.view.display((Model)a);
+//        });
+//        this.listVacine.add((Vaccine) vacc);
+//       
+//        
+//    }
+    public Animal randomVacine(String specie, String name, String gender, String doa, String dob){
         Animal an= null;
+        List<Qualification> animalType = new ArrayList<>();
         Random ran = new Random();
-        AquaticMammal mammal = null;
-        String [] vaccines = {"Parasit Control","Pest sControl"};
-        String vac = vaccines[ran.nextInt(vaccines.length)];
-        
-        if(vac.equals("")){
-            an = new Vaccine(0, vac, vac, vac, vac);
+        String [] vaccines = {"Parasit Control","Pest Control"};
+        if(animalType.size() == 1){
+            String vac = animalType.get(0).toString();
+            vac = vaccines[ran.nextInt(vaccines.length)];
+            if(vac.equalsIgnoreCase("mammal")){
+            vac = an.getVaccines();
+            data.assignKeeper(an);
             System.out.println(an);
-        }
-        an.setName(vac);
-        return (List<Animal>) an;
+            }
+        } 
+        return an;
     }
     
-    public List<Animal> add()
-    {  
-        List<Animal>mamm = this.randomVacine();
-        int vac = 0;
-        for(int i = vac; i < vac; i++ ){
-            animals.stream().filter((a) -> (a instanceof Mammal)).forEachOrdered((a) -> {
-                mamm.add(a);
-            });
-            zooData.getAnimals().add((Animal) this.randomVacine());
-        
-        }
-        return mamm;
-          
-    }
+//    public List<Animal> add()
+//    {  
+//        List<Animal>mamm = this.randomVacine();
+//        int vac = 0;
+//        for(int i = vac; i < vac; i++ ){
+//            animals.stream().filter((a) -> (a instanceof Mammal)).forEachOrdered((a) -> {
+//                mamm.add(a);
+//            });
+//            zooData.getAnimals().add((Animal) this.randomVacine());
+//        
+//        }
+//        return mamm;
+//          
+//    }
 
     @Override
     public String toString() {

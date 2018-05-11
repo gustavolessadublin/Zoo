@@ -12,7 +12,9 @@ import java.util.List;
 public abstract class Animal extends Model{
     
     private static int lastId;
-    private String species, name, gender,doa, DOB, dateOfArrival;
+    private String species, name, gender,doa, DOB, dateOfArrival, vaccines;
+
+    
     private boolean offspring = false;
     private ZooKeeper keeper;
     private Offspring offsprings;
@@ -65,6 +67,15 @@ public abstract class Animal extends Model{
         this.name = name;
         this.gender = gender;
         this.DOB = DOB;    
+        
+    }
+    public Animal(String species, String name, String gender,String doa, String DOB, String vaccine){
+        super(++lastId);
+        this.species = species;
+        this.name = name;
+        this.gender = gender;
+        this.DOB = DOB;    
+        this.vaccines = vaccine;
     }
 
     @Override
@@ -122,6 +133,8 @@ public abstract class Animal extends Model{
 
     public String getDateOfArrival() { return dateOfArrival; }
     public void setDateOfArrival(String dateOfArrival) { this.dateOfArrival = dateOfArrival; }
+    
+    public String getVaccines() {return vaccines;}
 
     public boolean isOffspring() { return offspring;}
     public void setOffspring(boolean offspring) { this.offspring = offspring;}
