@@ -21,9 +21,4 @@ public class GenericInsect extends Animal implements Insect{
         super(species, name, gender, doa, DOB);
     }
 
-    @Override
-    public String toString() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

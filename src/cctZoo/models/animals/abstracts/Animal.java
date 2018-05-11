@@ -1,7 +1,6 @@
 package cctZoo.models.animals.abstracts;
 
 import cctZoo.models.Model;
-import cctZoo.models.employees.zooKeeper.Qualification;
 import cctZoo.models.employees.zooKeeper.ZooKeeper;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,8 +51,6 @@ public abstract class Animal extends Model{
         this.offspring = offspring;
     }
 
-    
-
     public Animal(String species, String name, String gender, String doa, String DOB){
         super(++lastId);
         this.species = species;
@@ -69,6 +66,24 @@ public abstract class Animal extends Model{
         this.gender = gender;
         this.DOB = DOB;    
     }
+
+    @Override
+    public String toString() {
+//        return "Animal{" + "species=" + species + ", name=" + name 
+//                         + ", gender=" + gender + ", doa=" + doa 
+//                         + ", DOB=" + DOB + ", dateOfArrival=" + dateOfArrival 
+//                         + ", offspring=" + offspring + ", keeper=" 
+//                         + keeper + ", offsprings=" + offsprings + '}';
+        return "Animal\n------\n" +
+               "ID: " + this.getId() + "\n" +
+               "Species: " + this.getSpecies() + "\n" +
+               "Name: " + this.getName() + "\n" +
+               "Gender: " + this.getGender() + "\n" +
+               "Date of Arrival: " + this.getDateOfArrival() +"\n" +
+               "Date of Birth: " + this.getDOB() + "\n" +
+               "Offspring: " + this.getNumberOfOffspring() + "\n" +
+               "Keeper: " + "ID - " + this.keeper.getId() + " " + this.keeper.getName() + "\n";     
+    }
     
     /**
      * This method returns the number of animals as offspring
@@ -79,6 +94,10 @@ public abstract class Animal extends Model{
         else return this.offsprings.getNumberOfOffspring();
     }
     
+    /**
+     * This method returns the animal's type;
+     * @return 
+     */
     public List<String> getAnimalTypes(){
         List<String> types = new ArrayList<>();
         for(Class c: this.getClass().getInterfaces()){

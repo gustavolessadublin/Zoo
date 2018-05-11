@@ -41,9 +41,4 @@ public class GenericMammal extends Animal implements Mammal{
         super(species, name, gender, DOB);
     }
 
-    @Override
-    public String toString() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }
