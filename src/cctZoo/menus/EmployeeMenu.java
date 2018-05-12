@@ -31,6 +31,14 @@ public abstract class EmployeeMenu extends Menu{
     }
 
     /**
+     * This method exits the program after displaying a message.
+     */
+    protected void exitProgram(){
+        System.out.println("Closing program...");
+        System.exit(0);
+    }
+    
+    /**
      * This method displays all keepers
      */
     protected void showKeepers() {
@@ -44,6 +52,7 @@ public abstract class EmployeeMenu extends Menu{
     protected void showKeeper(ZooKeeper k){
         this.keepers.display(k); // call method from controller
     }
+    
 
     /**
      * This method guides the user through the creation of a new keeper,
@@ -95,8 +104,7 @@ public abstract class EmployeeMenu extends Menu{
         
         // create a List of qualifications to be filled with the chosen ones
         List<Qualification> chosen = new ArrayList<>(); 
-        int limit = 3; // set the limit of qualifications a keeper can have.
-        for (int x = 0; x<limit; x++){ // for 'limit' times allow user choose
+        for (int x = 0; x<ZooKeeper.getLimit(); x++){ // for 'limit' times allow user choose
                                        // a new qualification
             System.out.println("Select a qualification:");
             
