@@ -13,8 +13,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * This class contains methods used to validate user input such as date, time, 
- * int, int with defined range, compare cities and check pilot availability and rating.
+ * This class contains methods used to validate user input such as int,
+ * int within defined range, String and date.
  * @author Gustavo Lessa
  * @author Rafael Barros
  */
@@ -23,25 +23,30 @@ public class DataValidation {
     
     /**
      * This method checks if the input is a integer.
-     * @param input (boolean)
-     * @return -1 if the input is not a integer
+     * @param input (Scanner)
+     * @return A validated int
      */
     public int checkForInt(Scanner input){
         try{return input.nextInt();}
         catch(InputMismatchException e){
             input.next();
             System.out.println("\n*** Input is not a integer. Please try again. ***\n");
-            return -1;
+            return checkForInt(input);
         }
     }
     
+    /**
+     * This method returns a whole line input by the user.
+     * @param input (Scanner)
+     * @return The input String
+     */
     public String checkForString(Scanner input){
         String ans = "";
         while(ans.isEmpty()){
             try{
                ans = input.nextLine();}
             catch(InputMismatchException e){
-               System.out.println("\n*** Input is not a string. Please try again. ***\n");
+               System.out.println("\n*** Input not valid. Please try again. ***\n");
                return checkForString(input);
             }           
         }
