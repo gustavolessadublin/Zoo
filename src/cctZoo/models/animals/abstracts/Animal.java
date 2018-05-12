@@ -12,7 +12,7 @@ import java.util.List;
  */
 public abstract class Animal extends Model{
     private static int lastId;
-    private String species, name, gender, DOB, dateOfArrival;  
+    private String species,  name, gender, DOB, dateOfArrival;  
     private boolean offspring = false;
     private ZooKeeper keeper;
     private Offspring offsprings;
@@ -58,6 +58,7 @@ public abstract class Animal extends Model{
     public Animal(String species, String name, String gender, String doa, String DOB){
         super(++lastId);
         this.species = species;
+        
         this.name = name;
         this.gender = gender;
         this.dateOfArrival = doa;
@@ -72,14 +73,7 @@ public abstract class Animal extends Model{
         this.DOB = DOB;          
     }
     
-    public Animal(String species, String name, String gender,String doa, String DOB, String vaccine){
-        super(++lastId);
-        this.species = species;
-        this.name = name;
-        this.gender = gender;
-        this.DOB = DOB; 
-        
-    }
+
 
     /**
      * This method displays a single animal on CLI.
