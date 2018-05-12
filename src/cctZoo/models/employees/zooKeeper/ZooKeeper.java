@@ -16,19 +16,46 @@ import java.util.List;
  */
 public class ZooKeeper extends Employee{
 
-    List<Qualification> qualifications;
-    List<Animal> caredAnimals;
+    private List<Qualification> qualifications;
+    private List<Animal> caredAnimals;
+    private static int limitOfQualifications = 3;
     
+    /**
+     * This constructor creates a ZooKeeper with no qualifications
+     * @param gender 
+     */
     public ZooKeeper(String gender){
         super(gender);
         qualifications = new ArrayList<>();
         caredAnimals = new ArrayList<>();
     }
     
+    /**
+     * This constructor creates a keeper already with desired qualifications.
+     * @param gender
+     * @param name
+     * @param qualifications 
+     */
     public ZooKeeper(String gender, String name, List<Qualification> qualifications){
         super(gender, name);
         this.qualifications = qualifications;
         caredAnimals = new ArrayList<>();
+    }
+    
+    /**
+     * This method retrieves the limit of qualifications a keeper can have.
+     * @return int - limit
+     */
+    public static int getLimit(){
+        return limitOfQualifications;
+    }
+    
+    /**
+     * This method sets the limit of qualifications a keeper can have.
+     * @param limit (int) - limit to be set
+     */
+    public static void setLimit(int limit){
+        limitOfQualifications = limit;
     }
     
     /**

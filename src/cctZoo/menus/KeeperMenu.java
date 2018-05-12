@@ -6,24 +6,28 @@
 package cctZoo.menus;
 
 import cctZoo.models.employees.zooKeeper.Qualification;
+import cctZoo.models.employees.zooKeeper.ZooKeeper;
 import cctZoo.zooData.ZooData;
 import java.util.List;
 
 /**
- *
- * @author gustavolessa1
+ * This class extends EmployeeMenu class to create a keeper menu.
+ * @author Gustavo Lessa
  */
 public class KeeperMenu extends EmployeeMenu {
     
+    // constructor takes ZooData object as argument
     public KeeperMenu(ZooData zooData) {
         super(zooData);
         
-        this.setOptions(new String[]{"List Keepers","Add Keeper","Search Keepers","Update Keeper","Return to main menu"});
-        this.setTitle("Keeper Menu");
-        this.startMenu();
+        this.setOptions(new String[]{"List Keepers","Add Keeper",
+            "Search Keepers","Update Keeper","Return to Main Menu",
+            "Exit Program"}); // set options
+        this.setTitle("Keeper Menu"); // set title
+        this.startMenu(); // start menu (method from super)
     }
     
-        @Override
+    @Override
     public void optionSelector() {
         System.out.println("\nPlease select an option:");
         int option = this.in.nextInt();
@@ -43,49 +47,87 @@ public class KeeperMenu extends EmployeeMenu {
             case 5:
                 new MainMenu(this.zooData);
                 break;
+            case 6:
+                System.out.println("Closing program...");
+                System.exit(0);
         }
     }
     
     /**
      * This method updates a ZooKeeper's fields by calling other methods that
-     * allow the user to choose a keeper by Id, update name, gender and add 
-     * qualifications, displaying the updated keeper at the end.
+     * guide the user through the process.
      */
     private void updateKeeper() {
         System.out.println("Update Keeper Wizard");
-        int id = this.chooseId()-1;
+        int index = this.chooseId()-1; // get index from user input
         
-        this.updateName(id);
-        this.updateGender(id);
-        this.updateQualifications(id);
+        // update fields from user input
+        this.updateName(index);
+        this.updateGender(index);
+        this.updateQualifications(index);
         
+        // confirm update was successful and displays the new info
         System.out.println("\nKeeper Updated!");
-        this.keepers.display(keepers.getKeeper(id));
+        this.keepers.display(keepers.getKeeper(index));
     }
     
-    private void updateName(int id){
-        System.out.println("\nCurrent name: "+keepers.getKeeper(id).getName());
-        String name = this.chooseName();
-        while (name.isEmpty()){
+    /**
+     * This method displays current name and returns user input for new name.
+     * @param index - int (position on the List)
+     */
+    private void updateName(int index){
+        System.out.println("\nCurrent name: "+keepers.getKeeper(index).getName());
+        String name = this.chooseName(); // method from super
+        while (name.isEmpty()){ // avoids empty lines
             this.chooseName();
         }
-        keepers.getKeeper(id).setName(name);
+        keepers.getKeeper(index).setName(name);
     }
     
-    private void updateGender(int id){
-        System.out.println("\nCurrent gender: "+keepers.getKeeper(id).getGender());
-        keepers.getKeeper(id).setGender(this.chooseGender());
+    /**
+     * This method displays current gender and asks user to input new one.
+     * @param index - int (position on the List).
+     */
+    private void updateGender(int index){
+        System.out.println("\nCurrent gender: "+keepers.getKeeper(index).getGender());
+        keepers.getKeeper(index).setGender(this.chooseGender());
     }
     
-    private void updateQualifications(int id){
-        System.out.println("\nCurrent qualifications: "+keepers.getKeeper(id).getQualifications());
-        if(keepers.getKeeper(id).getQualifications().size()<3){
-            System.out.println("Would you like to add another Qualification? (Y/N)");
+    /**
+     * This method updates the qualifications by adding according to user
+     * input, when the limit of 3 
+     * @param index 
+     */
+    private void updateQualifications(int index){
+        
+        // check if the limit of qualifications was reached already
+        if(keepers.getKeeper(index).getQualifications().size()<
+                ZooKeeper.getLimit()){
+            
+            // show current qualifications
+            System.out.println("\nCurrent qualifications: "
+                    +keepers.getKeeper(index).getQualifications());           
+            
+            // if user wants to add another qualification
+            System.out.println("Would you like to add another "
+                    + "Qualification? (Y/N)");
             if(validate.checkForYes(in)){
-                List<Qualification> qualifications = this.otherQualifications(keepers.getKeeper(id).getQualifications());
-                for (int x = keepers.getKeeper(id).getQualifications().size(); x<3; x++){
+                
+                // retrieve list of qualifications the keeper doesn' have
+                List<Qualification> qualifications
+                        = this.otherQualifications(keepers.getKeeper(index)
+                                .getQualifications());
+                
+                // for the number of qualifications allowed to add
+                for (int x = keepers.getKeeper(index).getQualifications()
+                        .size(); x<ZooKeeper.getLimit(); x++){
+                    
+                    // ask user to choose one and get input
                     System.out.println("Select a qualification:");
-                    keepers.getKeeper(id).addQualification(qualifications.remove(this.chooseOption(qualifications)));
+                    keepers.getKeeper(index).addQualification(qualifications.remove(this.chooseOption(qualifications)));
+                    
+                    // if it isn't the last one, ask if the user wants to add
+                    // another qualification
                     if (x < 2){
                         System.out.println("Would you like to add another one? (Y/N)");
                         if(!validate.checkForYes(in)){
@@ -94,15 +136,24 @@ public class KeeperMenu extends EmployeeMenu {
                     }
                 }               
             }
+        } else { // if limit was reached
+            System.out.println("This keeper has already the limit of "
+                    + "qualifications");
         }
     }
     
+    /**
+     * This method takes a List<Qualification> and retrieves the complementar
+     * list, containing all Qualifications non existent on the given list.
+     * @param qualifications (List<Qualification>)
+     * @return List<Qualification> of items not present on first list.
+     */
     private List<Qualification> otherQualifications(List<Qualification> qualifications){
-        List<Qualification> options = Qualification.getQualifications();
+        List<Qualification> allOptions = Qualification.getQualifications();
         for(Qualification q : qualifications){
-            options.remove(q);
+            allOptions.remove(q);
         }
-        return options;
+        return allOptions;
     }
     
 }
