@@ -47,33 +47,49 @@ public class KeeperMenu extends EmployeeMenu {
     }
 
     private void updateKeeper() {
-//        System.out.println("Update Keeper Wizard");
-//        int id = this.chooseId();
-//        System.out.println("Current name: "+keepers.getKeeper(id).getName());
-//        String name = this.chooseName();
-//        while (name.isEmpty()){
-//            this.chooseName();
-//        }
-//        keepers.getKeeper(id).setName(name);
-//        System.out.println("Current gender: "+keepers.getKeeper(id).getGender());
-//        keepers.getKeeper(id).setGender(this.chooseGender());
-//        System.out.println("Current qualifications: "+keepers.getKeeper(id).getQualifications());
-//        if(keepers.getKeeper(id).getQualifications().size()<3){
-//            List<Qualification> qualifications = this.otherQualifications(keepers.getKeeper(id).getQualifications());
-//            for (int x = keepers.getKeeper(id).getQualifications().size(); x<3; x++){
-//                System.out.println("Select a qualification:");
-//                keepers.getKeeper(id).addQualification(qualifications.remove(this.chooseOption(qualifications)));
-//                if (x < 2){
-//                    System.out.println("Would you like to add another one? (Y/N)");
-//                    if(!validate.checkForYes(in)){
-//                        break;
-//                    }               
-//                }
-//            }
-//        }
-//        System.out.println("");
-//        this.keepers.display(keepers.getKeeper(id));
-        //TODO check id number of other methods
+        System.out.println("Update Keeper Wizard");
+        int id = this.chooseId()-1;
+        
+        this.updateName(id);
+        this.updateGender(id);
+        this.updateQualifications(id);
+        
+        System.out.println("\nKeeper Updated!");
+        this.keepers.display(keepers.getKeeper(id));
+    }
+    
+    private void updateName(int id){
+        System.out.println("\nCurrent name: "+keepers.getKeeper(id).getName());
+        String name = this.chooseName();
+        while (name.isEmpty()){
+            this.chooseName();
+        }
+        keepers.getKeeper(id).setName(name);
+    }
+    
+    private void updateGender(int id){
+        System.out.println("\nCurrent gender: "+keepers.getKeeper(id).getGender());
+        keepers.getKeeper(id).setGender(this.chooseGender());
+    }
+    
+    private void updateQualifications(int id){
+        System.out.println("\nCurrent qualifications: "+keepers.getKeeper(id).getQualifications());
+        if(keepers.getKeeper(id).getQualifications().size()<3){
+            System.out.println("Would you like to add another Qualification? (Y/N)");
+            if(validate.checkForYes(in)){
+                List<Qualification> qualifications = this.otherQualifications(keepers.getKeeper(id).getQualifications());
+                for (int x = keepers.getKeeper(id).getQualifications().size(); x<3; x++){
+                    System.out.println("Select a qualification:");
+                    keepers.getKeeper(id).addQualification(qualifications.remove(this.chooseOption(qualifications)));
+                    if (x < 2){
+                        System.out.println("Would you like to add another one? (Y/N)");
+                        if(!validate.checkForYes(in)){
+                            break;
+                        }               
+                    }
+                }               
+            }
+        }
     }
     
     private List<Qualification> otherQualifications(List<Qualification> qualifications){

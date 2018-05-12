@@ -55,13 +55,17 @@ public class EmployeesController {
     }
     
     public void display(int keeperId){
+        int counter = 0;
         for(ZooKeeper k : keepers){
             if (k.getId()==keeperId){
+                counter++;
                 this.display(k);
                 break;
             }
         }
-        System.out.println("ID not found!");
+        if(counter==0){
+            System.out.println("ID not found!");
+        }
     }
 
     public void display(Object k) {
