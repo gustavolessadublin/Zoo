@@ -29,6 +29,10 @@ public abstract class Model {
         return id;
     }
 
+    /**
+     * This is an abstract method to be implemented on subclasses.
+     * @return 
+     */
     @Override
     public abstract String toString();
 }

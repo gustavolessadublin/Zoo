@@ -264,6 +264,10 @@ public class DataFactory {
         return a;
     }
     
+    /**
+     * This method interacts with an user to set the medication of an animal.
+     * @param a 
+     */
     public void setMedication(Animal a){
         Random rand = new Random();
         boolean medicated = false;

@@ -7,7 +7,10 @@ import cctZoo.views.interfaces.Displayable;
  * @author rbsrafa
  */
 public class View implements Displayable{
-    // TODO implement table mode on View
+    
+    /**
+     * Default View constructor.
+     */
     public View(){
         
     }
