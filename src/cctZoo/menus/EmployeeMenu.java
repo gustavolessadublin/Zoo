@@ -9,89 +9,129 @@ import cctZoo.controllers.EmployeesController;
 import cctZoo.models.employees.zooKeeper.Qualification;
 import cctZoo.models.employees.zooKeeper.ZooKeeper;
 import cctZoo.views.KeeperView;
-import cctZoo.zooData.DataValidation;
 import cctZoo.zooData.ZooData;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * This abstract class represents any menus regarding employees. 
  * @author Gustavo Lessa
  */
 public abstract class EmployeeMenu extends Menu{
-    protected EmployeesController keepers;
+    protected EmployeesController keepers; // controller to perform operations
 
-   
+    /**
+     * Constructor takes a ZooData object as argument.
+     * @param zooData - ZooData object
+     */
     public EmployeeMenu(ZooData zooData){
-        super(zooData);
-        this.keepers = new EmployeesController((ArrayList<ZooKeeper>) zooData.getZooKeepers(), new KeeperView());
-
+        super(zooData); // calls constructor from super
+        this.keepers = new EmployeesController((ArrayList<ZooKeeper>) zooData
+                .getZooKeepers(), new KeeperView()); // new controller
     }
 
+    /**
+     * This method displays all keepers
+     */
     protected void showKeepers() {
-        this.keepers.display();
+        this.keepers.display(); // call method from controller
     }
     
+    /**
+     * This method displays the keeper given as argument.
+     * @param k - ZooKeeper object
+     */
     protected void showKeeper(ZooKeeper k){
-        this.keepers.display(k);
+        this.keepers.display(k); // call method from controller
     }
 
-    protected void addKeeper() {
-        
+    /**
+     * This method guides the user through the creation of a new keeper,
+     * calling other methods to retrieve the required information.
+     */
+    protected void addKeeper() {   
         System.out.println("Add Keeper Wizard");
   
-        String gender = getGender();
-        String name = getName(gender);
-        List<Qualification> qualifications = getQualifications();
-        
+        String gender = getGender(); // call method to let user choose gender
+        String name = getName(gender); // call method to let user call name.
+        List<Qualification> qualifications = getQualifications(); // method 
+                                         //to let user choose qualifications
+        //Confirm informtion
         System.out.println("\nConfirm keeper's information:");
         System.out.println("\nGender: "+gender);
         System.out.println("Name: "+name);
         System.out.println("Qualifications: "+qualifications);
         
-        System.out.println("\nWould you like to add this keeper?");
-        if (validate.checkForYes(in)){
-            keepers.add(new ZooKeeper(gender,name,qualifications));
+        System.out.println("\nWould you like to add this keeper? (Y/N)");
+        if (validate.checkForYes(in)){ // wait for user input and validate it
+            keepers.add(new ZooKeeper(gender,name,qualifications)); // add keeper
         }
     }
     
+    /**
+     * This method returns a List of qualifications chosen by the user or 
+     * generated randomly, according the user's decision.
+     * @return List of qualifications.
+     */
     protected List getQualifications(){
         System.out.println("\nWould you like to choose the qualifications?");
         List<Qualification> qualifications = null;
-        if(validate.checkForYes(in)){
-            qualifications = chooseQualifications();
-        } else {
-            qualifications = dataFactory.randomQualifications();
+        if(validate.checkForYes(in)){ // is user wants to choose
+            qualifications = chooseQualifications(); // get the input
+        } else { // if user doesn't want to choose
+            qualifications = dataFactory.randomQualifications(); //generate
+                                                                 // randomly
         }
-        return qualifications;
+        return qualifications; // return List<Qualification>
     }
     
-    
+    /**
+     * This method allows user to choose qualifications.
+     * @return List<Qualification>
+     */
     protected List chooseQualifications(){
+        // retrieve all options available from Enum
         List<Qualification> qualifications = Qualification.getQualifications();
-        List<Qualification> chosen = new ArrayList<>();
-        for (int x = 0; x<3; x++){
+        
+        // create a List of qualifications to be filled with the chosen ones
+        List<Qualification> chosen = new ArrayList<>(); 
+        int limit = 3; // set the limit of qualifications a keeper can have.
+        for (int x = 0; x<limit; x++){ // for 'limit' times allow user choose
+                                       // a new qualification
             System.out.println("Select a qualification:");
+            
+            // chooseOption method returns index of option chosen by user
+            // remove from qualification list while addint to chosen list
             chosen.add(qualifications.remove(chooseOption(qualifications)));
-            if (x < 2){
+            if (x < 2){ // if it isn't the last iteration
+                // user can decide if another one will be added
                 System.out.println("Would you like to add another one? (Y/N)");
                 if(!validate.checkForYes(in)){
                     break;
                 }               
             }
         }
-        return chosen;
+        return chosen; // return list of chosen qualifications
     }
     
+    /**
+     * This method returns a gender chosen by the user or generated randomly,
+     * according to user's decision.
+     * @return String - gender
+     */
     protected String getGender(){
         System.out.println("\nWould you like to choose the gender? (Y/N)");
-        if(validate.checkForYes(in)){
-            return chooseGender();
-        } else {
-            return dataFactory.randomGender();
+        if(validate.checkForYes(in)){ // if user wants to choose
+            return chooseGender(); // get input
+        } else { // if user doesn't want to choose
+            return dataFactory.randomGender(); // generate randomly
         }
     }
     
+    /**
+     * This method allows the user to choose a gender.
+     * @return String - gender.
+     */
     protected String chooseGender(){
         System.out.println("1 - Male");
         System.out.println("2 - Female");
@@ -104,28 +144,47 @@ public abstract class EmployeeMenu extends Menu{
         }
     }
     
+    /**
+     * This method returns a String input by user
+     * @return 
+     */
     protected String chooseName(){
-        String name;
-        name = (printChooseName("first name"));
-        name = name.concat(" ").concat(printChooseName("last name"));
-        return name;
+        String name; // a single String in the format "Firstname Lastname"
+        name = (printChooseName("first name")); // ask user to input first name
+        name = name.concat(" ").concat(printChooseName("last name"));// last name
+        return name; // return concatenated String
     }
     
+    /**
+     * This method returns a name (String) input by the user or generated
+     * randomly, according to user's decision.
+     * @param gender (String)
+     * @return String - name
+     */
     protected String getName(String gender){
         String name;
-        if(userWantsToChooseName()){
-            return chooseName();
-        } else {
-            name = dataFactory.getRandomName(gender);
+        if(userWantsToChooseName()){ // as it reads...
+            return chooseName(); // call method to receive input
+        } else { // if user doens't want to choose
+            name = dataFactory.getRandomName(gender); //generate randomly
         }
         return name;
     }
     
+    /**
+     * This method asks if user wants to choose name and returns input
+     * @return true if user wants to choose a name for the keeper
+     */
     protected boolean userWantsToChooseName(){
         System.out.println("Would you like to choose the keeper's name? (Y/N)");
         return validate.checkForYes(in);
     }
     
+    /**
+     * Method to ask user to input something based on a String.
+     * @param question - a String to be inserted in the sentence.
+     * @return String - line input by the user
+     */
     protected String printChooseName(String question) {
         System.out.println("Please choose the "+question+":");
         String ans = "";
@@ -135,15 +194,24 @@ public abstract class EmployeeMenu extends Menu{
         return ans;
     }
     
+    /**
+     * This method displays a list of existing IDs and return the user input.
+     * @return int - ID chosen by the user.
+     */
     protected int chooseId(){
         System.out.println("The following IDs are currently in the database:");
-        List<Integer> ids = this.keepers.getAllIds();
+        List<Integer> ids = this.keepers.getAllIds(); // get all IDs.
         
+        // display them nicely
         for(int x = 0; x < ids.size(); x++){
             if(x%6 == 0){System.out.println("");}
             System.out.print(ids.get(x) + "\t");
         }
+        
+        // ask user for input
         System.out.println("\nPlease choose an ID: ");
+        
+        // retrieved validated input considering the available options
         return validate.checkForInt(in, ids.get(0), ids.get(ids.size()-1));
     }
 }
