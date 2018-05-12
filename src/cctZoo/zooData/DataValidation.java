@@ -41,7 +41,7 @@ public class DataValidation {
             try{
                ans = input.nextLine();}
             catch(InputMismatchException e){
-               System.out.println("\n*** Input is not a integer. Please try again. ***\n");
+               System.out.println("\n*** Input is not a string. Please try again. ***\n");
                return checkForString(input);
             }           
         }
