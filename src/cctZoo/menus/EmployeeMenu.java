@@ -49,14 +49,14 @@ public abstract class EmployeeMenu extends Menu{
         System.out.println("Name: "+name);
         System.out.println("Qualifications: "+qualifications);
         
-        System.out.println("Would you like to add this keeper?");
+        System.out.println("\nWould you like to add this keeper?");
         if (validate.checkForYes(in)){
             keepers.add(new ZooKeeper(gender,name,qualifications));
         }
     }
     
     protected List getQualifications(){
-        System.out.println("Would you like to choose the qualifications?");
+        System.out.println("\nWould you like to choose the qualifications?");
         List<Qualification> qualifications = null;
         if(validate.checkForYes(in)){
             qualifications = chooseQualifications();
@@ -92,7 +92,7 @@ public abstract class EmployeeMenu extends Menu{
     }
     
     protected String getGender(){
-        System.out.println("Would you like to choose the gender? (Y/N)");
+        System.out.println("\nWould you like to choose the gender? (Y/N)");
         if(validate.checkForYes(in)){
             return chooseGender();
         } else {
@@ -103,7 +103,7 @@ public abstract class EmployeeMenu extends Menu{
     protected String chooseGender(){
         System.out.println("1 - Male");
         System.out.println("2 - Female");
-        System.out.println("Please choose an option: ");
+        System.out.println("Please choose a gender: ");
         int ans = validate.checkForInt(in, 1, 2);
         if (ans == 1){
             return "Male";
@@ -136,7 +136,11 @@ public abstract class EmployeeMenu extends Menu{
     
     protected String printChooseName(String question) {
         System.out.println("Please choose the "+question+":");
-        return in.nextLine();
+        String ans = "";
+        while(ans.isEmpty()){
+            ans = in.nextLine();
+        }
+        return ans;
     }
     
     protected int chooseId(){
@@ -148,6 +152,6 @@ public abstract class EmployeeMenu extends Menu{
             System.out.print(ids.get(x) + "\t");
         }
         System.out.println("\nPlease choose an ID: ");
-        return (validate.checkForInt(in, ids.get(0), ids.get(ids.size()-1))-1);
+        return validate.checkForInt(in, ids.get(0), ids.get(ids.size()-1));
     }
 }
