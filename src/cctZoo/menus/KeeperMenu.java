@@ -102,7 +102,7 @@ public class KeeperMenu extends EmployeeMenu {
         
         // check if the limit of qualifications was reached already
         if(keepers.getKeeper(index).getQualifications().size()<
-                ZooKeeper.getLimit()){
+                ZooKeeper.getLimitOfQualifications()){
             
             // show current qualifications
             System.out.println("\nCurrent qualifications: "
@@ -120,7 +120,7 @@ public class KeeperMenu extends EmployeeMenu {
                 
                 // for the number of qualifications allowed to add
                 for (int x = keepers.getKeeper(index).getQualifications()
-                        .size(); x<ZooKeeper.getLimit(); x++){
+                        .size(); x<ZooKeeper.getLimitOfQualifications(); x++){
                     
                     // ask user to choose one and get input
                     System.out.println("Select a qualification:");
