@@ -48,8 +48,8 @@ public class KeeperMenu extends EmployeeMenu {
                 new MainMenu(this.zooData);
                 break;
             case 6:
-                System.out.println("Closing program...");
-                System.exit(0);
+                this.exitProgram();
+                break;
         }
     }
     

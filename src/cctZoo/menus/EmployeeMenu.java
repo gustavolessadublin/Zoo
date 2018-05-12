@@ -31,6 +31,14 @@ public abstract class EmployeeMenu extends Menu{
     }
 
     /**
+     * This method exits the program after displaying a message.
+     */
+    protected void exitProgram(){
+        System.out.println("Closing program...");
+        System.exit(0);
+    }
+    
+    /**
      * This method displays all keepers
      */
     protected void showKeepers() {
@@ -44,6 +52,7 @@ public abstract class EmployeeMenu extends Menu{
     protected void showKeeper(ZooKeeper k){
         this.keepers.display(k); // call method from controller
     }
+    
 
     /**
      * This method guides the user through the creation of a new keeper,

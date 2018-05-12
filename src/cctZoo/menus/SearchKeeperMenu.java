@@ -6,26 +6,27 @@
 package cctZoo.menus;
 
  
-import cctZoo.controllers.EmployeesController;
 import cctZoo.models.animals.abstracts.Animal;
 import cctZoo.models.employees.zooKeeper.Qualification;
-import cctZoo.models.employees.zooKeeper.ZooKeeper;
-import cctZoo.views.KeeperView;
 import cctZoo.zooData.ZooData;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author gustavolessa1
+ * This class is responsible for the Search Keepers menu.
+ * @author Gustavo Lessa
  */
 public class SearchKeeperMenu extends EmployeeMenu{
-  // private EmployeesController keepers;
 
+    /**
+     * This constructor takes a ZooData object and calls its super
+     * @param zooData - ZooData object
+     */
     public SearchKeeperMenu(ZooData zooData) {
         super(zooData);
-        this.setOptions(new String[]{"ID","Qualifications","Gender","Name","Animal",
-            "Amount of animals","Return to Keeper Menu","Return to Main Menu"});
+        this.setOptions(new String[]{"ID","Qualifications","Gender","Name",
+            "Animal", "Amount of animals","Return to Keeper Menu",
+            "Return to Main Menu","Exit Program"});
         this.setTitle("Search Keepers By:");
         this.startMenu();
     }
@@ -59,6 +60,9 @@ public class SearchKeeperMenu extends EmployeeMenu{
                 break;
             case 8:
                 new MainMenu(this.zooData);
+                break;
+            case 9:
+                this.exitProgram();
                 break;
         }
     }
