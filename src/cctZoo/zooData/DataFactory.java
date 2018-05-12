@@ -164,6 +164,7 @@ public class DataFactory {
                     default: a = new AquaticAvian(specie, gender, true);
                     break;
                 }
+                
                 break;
             case "Tiger":
             case "Zebra":
@@ -204,30 +205,40 @@ public class DataFactory {
                     case(2): a = new GenericAvian(specie, gender,
                             zooData.getAnimals().get(zooData.getAnimals().size()-1),
                             zooData.getAnimals().get(zooData.getAnimals().size()-2));
+                            ((Avian)a).setFly(true);
                     break;
                     case(1): a = new GenericAvian(specie, gender,
                             zooData.getAnimals().get(zooData.getAnimals().size()-1));
+                            ((Avian)a).setFly(true);
                     break;
                     case(0): a = new GenericAvian(specie, gender);
+                            ((Avian)a).setFly(true);
                     break;
                     default: a = new GenericAvian(specie, gender, true);
+                            ((Avian)a).setFly(true);
                     break;
                 }
+                
                 break;
             case "Bat":
                 switch(offsprings){
                     case(2): a = new AvianMammal(specie, gender,
                             zooData.getAnimals().get(zooData.getAnimals().size()-1),
                             zooData.getAnimals().get(zooData.getAnimals().size()-2));
+                            ((Avian)a).setFly(true);
                     break;
                     case(1): a = new AvianMammal(specie, gender,
                             zooData.getAnimals().get(zooData.getAnimals().size()-1));
+                            ((Avian)a).setFly(true);
                     break;
                     case(0): a = new AvianMammal(specie, gender);
+                            ((Avian)a).setFly(true);
                     break;
                     default: a = new AvianMammal(specie, gender, true);
+                            ((Avian)a).setFly(true);
                     break;
                 }
+                ((Avian)a).setFly(true);
                 break;
             case "Shark":
             case "Octopus":

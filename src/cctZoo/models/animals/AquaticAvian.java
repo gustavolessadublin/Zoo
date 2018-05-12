@@ -9,7 +9,7 @@ import cctZoo.models.animals.interfaces.Avian;
  * @author rbsrafa
  */
 public class AquaticAvian extends Animal implements Aquatic, Avian{
-    
+    private boolean canFly = false;
     /**
      * Aquatic Avian constructor.
      * @param species
@@ -72,4 +72,13 @@ public class AquaticAvian extends Animal implements Aquatic, Avian{
         super(species, name, gender, doa, DOB);
     }
 
+    @Override
+    public boolean canFly() {
+        return this.canFly;
+    }
+
+    @Override
+    public void setFly(boolean b){
+        this.canFly = b;
+    }
 }

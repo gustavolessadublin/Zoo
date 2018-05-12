@@ -5,5 +5,6 @@ package cctZoo.models.animals.interfaces;
  * @author rbsrafa
  */
 public interface Avian {
-    
+    boolean canFly();
+    void setFly(boolean b);
 }

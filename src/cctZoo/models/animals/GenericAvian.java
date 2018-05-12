@@ -8,6 +8,7 @@ import cctZoo.models.animals.interfaces.Avian;
  * @author rbsrafa
  */
 public class GenericAvian extends Animal implements Avian{
+    private boolean canFly = false;
     
     /**
      * Avian animal constructor.
@@ -69,6 +70,16 @@ public class GenericAvian extends Animal implements Avian{
      */
     public GenericAvian(String species, String name, String gender, String doa, String DOB){
         super(species, name, gender, doa, DOB);
+    }
+
+    @Override
+    public boolean canFly() {
+        return this.canFly;
+    }
+
+    @Override
+    public void setFly(boolean b) {
+        this.canFly = b;
     }
 
 }
