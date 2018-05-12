@@ -6,6 +6,7 @@
 package cctZoo.models.employees.zooKeeper;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -15,11 +16,13 @@ import java.util.List;
 public enum Qualification {
     AVIAN, REPTILE, MAMMAL, INSECT, AQUATIC;
 
+    /**
+     * This method returns a List of all qualifications.
+     * @return 
+     */
     public static List<Qualification> getQualifications(){
         List<Qualification> qualifications = new ArrayList<>();
-        for(Qualification q : Qualification.values()){
-            qualifications.add(q);
-        }
+        qualifications.addAll(Arrays.asList(Qualification.values()));
         return qualifications;
     }
 
