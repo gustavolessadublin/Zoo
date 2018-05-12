@@ -3,11 +3,15 @@ package cctZoo.menus;
 import cctZoo.zooData.ZooData;
 
 /**
- *
+ * Main Menu Template
  * @author rbsrafa
  */
 public class MainMenu extends Menu{    
     
+    /**
+     * Basic constructor that accepts zoodata as argument.
+     * @param zooData 
+     */
     public MainMenu(ZooData zooData){
         super(zooData);
         String[] options = {"Animal Menu", "Keeper Menu", "Exit Program"};

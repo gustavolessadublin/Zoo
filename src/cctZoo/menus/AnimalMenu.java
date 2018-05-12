@@ -20,14 +20,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Animal Menu class
  * @author rbsrafa
  */
 public class AnimalMenu extends Menu{
     private AnimalsController animals;
     DataFactory data;
     
-    
+    /**
+     * Basic AnimalMenu constructor
+     * @param zooData 
+     */
     public AnimalMenu(ZooData zooData){
         super(zooData);
         this.animals = new AnimalsController(this.zooData.getAnimals(), new AnimalView());
@@ -130,14 +133,6 @@ public class AnimalMenu extends Menu{
             }
         }
         return chosen;
-    }
-    
-    private int chooseOption(List options){
-        for(int x = 0; x < options.size(); x++){
-            System.out.println((x+1)+" - "+options.get(x));
-        }
-        System.out.println("Please choose an option: ");
-        return (validate.checkForInt(in, 1, options.size()))-1;
     }
     
     public Animal checkForOffSpring(boolean answer){

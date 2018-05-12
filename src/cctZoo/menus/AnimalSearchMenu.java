@@ -11,6 +11,10 @@ import cctZoo.zooData.ZooData;
 public class AnimalSearchMenu extends Menu{
     private AnimalsController animals;
 
+    /**
+     * Basic constructor that accepts a zoodata as argument.
+     * @param zooData 
+     */
     public AnimalSearchMenu(ZooData zooData) {
         super(zooData);
         this.animals = new AnimalsController(zooData.getAnimals(), new AnimalView());
@@ -21,6 +25,10 @@ public class AnimalSearchMenu extends Menu{
         this.startMenu();
     }
 
+    /**
+     * This method is responsible for linking the menu options with their
+     * respective actions.
+     */
     @Override
     public void optionSelector() {
         System.out.println("\nPlease select an option:");
@@ -45,7 +53,10 @@ public class AnimalSearchMenu extends Menu{
         }
     }
     
-    public void findAnimal(){
+    /**
+     * This method interacts with the user to search for an animal.
+     */
+    private void findAnimal(){
         System.out.println("Please type the animal id:"); 
         int id = this.validate.checkForInt(this.in);
         this.animals.display(this.animals.findAnimal(id));

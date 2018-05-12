@@ -83,14 +83,6 @@ public abstract class EmployeeMenu extends Menu{
         return chosen;
     }
     
-    protected int chooseOption(List options){
-        for(int x = 0; x < options.size(); x++){
-            System.out.println((x+1)+" - "+options.get(x));
-        }
-        System.out.println("Please choose an option: ");
-        return (validate.checkForInt(in, 1, options.size()))-1;
-    }
-    
     protected String getGender(){
         System.out.println("\nWould you like to choose the gender? (Y/N)");
         if(validate.checkForYes(in)){

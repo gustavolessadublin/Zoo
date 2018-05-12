@@ -18,10 +18,14 @@ public abstract class Animal extends Model{
     private ZooKeeper keeper;
     private Offspring offsprings;
     private Medication medication = new Medication("Antibiotic");
-    private List<Vaccine>vaccines = new ArrayList<>();
-
+    private List<Vaccine>vaccines = new ArrayList<>();    
     
-    
+    /**
+     * Animal constructor.
+     * @param species
+     * @param name
+     * @param gender 
+     */
     public Animal(String species, String name, String gender) {
         super(++lastId);
         this.species = species;
@@ -29,12 +33,24 @@ public abstract class Animal extends Model{
         this.gender = gender;
     }
     
+    /**
+     * Animal Constructor
+     * @param species
+     * @param gender 
+     */
     public Animal(String species, String gender) {
         super(++lastId);
         this.species = species;
         this.gender = gender;
     }
     
+    /**
+     * Animal constructor
+     * @param species
+     * @param gender
+     * @param offspring1
+     * @param offspring2 
+     */
     public Animal(String species, String gender, Animal offspring1, Animal offspring2) {
         super(++lastId);
         this.species = species;
@@ -42,6 +58,12 @@ public abstract class Animal extends Model{
         offsprings = new Offspring(offspring1, offspring2);
     }
     
+    /**
+     * Animal constructor
+     * @param species
+     * @param gender
+     * @param offspring1 
+     */
     public Animal(String species, String gender, Animal offspring1) {
         super(++lastId);
         this.species = species;
@@ -49,6 +71,12 @@ public abstract class Animal extends Model{
         offsprings = new Offspring(offspring1);
     }
     
+    /**
+     * Animal constructor
+     * @param species
+     * @param gender
+     * @param offspring 
+     */
     public Animal(String species, String gender, boolean offspring) {
         super(++lastId);
         this.species = species;
@@ -56,16 +84,30 @@ public abstract class Animal extends Model{
         this.offspring = offspring;
     }
 
+    /**
+     * Animal constructor
+     * @param species
+     * @param name
+     * @param gender
+     * @param doa
+     * @param DOB 
+     */
     public Animal(String species, String name, String gender, String doa, String DOB){
         super(++lastId);
-        this.species = species;
-        
+        this.species = species;       
         this.name = name;
         this.gender = gender;
         this.dateOfArrival = doa;
         this.DOB = DOB;    
     }
     
+    /**
+     * Animal constructor
+     * @param species
+     * @param name
+     * @param gender
+     * @param DOB 
+     */
     public Animal(String species, String name, String gender, String DOB){
         super(++lastId);
         this.species = species;
@@ -74,8 +116,6 @@ public abstract class Animal extends Model{
         this.DOB = DOB;          
     }
     
-
-
     /**
      * This method displays a single animal on CLI.
      * @return 
@@ -137,9 +177,7 @@ public abstract class Animal extends Model{
     public void setDOB(String DOB) { this.DOB = DOB; }
 
     public String getDateOfArrival() { return dateOfArrival; }
-    public void setDateOfArrival(String dateOfArrival) { this.dateOfArrival = dateOfArrival; }
-    
-    
+    public void setDateOfArrival(String dateOfArrival) { this.dateOfArrival = dateOfArrival; } 
 
     public boolean isOffspring() { return offspring;}
     public void setOffspring(boolean offspring) { this.offspring = offspring;}
