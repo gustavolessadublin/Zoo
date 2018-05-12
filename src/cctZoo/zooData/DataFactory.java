@@ -105,6 +105,16 @@ public class DataFactory {
         return rand.nextInt(3);
     }
         
+    /**
+     * Generate a Animal after receive the defining parameters, 
+     * after creating the animal also sets the animal name, DOB, date of arrival,
+     * keeper, vaccines and medication variables
+     * @param specie (String)
+     * @param gender(String)
+     * @param offsprings (int)
+     * @return 
+     * Returns an Object Animal
+     */
     public Animal generateAnimal(String specie, String gender, int offsprings){
         Animal a = null;
         
