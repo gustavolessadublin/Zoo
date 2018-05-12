@@ -27,7 +27,7 @@ public class MainMenu extends Menu{
         switch(option){
             case 1: new AnimalMenu(this.zooData);
                 break;
-            case 2: new EmployeeMenu(this.zooData);
+            case 2: new KeeperMenu(this.zooData);
                 break;
             case 3: System.exit(0);
                 break;

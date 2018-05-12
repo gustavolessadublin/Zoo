@@ -82,7 +82,7 @@ public class ZooKeeper extends Employee{
      * This method returns an ArrayList of the cared animals.
      * @return ArrayList of animals, representing the cared animals.
      */
-    public List getAnimals(){
+    public List<Animal> getAnimals(){
         return caredAnimals;
     }
     

@@ -12,5 +12,5 @@ import cctZoo.models.Model;
  * @author rbsrafa
  */
 public interface Displayable {
-    void display(Model m);
+    void display(Object m);
 }

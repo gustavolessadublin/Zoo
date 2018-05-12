@@ -18,51 +18,25 @@ import java.util.List;
  *
  * @author Gustavo Lessa
  */
-public class EmployeeMenu extends Menu{
-    private EmployeesController keepers;
-    private String[] options;
-    private DataValidation validate;
+public abstract class EmployeeMenu extends Menu{
+    protected EmployeesController keepers;
+
    
     public EmployeeMenu(ZooData zooData){
         super(zooData);
-        validate = new DataValidation();
         this.keepers = new EmployeesController((ArrayList<ZooKeeper>) zooData.getZooKeepers(), new KeeperView());
-        String[] options = {"List Keepers","Add Keeper","Search Keepers","Return to main menu"};
-        this.setOptions(options);
-        this.setTitle("Keeper Menu");
-        this.startMenu();
+
     }
 
-    @Override
-    public void optionSelector() {
-        System.out.println("\nPlease select an option:");
-        int option = this.in.nextInt();
-        switch(option){
-            case 1:
-                this.showKeepers();
-                break;
-            case 2:
-                this.addKeeper();
-                break;
-            case 3:
-                this.searchKeeper();
-                break;
-            case 4:
-                new MainMenu(this.zooData);
-                break;
-        }
-    }
-
-
-    private void showKeepers() {
-        this.keepers.displayAll();
+    protected void showKeepers() {
+        this.keepers.display();
     }
     
-    private void showKeeper(ZooKeeper k){
+    protected void showKeeper(ZooKeeper k){
         this.keepers.display(k);
     }
 
-    private void addKeeper() {
+    protected void addKeeper() {
         
         System.out.println("Add Keeper Wizard");
   
@@ -81,7 +55,7 @@ public class EmployeeMenu extends Menu{
         }
     }
     
-    private List getQualifications(){
+    protected List getQualifications(){
         System.out.println("Would you like to choose the qualifications?");
         List<Qualification> qualifications = null;
         if(validate.checkForYes(in)){
@@ -92,7 +66,8 @@ public class EmployeeMenu extends Menu{
         return qualifications;
     }
     
-    private List chooseQualifications(){
+    
+    protected List chooseQualifications(){
         List<Qualification> qualifications = Qualification.getQualifications();
         List<Qualification> chosen = new ArrayList<>();
         for (int x = 0; x<3; x++){
@@ -108,7 +83,7 @@ public class EmployeeMenu extends Menu{
         return chosen;
     }
     
-    private int chooseOption(List options){
+    protected int chooseOption(List options){
         for(int x = 0; x < options.size(); x++){
             System.out.println((x+1)+" - "+options.get(x));
         }
@@ -116,46 +91,63 @@ public class EmployeeMenu extends Menu{
         return (validate.checkForInt(in, 1, options.size()))-1;
     }
     
-    private String getGender(){
+    protected String getGender(){
         System.out.println("Would you like to choose the gender? (Y/N)");
         if(validate.checkForYes(in)){
-            System.out.println("1 - Male");
-            System.out.println("2 - Female");
-            System.out.println("Please choose an option: ");
-            int ans = validate.checkForInt(in, 1, 2);
-            if (ans == 1){
-                return "Male";
-            } else if (ans == 2){
-                return "Female";
-            }
+            return chooseGender();
         } else {
             return dataFactory.randomGender();
         }
-        return getGender();
     }
     
-    private String getName(String gender){
+    protected String chooseGender(){
+        System.out.println("1 - Male");
+        System.out.println("2 - Female");
+        System.out.println("Please choose an option: ");
+        int ans = validate.checkForInt(in, 1, 2);
+        if (ans == 1){
+            return "Male";
+        } else {
+            return "Female";
+        }
+    }
+    
+    protected String chooseName(){
+        String name;
+        name = (printChooseName("first name"));
+        name = name.concat(" ").concat(printChooseName("last name"));
+        return name;
+    }
+    
+    protected String getName(String gender){
         String name;
         if(userWantsToChooseName()){
-            name = (printChooseName("first name"));
-            name = name.concat(" ").concat(printChooseName("last name")); 
+            return chooseName();
         } else {
             name = dataFactory.getRandomName(gender);
         }
         return name;
     }
     
-    private boolean userWantsToChooseName(){
+    protected boolean userWantsToChooseName(){
         System.out.println("Would you like to choose the keeper's name? (Y/N)");
         return validate.checkForYes(in);
     }
     
-    private String printChooseName(String question) {
+    protected String printChooseName(String question) {
         System.out.println("Please choose the "+question+":");
         return in.nextLine();
     }
-
-    private void searchKeeper() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    protected int chooseId(){
+        System.out.println("The following IDs are currently in the database:");
+        List<Integer> ids = this.keepers.getAllIds();
+        
+        for(int x = 0; x < ids.size(); x++){
+            if(x%6 == 0){System.out.println("");}
+            System.out.print(ids.get(x) + "\t");
+        }
+        System.out.println("\nPlease choose an ID: ");
+        return (validate.checkForInt(in, ids.get(0), ids.get(ids.size()-1))-1);
     }
 }

@@ -16,7 +16,7 @@ public class KeeperView extends View{
     
     public KeeperView(){
         table = new TableList("ID", "Name", "Gender", 
-                              "Animals","Qualifications").sortBy(1).withUnicode(true);
+                              "Assigned Animal IDs ","Qualifications").sortBy(1).withUnicode(true);
     }
     
     /**
@@ -36,8 +36,12 @@ public class KeeperView extends View{
      */
     public void displayTable(){        
         this.table.print();
-        this.table.removeAll();
+        this.clearTable();
         System.out.println();
+    }
+    
+    public void clearTable(){
+        this.table.removeAll();
     }
     
 }

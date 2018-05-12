@@ -34,6 +34,19 @@ public class DataValidation {
             return -1;
         }
     }
+    
+    public String checkForString(Scanner input){
+        String ans = "";
+        while(ans.isEmpty()){
+            try{
+               ans = input.nextLine();}
+            catch(InputMismatchException e){
+               System.out.println("\n*** Input is not a integer. Please try again. ***\n");
+               return checkForString(input);
+            }           
+        }
+        return ans;
+    }
  
     /**
      * This method checks for a positive answer from user.

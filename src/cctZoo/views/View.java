@@ -18,7 +18,7 @@ public class View implements Displayable{
      * @param m (Model)
      */
     @Override
-    public void display(Model m){
+    public void display(Object m){
         System.out.println(m);
     }
 }
