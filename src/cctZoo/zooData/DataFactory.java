@@ -415,6 +415,7 @@ public class DataFactory {
        vaccines.add(new Vaccine("Flu","Avian"));
        vaccines.add(new Vaccine("Parasit Control","Aquatic"));
        vaccines.add(new Vaccine("Parasit","Reptile"));
+       vaccines.add(new Vaccine("None", "Insect"));
        return vaccines;  
       }
 }

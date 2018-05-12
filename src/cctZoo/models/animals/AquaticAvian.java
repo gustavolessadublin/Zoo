@@ -71,6 +71,10 @@ public class AquaticAvian extends Animal implements Aquatic, Avian{
     public AquaticAvian(String species, String name, String gender, String doa, String DOB){
         super(species, name, gender, doa, DOB);
     }
+    
+    public AquaticAvian(String species, String name, String gender,String DOB){
+        super(species, name, gender,DOB);
+    }
 
     @Override
     public boolean canFly() {
@@ -80,5 +84,24 @@ public class AquaticAvian extends Animal implements Aquatic, Avian{
     @Override
     public void setFly(boolean b){
         this.canFly = b;
+    }
+    
+    /**
+     * This method displays a single animal on CLI.
+     * @return 
+     */
+    @Override
+    public String toString() {
+        return "Animal\n------\n" +
+               "ID: " + this.getId() + "\n" +
+               "Species: " + this.getSpecies() + "\n" +
+               "Name: " + this.getName() + "\n" +
+               "Gender: " + this.getGender() + "\n" +
+               "Date of Arrival: " + this.getDateOfArrival() +"\n" +
+               "Date of Birth: " + this.getDOB() + "\n" +
+               "Vaccine:" +this.vaccines.toString().getBytes()+ "\n" +
+               "Medicated: " + this.isMedicated() + "\n" +
+               "Offspring: " + this.getNumberOfOffspring() + "\n" +
+               "Keeper: " + "ID - " + this.keeper.getId() + " " + this.keeper.getName() + "\n";     
     }
 }

@@ -70,5 +70,9 @@ public class GenericAquatic extends Animal implements Aquatic{
     public GenericAquatic(String species, String name, String gender, String doa, String DOB){
         super(species, name, gender, doa, DOB);
     }
+    
+    public GenericAquatic(String species, String name, String gender,String DOB){
+        super(species, name, gender,DOB);
+    }
 
 }

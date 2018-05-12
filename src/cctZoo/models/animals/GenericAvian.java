@@ -71,6 +71,10 @@ public class GenericAvian extends Animal implements Avian{
     public GenericAvian(String species, String name, String gender, String doa, String DOB){
         super(species, name, gender, doa, DOB);
     }
+    
+    public GenericAvian(String species, String name, String gender,String DOB){
+        super(species, name, gender,DOB);
+    }
 
     @Override
     public boolean canFly() {
