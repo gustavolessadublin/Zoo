@@ -61,6 +61,12 @@ public class DataFactory {
         return date;
     }
 
+    /**
+     * This method defines some of most important animal characteristics
+     * (species, gender and Offspring)before generating the Animal object.
+     * @return 
+     * A Animal object.
+     */
     private Animal defineRandomAnimal(){
         Animal a = null;
         Random rand = new Random();
@@ -89,11 +95,26 @@ public class DataFactory {
         return a;
     }
     
+    /**
+     * This method decides how many Offsprings the Animal will have.
+     * @return 
+     * The return is a int between 0-2 that represents the number of Offspring.
+     */
     public int hasOffsprings(){
         Random rand = new Random();
         return rand.nextInt(3);
     }
         
+    /**
+     * Generate a Animal after receive the defining parameters, 
+     * after creating the animal also sets the animal name, DOB, date of arrival,
+     * keeper, vaccines and medication variables.
+     * @param specie (String)
+     * @param gender(String)
+     * @param offsprings (int)
+     * @return 
+     * Returns an Object Animal
+     */
     public Animal generateAnimal(String specie, String gender, int offsprings){
         Animal a = null;
         
@@ -243,6 +264,10 @@ public class DataFactory {
         return a;
     }
     
+    /**
+     * This method interacts with an user to set the medication of an animal.
+     * @param a 
+     */
     public void setMedication(Animal a){
         Random rand = new Random();
         boolean medicated = false;
