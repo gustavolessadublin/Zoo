@@ -59,7 +59,7 @@ public class AnimalSearchMenu extends Menu{
     private void findAnimal(){
         System.out.println("Please type the animal id:"); 
         int id = this.validate.checkForInt(this.in);
-        this.animals.display(this.animals.findAnimal(id));
+        if(this.animals.findAnimal(id) != null){ this.animals.display(this.animals.findAnimal(id)); }    
     }
     
     

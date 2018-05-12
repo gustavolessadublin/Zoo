@@ -74,7 +74,7 @@ public class AnimalMenu extends Menu{
         System.out.println("Please type the ID of the animal to medicate");
         Animal a = this.animals.findAnimal(this.validate.checkForInt(in));
         a.setMedicated(true);
-        System.out.println("");
+        System.out.println("\nAnimal has been medicated.\n");
     }
     /**
      * Method to add an Animal to the table.
