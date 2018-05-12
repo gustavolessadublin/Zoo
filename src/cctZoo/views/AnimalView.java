@@ -33,12 +33,14 @@ public class AnimalView extends View{
         table.addRow(row);
     }
     
+    /**
+     * This method prints true if the animal can fly and false otherwise.
+     * @param a
+     * @return 
+     */
     public String canFly(Animal a){
-        if(a instanceof Avian){
-            return Boolean.toString(((Avian) a).canFly());
-        }else{
-            return "False";
-        }
+        if(a instanceof Avian) return Boolean.toString(((Avian) a).canFly());
+        else return "False";
     }
     
     /**
