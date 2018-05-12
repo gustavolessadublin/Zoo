@@ -81,4 +81,23 @@ public class AquaticAvian extends Animal implements Aquatic, Avian{
     public void setFly(boolean b){
         this.canFly = b;
     }
+    
+    /**
+     * This method displays a single animal on CLI.
+     * @return 
+     */
+    @Override
+    public String toString() {
+        return "Animal\n------\n" +
+               "ID: " + this.getId() + "\n" +
+               "Species: " + this.getSpecies() + "\n" +
+               "Name: " + this.getName() + "\n" +
+               "Gender: " + this.getGender() + "\n" +
+               "Date of Arrival: " + this.getDateOfArrival() +"\n" +
+               "Date of Birth: " + this.getDOB() + "\n" +
+               "Vaccine:" +this.vaccines.toString().getBytes()+ "\n" +
+               "Medicated: " + this.isMedicated() + "\n" +
+               "Offspring: " + this.getNumberOfOffspring() + "\n" +
+               "Keeper: " + "ID - " + this.keeper.getId() + " " + this.keeper.getName() + "\n";     
+    }
 }

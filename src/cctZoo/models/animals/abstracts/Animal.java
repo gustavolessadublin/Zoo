@@ -15,10 +15,10 @@ public abstract class Animal extends Model{
     private static int lastId;
     private String species,  name, gender, DOB, dateOfArrival;  
     private boolean offspring = false;
-    private ZooKeeper keeper;
+    protected ZooKeeper keeper;
     private Offspring offsprings;
     private Medication medication = new Medication("Antibiotic");
-    private List<Vaccine>vaccines = new ArrayList<>();    
+    protected List<Vaccine>vaccines = new ArrayList<>();    
     
     /**
      * Animal constructor.
