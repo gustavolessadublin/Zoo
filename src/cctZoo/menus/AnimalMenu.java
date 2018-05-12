@@ -99,18 +99,18 @@ public class AnimalMenu extends Menu{
         List<Qualification> selectedTypes = this.chooseAnimalType();
         System.out.println("");
         a = createAnimal(specie, name, gender, date, dob, selectedTypes);
-//        a = createMixedAnimal(specie, name, gender, dob, dob, selectedTypes);
         data.assignKeeper(a);
         data.generateRandomlyVaccines(a);
         data.setMedication(a);
         this.animals.add(a);
-
+  
+        System.out.println("");
         System.out.println("Does this animal have offspring?");
         System.out.println("");
-        boolean answer = false;
+        boolean answer = true;
         if(!answer == this.validate.checkForYes(in)){
-            addOffSpring(a);
-            checkForOffSpring(true);
+            addOffSpring(a); 
+            System.out.println(a);
         }
         
     }
@@ -143,18 +143,21 @@ public class AnimalMenu extends Menu{
         //check if female will have offsprings
         //when offsprings > 0, creates offsprings(max 2) 
         //and then creates the mother
+        
+          
         if(gender.equals("Female")){
             offsprings = data.hasOffsprings();
             for(int i=0; i<offsprings; i++){
-                a = data.generateAnimal(specie, gender, -1);
+                a = this.data.generateAnimal(specie, gender, -1);
                 zooData.getAnimals().add(a);
             }
-            return data.generateAnimal(specie, gender, offsprings);
+            this.data.generateAnimal(specie, gender, offsprings);
         }
         return a;
     }
     
     public void addOffSpring(Animal a){
+        List<Qualification> animalTypes = Qualification.getQualifications();
         
         System.out.println("Type here animal informataion: ");
         System.out.println("-----------------------------"); 
@@ -164,13 +167,15 @@ public class AnimalMenu extends Menu{
         String gender = this.in.next();
         System.out.println("Enter date of birth");
         String dob = this.in.next();
+            a = this.createAnimal(name, gender, dob, a);
+            this.data.assignKeeper(a);
         
-        a = this.createAnimal(name, gender, dob, a);
-        this.data.assignKeeper(a);
+            
+        
     }
-    
     public Animal createAnimal(String specie, String name, String gender, String doa, String dob, List<Qualification> selectedTypes ){
         Animal a = null;
+        
         if(selectedTypes.size() == 1){
             String type = selectedTypes.get(0).toString();
             if(type.equalsIgnoreCase("mammal")){
@@ -184,32 +189,43 @@ public class AnimalMenu extends Menu{
             }else if(type.equalsIgnoreCase("insect")){
               a = new GenericInsect(specie, name, gender, doa, dob);
             }
+        }if(selectedTypes.size() == 2){
+            String type = selectedTypes.get(0).toString();
+            if(type.equalsIgnoreCase("Aquatic") || type.equalsIgnoreCase("Avian")){
+              a = new AquaticAvian(specie, name, gender, doa, dob);
+            }else if(type.equalsIgnoreCase("Aquatic") || type.equalsIgnoreCase("Mammal")){
+              a = new AquaticMammal(specie, name, gender, doa, dob);
+            }else if(type.equalsIgnoreCase("Aquatic") || type.equalsIgnoreCase("Reptile")){
+              a = new AquaticReptile(specie, name, gender, doa, dob);
+            }else if(type.equalsIgnoreCase("Avian") || type.equalsIgnoreCase("Mammal")){
+              a = new AvianMammal(specie, name, gender, doa, dob);
+            } 
         }  
-        return a;
-        
+        return a;    
     }
-//    public Animal createMixedAnimal(String specie, String name, String gender, String doa, String dob, List<Qualification> selectedTypes ){
-//        Animal a = null;
-//        if(selectedTypes.size() == 2){
-//            String type = selectedTypes.get(0).toString();
-//            if(type.equalsIgnoreCase("AquaticAvian")){
-//              a = new AquaticAvian(specie, name, gender, doa, dob);
-//            }else if(type.equalsIgnoreCase("AquaticMammal")){
-//              a = new AquaticMammal(specie, name, gender, doa, dob);
-//            }else if(type.equalsIgnoreCase("AquaticReptile")){
-//              a = new AquaticReptile(specie, name, gender, doa, dob);
-//            }else if(type.equalsIgnoreCase("AvianMammal")){
-//              a = new AvianMammal(specie, name, gender, doa, dob);
-//            }
-//        }
-//        return a;   
-//    }
-    
+ 
     public Animal createAnimal(String name, String gender,String dob, Animal a){
-            if(a.equals("mammal")){
+            List<Qualification> types = new ArrayList<>();
+            
+            if(types.equals("Mammal")){
               a = new GenericMammal(a.getSpecies(), name, gender,dob);
-            }else if(a.equals("reptile")){
-              a = new GenericReptile(a.getSpecies(), name, gender,dob);
+              if(a.equals("Reptile")){
+                a = new GenericReptile(a.getSpecies(), name, gender,dob);
+              }else if(a.equals("Aquatic")){
+                a = new GenericAquatic(a.getSpecies(), name, gender,dob);
+              }else if(a.equals("Avian")){
+                a = new GenericAvian(a.getSpecies(), name, gender,dob);
+              }else if(a.equals("Insect")){
+                a = new GenericInsect(a.getSpecies(), name, gender,dob);
+              }else if(types.equals("Avian") || types.equals("Mammal")){
+                  a = new AvianMammal(a.getSpecies(), name, gender, dob);
+              }else if(types.equals("Aquatic") || types.equals("Avian")){
+                a = new AquaticAvian(a.getSpecies(), name, gender, dob);
+              }else if(types.equals("Aquatic") || types.equals("Reptile")){
+                a = new AquaticReptile(a.getSpecies(), name, gender, dob);
+              }else if(types.equals("Aquatic") || types.equals("Mammal")){
+                a = new AquaticMammal(a.getSpecies(), name, gender, dob);
+              }
             }
         return a;
     }   

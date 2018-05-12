@@ -39,5 +39,9 @@ public class GenericInsect extends Animal implements Insect{
     public GenericInsect(String species, String name, String gender, String doa, String DOB){
         super(species, name, gender, doa, DOB);
     }
+    
+    public GenericInsect(String species, String name, String gender,String DOB){
+        super(species, name, gender,DOB);
+    }
 
 }

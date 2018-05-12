@@ -71,6 +71,10 @@ public class AquaticAvian extends Animal implements Aquatic, Avian{
     public AquaticAvian(String species, String name, String gender, String doa, String DOB){
         super(species, name, gender, doa, DOB);
     }
+    
+    public AquaticAvian(String species, String name, String gender,String DOB){
+        super(species, name, gender,DOB);
+    }
 
     @Override
     public boolean canFly() {
