@@ -159,7 +159,7 @@ public class AnimalMenu extends Menu{
     
     public void addOffSpring(Animal a){
         //List<Qualification> animalTypes = Qualification.getQualifications();
-        
+        System.out.println(a.getAnimalTypes());
         System.out.println("Type here animal information: ");
         System.out.println("-----------------------------"); 
         System.out.println("Enter Animal Name: ");
@@ -180,9 +180,14 @@ public class AnimalMenu extends Menu{
     }
     public Animal createAnimal(String specie, String name, String gender, String doa, String dob, List<Qualification> selectedTypes ){
         Animal a = null;
+        List<String> types = new ArrayList<>();
+        for(Enum e: selectedTypes){
+            types.add(e.toString());
+        }
         
-        if(selectedTypes.size() == 1){
-            String type = selectedTypes.get(0).toString();
+        System.out.println("as;ldkfja;ldskfj" + types);
+        if(types.size() == 1){
+            String type = types.get(0);
             if(type.equalsIgnoreCase("mammal")){
               a = new GenericMammal(specie, name, gender, doa, dob);
             }else if(type.equalsIgnoreCase("reptile")){
@@ -212,7 +217,7 @@ public class AnimalMenu extends Menu{
     public Animal createOffspring(String name, String gender,String dob, Animal a){
         List<String> types = new ArrayList<>();
         types = this.animals.getAnimalTypes(a);
-        System.out.println(types);
+        System.out.println("Types" + types);
         Animal offspring = this.data.generateAnimal(a.getSpecies(), gender, 0);
 
         //if(types.size() == 1){
