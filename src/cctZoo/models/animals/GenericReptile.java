@@ -33,10 +33,12 @@ public class GenericReptile extends Animal implements Reptile{
     public GenericReptile(String species, String gender, boolean isOffspring) {
         super(species, gender, isOffspring);
     }
-
-    @Override
-    public String toString() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
+    public GenericReptile(String species, String name, String gender, String doa, String DOB){
+        super(species, name, gender, doa, DOB);
+    }
+    public GenericReptile(String species, String name, String gender,String DOB){
+        super(species, name, gender,DOB);
+    }
+ 
 }

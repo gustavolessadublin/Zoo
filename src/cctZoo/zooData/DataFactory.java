@@ -17,16 +17,14 @@ import cctZoo.models.animals.interfaces.Mammal;
 import cctZoo.models.animals.interfaces.Reptile;
 import cctZoo.models.employees.zooKeeper.Qualification;
 import cctZoo.models.employees.zooKeeper.ZooKeeper;
+import cctZoo.models.vaccine.Vaccine;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apache.commons.collections4.CollectionUtils;
 
 /**
@@ -50,7 +48,7 @@ public class DataFactory {
             zooData.getAnimals().add(this.defineRandomAnimal());
         }
     }
-    
+      
     public Date getRandomDate(){
         Random rand = new Random();
         //DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -62,11 +60,7 @@ public class DataFactory {
         //String formatedDate = dateFormat.format(date);
         return date;
     }
-    
-//    public String getRandomDateOfArrival(){
-//        
-//    }
-    
+
     private Animal defineRandomAnimal(){
         Animal a = null;
         Random rand = new Random();
@@ -95,13 +89,14 @@ public class DataFactory {
         return a;
     }
     
-    private int hasOffsprings(){
+    public int hasOffsprings(){
         Random rand = new Random();
         return rand.nextInt(3);
     }
         
-    private Animal generateAnimal(String specie, String gender, int offsprings){
+    public Animal generateAnimal(String specie, String gender, int offsprings){
         Animal a = null;
+        
         switch (specie) {
             case "Dolphin":
             case "Whale":
@@ -240,8 +235,19 @@ public class DataFactory {
               
         a.setName(rw.getRandomName(a.getGender())); 
         this.assingDatesToAnimal(a);
-        assignKeeper(a);
+        this.assignKeeper(a);
+        this.generateRandomlyVaccines(a);
+        this.setMedication(a);
+        this.assingDatesToAnimal(a);
+        
         return a;
+    }
+    
+    public void setMedication(Animal a){
+        Random rand = new Random();
+        boolean medicated = false;
+        if(rand.nextInt() % 2 == 0) medicated = true;
+        a.setMedicated(medicated);
     }
     
     /**
@@ -259,7 +265,7 @@ public class DataFactory {
     }
     
     
-    private void assignKeeper(Animal a){    
+    public void assignKeeper(Animal a){    
         ArrayList<Qualification> animalTypes = new ArrayList<>();
         if (a instanceof Mammal){ animalTypes.add(Qualification.MAMMAL);}
         if (a instanceof Reptile){ animalTypes.add(Qualification.REPTILE);}
@@ -283,7 +289,7 @@ public class DataFactory {
         }
     }
     
-    public List<ZooKeeper> getRandomKeepers(int amount){
+    public List<ZooKeeper> getRandomKeepers (int amount){
         List<ZooKeeper> keepers = new ArrayList<>();
         for(int i = 0; i < amount; i++){
             keepers.add(this.generateRandomKeeper());
@@ -295,23 +301,40 @@ public class DataFactory {
         return rw.getRandomName(gender).concat(" ").concat(rw.getRandomSurname());
     }
     
+    /**
+     * 
+     * @return 
+     */
     public ZooKeeper generateRandomKeeper(){
         String gender = randomGender();
         String name = getRandomName(gender);        
         return new ZooKeeper(gender, name, randomQualifications());
     }
     
+    /**
+     * This method randomly generates ZooKeeper in the Zoo setting the Keepers qualifications.
+     * @param qualifications
+     * @return new ZooKeeper qualifications
+     */
     public ZooKeeper generateRandomKeeper(ArrayList<Qualification> qualifications){
         String gender = randomGender();
         String name = getRandomName(gender);
         return new ZooKeeper(gender, name, qualifications);
     }
     
+    /**
+     * Method to Randomly generate Gender
+     * @return Random Gender
+     */
     public String randomGender(){
         String[] gender = {"Male", "Female"};
         return gender[new Random().nextInt(2)];
     }
     
+    /**
+     * Method that gets Qualifications Randomly.
+     * @return  Qualifications
+     */
     public List<Qualification> randomQualifications(){
         List<Qualification> options = Qualification.getQualifications();
         ArrayList<Qualification> selectedQualifications = new ArrayList<>();
@@ -320,4 +343,42 @@ public class DataFactory {
         }
         return selectedQualifications;
     }
+    
+    /**
+     * Method to Randomly generate Vaccines to animals.
+     * @param a 
+     */
+    public void generateRandomlyVaccines(Animal a){
+        List<Vaccine> vaccines = zooData.getVaccines();
+        List<Vaccine> options = new ArrayList<>();
+        List<String> types = a.getAnimalTypes();
+        
+        
+        for(Vaccine v : vaccines){
+            
+            for(String s : types){
+               
+                if (s.equalsIgnoreCase(v.getType())){
+                    options.add(v);
+                }               
+            }
+        }
+            Random rand = new Random();
+            if(options.size()>0){
+             a.addVaccines(options.get(rand.nextInt(options.size())));   
+            } 
+    } 
+    /**
+     * Method to Generate a List of Vaccines to Animals, note that insects are not included
+     * @return 
+     */
+    public  List<Vaccine> generateVaccines() {
+       List<Vaccine> vaccines = new ArrayList<>();
+       
+       vaccines.add(new Vaccine("Pest Control","Mammal"));
+       vaccines.add(new Vaccine("Flu","Avian"));
+       vaccines.add(new Vaccine("Parasit Control","Aquatic"));
+       vaccines.add(new Vaccine("Parasit","Reptile"));
+       return vaccines;  
+      }
 }

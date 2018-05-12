@@ -34,11 +34,9 @@ public class AquaticAvian extends Animal implements Aquatic, Avian{
     public AquaticAvian(String species, String gender, boolean isOffspring) {
         super(species, gender, isOffspring);
     }
-
-    @Override
-    public String toString() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    public AquaticAvian(String species, String name, String gender, String doa, String DOB){
+        super(species, name, gender, doa, DOB);
     }
-    
-    
+
 }

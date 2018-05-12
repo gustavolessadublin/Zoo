@@ -15,8 +15,8 @@ public class AnimalView extends View{
     private TableList table;
     
     public AnimalView(){
-        table = new TableList("ID", "Species", "Name", "Gender", 
-                              "DOB", "Date of Arrival", "Offspring", 
+        table = new TableList("ID", "Species", "Type", "Name", "Gender", 
+                              "DOB", "Date of Arrival","Vaccines", "Medication","Offspring", 
                               "ZooKeeper").sortBy(1).withUnicode(true);
     }
     
@@ -26,12 +26,17 @@ public class AnimalView extends View{
      */
     public void addAnimalToTable(Animal a){
         String[] row = {
-            Integer.toString(a.getId()), a.getSpecies(), 
-            a.getName(), a.getGender(), a.getDOB(), a.getDateOfArrival(),
-            Integer.toString(a.getNumberOfOffspring()), 
+            Integer.toString(a.getId()), a.getSpecies(), a.getAnimalTypes().toString(),
+            a.getName(), a.getGender(), a.getDOB(), a.getDateOfArrival(), a.getVaccines().toString(),
+            this.medicated(a), Integer.toString(a.getNumberOfOffspring()), 
             a.getKeeper().getName()
         };
         table.addRow(row);
+    }
+    
+    public String medicated(Animal a){
+        if(a.isMedicated()) return a.getMedicationName();
+        else return "none";
     }
     
     /**

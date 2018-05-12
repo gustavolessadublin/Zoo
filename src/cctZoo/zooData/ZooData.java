@@ -6,7 +6,9 @@
 package cctZoo.zooData;
 
 import cctZoo.models.animals.abstracts.Animal;
+
 import cctZoo.models.employees.zooKeeper.ZooKeeper;
+import cctZoo.models.vaccine.Vaccine;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,12 +19,16 @@ import java.util.List;
 public class ZooData {
     private List<Animal> animals;
     private List<ZooKeeper> zooKeepers;
+    private List<Vaccine> vaccines;
+
+    
     private DataFactory dataFactory;
     
     public ZooData(){
         this.animals = new ArrayList<>();
         this.zooKeepers = new ArrayList<>();
         this.dataFactory = new DataFactory(this);
+        this.vaccines = dataFactory.generateVaccines();
         this.dataFactory.getRandomAnimals(100);
         this.zooKeepers.addAll(this.dataFactory.getRandomKeepers(40 - zooKeepers.size()));
         //TODO check if we need a Setup class, to keep this ZooData class clean
@@ -33,4 +39,8 @@ public class ZooData {
 
     public List<ZooKeeper> getZooKeepers() { return zooKeepers; }
     public void setZooKeepers(List<ZooKeeper> zooKeepers) { this.zooKeepers = zooKeepers; }
+    
+    public List<Vaccine> getVaccines() {return vaccines;}
+    public void setVaccines(List<Vaccine> vaccine) {this.vaccines = vaccine;}
+
 }

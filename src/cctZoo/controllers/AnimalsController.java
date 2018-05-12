@@ -6,6 +6,8 @@ import cctZoo.models.animals.interfaces.Avian;
 import cctZoo.models.animals.interfaces.Insect;
 import cctZoo.models.animals.interfaces.Mammal;
 import cctZoo.models.animals.interfaces.Reptile;
+import cctZoo.models.employees.zooKeeper.ZooKeeper;
+import cctZoo.models.vaccine.Vaccine;
 import cctZoo.views.AnimalView;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,8 @@ import java.util.List;
 public class AnimalsController {
     private List<Animal> animals;
     private AnimalView view;
+    AnimalView animal;
+    ZooKeeper zooKeeper;
     
     public AnimalsController(List<Animal> animals, AnimalView view){
         this.animals = animals;
@@ -29,15 +33,48 @@ public class AnimalsController {
     public void display(){  
         for(Animal a: animals) this.view.addAnimalToTable(a);
         this.view.display();
+  
     }
+    
+    public void display(Animal a){
+        System.out.println(a);
+    }
+    
+    public Animal findAnimal(int id){
+        Animal animal = null;
+        for(Animal a: this.animals) if(a.getId() == id) animal = a;
+        return animal;
+    }
+    
+    /**
+     * This method returns a list of the animal's types.
+     * @return 
+     */
+    public List<String> getAnimalTypes(){
+        return this.animals.get(0).getAnimalTypes();
+    }
+    
+    public List<String> getAnimalTypes(Animal a){
+        List<String> types = new ArrayList<>();
+        if (a instanceof Mammal){ types.add("Mammal");}
+        if (a instanceof Reptile){ types.add("Mammal");}
+        if (a instanceof Avian){ types.add("Mammal");}
+        if (a instanceof Aquatic){ types.add("Mammal");}
+        if (a instanceof Insect){ types.add("Mammal");}
+        return types;
+    }
+    
+
     
     /**
      * This method adds a new animal to the list of animals.
      * @param a 
      */
     public void add(Animal a){
-        this.animals.add(a);
-    }
+       Animal an = null;
+       ZooKeeper zooKeeper = null;
+        this.animals.add(a);   
+    }  
     
     /**
      * This method returns a list of mammals from the animals list.

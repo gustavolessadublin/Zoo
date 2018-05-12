@@ -23,7 +23,7 @@ public class MainMenu extends Menu{
     @Override
     public void optionSelector() {
         System.out.println("\nPlease select an option:");
-        int option = this.in.nextInt();
+        int option = this.validate.checkForInt(in);
         switch(option){
             case 1: new AnimalMenu(this.zooData);
                 break;
