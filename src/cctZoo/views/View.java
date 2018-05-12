@@ -1,6 +1,5 @@
 package cctZoo.views;
 
-import cctZoo.models.Model;
 import cctZoo.views.interfaces.Displayable;
 
 /**
