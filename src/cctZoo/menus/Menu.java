@@ -26,7 +26,8 @@ public abstract class Menu {
     protected DataFactory dataFactory;
 
     /**
-     * Default Menu constructor.
+     * Menu constructor that takes a ZooData as argument.
+     * @param zooData (ZooData)
      */
     public Menu(ZooData zooData){
         this.zooData = zooData;
