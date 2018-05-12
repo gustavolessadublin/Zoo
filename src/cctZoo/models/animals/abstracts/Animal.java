@@ -1,5 +1,6 @@
 package cctZoo.models.animals.abstracts;
 
+import cctZoo.medication.Medication;
 import cctZoo.models.Model;
 import cctZoo.models.employees.zooKeeper.ZooKeeper;
 import cctZoo.models.vaccine.Vaccine;
@@ -190,35 +191,6 @@ public abstract class Animal extends Model{
             return this.offspringList.size();
         }
  
-    }
-    
-    
-    /**
-     *
-     * @author rbsrafa
-    */
-    private class Medication{
-        private String name;
-        private boolean medicated;
-
-        public Medication(String name) {
-            this.name = name;
-            this.medicated = false;
-        }
-
-        @Override
-        public String toString() {
-            return "Medication\n" +
-                   "Name: " + this.name + "\n" +
-                   "Medicated: " + this.medicated;
-        }
-
-        public String getName() { return name; }
-        public void setName(String name) { this.name = name; }
-
-        public boolean isMedicated() { return medicated; }
-        public void setMedicated(boolean medicated) { this.medicated = medicated; }
-
     }
  
 }

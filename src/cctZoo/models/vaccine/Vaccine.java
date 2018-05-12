@@ -5,9 +5,6 @@
  */
 package cctZoo.models.vaccine;
 
-import cctZoo.models.animals.abstracts.Animal;
-import java.util.List;
-
 /**
  *
  * @author fernandotenorio
@@ -46,8 +43,7 @@ public class Vaccine{
 
     @Override
     public String toString() {
-        return "Vaccine:"+this.nameVaccine+"";
-                 
+        return this.nameVaccine;            
     }
 
     

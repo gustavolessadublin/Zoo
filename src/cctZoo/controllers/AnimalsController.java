@@ -7,7 +7,6 @@ import cctZoo.models.animals.interfaces.Insect;
 import cctZoo.models.animals.interfaces.Mammal;
 import cctZoo.models.animals.interfaces.Reptile;
 import cctZoo.models.employees.zooKeeper.ZooKeeper;
-import cctZoo.models.vaccine.Vaccine;
 import cctZoo.views.AnimalView;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +53,10 @@ public class AnimalsController {
         return this.animals.get(0).getAnimalTypes();
     }
     
+    
+    
+    // did not understood this method //
+    // TODO
     public List<String> getAnimalTypes(Animal a){
         List<String> types = new ArrayList<>();
         if (a instanceof Mammal){ types.add("Mammal");}
