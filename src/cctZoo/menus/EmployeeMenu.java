@@ -104,7 +104,7 @@ public abstract class EmployeeMenu extends Menu{
         
         // create a List of qualifications to be filled with the chosen ones
         List<Qualification> chosen = new ArrayList<>(); 
-        for (int x = 0; x<ZooKeeper.getLimit(); x++){ // for 'limit' times allow user choose
+        for (int x = 0; x<ZooKeeper.getLimitOfQualifications(); x++){ // for 'limit' times allow user choose
                                        // a new qualification
             System.out.println("Select a qualification:");
             

@@ -75,6 +75,7 @@ public abstract class Menu {
      * This method displays the menu options on CLI.
      */
     private final void displayMenu(){
+        System.out.println("");
         System.out.println(this.title);
         for(int i = 0; i < this.title.length(); i++) System.out.print("-");
         System.out.println("");

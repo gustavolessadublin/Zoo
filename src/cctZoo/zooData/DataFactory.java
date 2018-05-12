@@ -28,7 +28,7 @@ import java.util.Random;
 import org.apache.commons.collections4.CollectionUtils;
 
 /**
- *
+ * This class is responsible for generating data.
  * @author rbsrafa
  * @author Gustavo Lessa
  */
@@ -300,31 +300,49 @@ public class DataFactory {
         a.setDateOfArrival(this.dateFormat.format(dateOfArrival));
     }
     
-    
-    public void assignKeeper(Animal a){    
+    /**
+     * This method assigns the first available and compatible keeper to an
+     * Animal a.
+     * @param a (Animal) animal to be assigned.
+     */
+    public void assignKeeper(Animal a){  
+        // create an ArrayList of types.
         ArrayList<Qualification> animalTypes = new ArrayList<>();
+        
+        // add the animal type by checking if the class is an instance of
+        // the interfaces
         if (a instanceof Mammal){ animalTypes.add(Qualification.MAMMAL);}
         if (a instanceof Reptile){ animalTypes.add(Qualification.REPTILE);}
         if (a instanceof Avian){ animalTypes.add(Qualification.AVIAN);}
         if (a instanceof Aquatic){ animalTypes.add(Qualification.AQUATIC);}
         if (a instanceof Insect){ animalTypes.add(Qualification.INSECT);}
 
-        boolean done = false;
-        while(!done){
-            for(ZooKeeper z : zooData.getZooKeepers()){
-                if (CollectionUtils.containsAll(z.getQualifications(),animalTypes) && (z.getAnimals()==null || z.getAnimals().size()<10)){
-                    z.addAnimal(a);
-                    ((Animal)a).setKeeper(z);
-                    done = true;
+        boolean assigned = false; // true if it was assigned, false if wasn't
+        while(!assigned){
+            for(ZooKeeper z : zooData.getZooKeepers()){ // for each keeper
+                // if keeper is compatible AND has less than the limit of animals
+                if (CollectionUtils.containsAll(z.getQualifications(),animalTypes)
+                        && (z.getAnimals()==null || z.getAnimals().size()<10)){
+                    z.addAnimal(a); //add animal to keeper
+                    a.setKeeper(z); // add keeper to animal
+                    assigned = true; // set assigned true
                     break;
                 } 
             }
+            
+            // if none was found, generate randomly
             if(a.getKeeper()==null){
                 zooData.getZooKeepers().add(this.generateRandomKeeper(animalTypes));
             }
         }
     }
     
+    /**
+     * This method generates any number of random keepers and returns them as
+     * a List.
+     * @param amount (int) - number of keepers to be generated.
+     * @return List of keepers generated.
+     */
     public List<ZooKeeper> getRandomKeepers (int amount){
         List<ZooKeeper> keepers = new ArrayList<>();
         for(int i = 0; i < amount; i++){
@@ -333,13 +351,19 @@ public class DataFactory {
         return keepers;
     }
     
+    /**
+     * This method retrieves a random name calling methods that retrieve the
+     * information from txt files.
+     * @param gender (String)
+     * @return String - generated name.
+     */
     public String getRandomName(String gender){
         return rw.getRandomName(gender).concat(" ").concat(rw.getRandomSurname());
     }
     
     /**
-     * 
-     * @return 
+     * This method generates a random keeper (including random qualifications). 
+     * @return ZooKeeper
      */
     public ZooKeeper generateRandomKeeper(){
         String gender = randomGender();
@@ -348,14 +372,14 @@ public class DataFactory {
     }
     
     /**
-     * This method randomly generates ZooKeeper in the Zoo setting the Keepers qualifications.
+     * This method generates a random keeper, with specific qualifications.
      * @param qualifications
-     * @return new ZooKeeper qualifications
+     * @return ZooKeeper
      */
     public ZooKeeper generateRandomKeeper(ArrayList<Qualification> qualifications){
-        String gender = randomGender();
-        String name = getRandomName(gender);
-        return new ZooKeeper(gender, name, qualifications);
+        String gender = randomGender(); // get random gender
+        String name = getRandomName(gender);// get random name
+        return new ZooKeeper(gender, name, qualifications); // create object
     }
     
     /**
