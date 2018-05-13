@@ -62,9 +62,10 @@ public class AnimalMenu extends Menu{
      */
     public void medicateAnimal(){
         System.out.println("Please type the ID of the animal to medicate");
-        Animal a = this.animals.findAnimal(this.validate.checkForInt(in));
+        System.out.println("Available ids from 1 to " + this.animals.getAnimals().size());
+        Animal a = this.animals.findAnimal(this.validate.checkForInt(in, 1, this.animals.getAnimals().size()));
         a.setMedicated(true);
-        System.out.println("\nAnimal has been medicated.\n");
+        System.out.println("\nAnimal has been medicated.");
     }
     
     /**
