@@ -16,7 +16,7 @@ public abstract class Animal extends Model{
     private String species,  name, gender, DOB, dateOfArrival;  
     private boolean offspring = false;
     protected ZooKeeper keeper;
-    private Offspring offsprings;
+    private Offspring offsprings = new Offspring();
     private Medication medication = new Medication("Antibiotic");
     protected List<Vaccine>vaccines = new ArrayList<>();    
     
@@ -307,6 +307,10 @@ public abstract class Animal extends Model{
      */
     private class Offspring{  
         private List<Animal> offspringList;
+        
+        public Offspring(){
+            this.offspringList = new ArrayList<>();
+        }
         
         /**
          * Offspring constructor that accepts two animal offsprings.
