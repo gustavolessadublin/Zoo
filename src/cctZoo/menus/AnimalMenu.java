@@ -153,7 +153,7 @@ public class AnimalMenu extends Menu{
      * @return 
      */
     private String chooseDateOfArrival(){
-        System.out.println("Please type the date of arrival");
+        System.out.println("Please type the date of arrival: (format: dd/mm/yyyy");
         return in.next();
     }
     
@@ -162,7 +162,7 @@ public class AnimalMenu extends Menu{
      * @return 
      */
     private String chooseDOB(){
-        System.out.println("Please type the animal date of birth");
+        System.out.println("Please type the animal date of birth: (format: dd/mm/yyyy)");
         return this.in.next();
     }
     
