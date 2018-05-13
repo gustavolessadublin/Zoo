@@ -58,6 +58,7 @@ public class AnimalSearchMenu extends Menu{
      */
     private void findAnimal(){
         System.out.println("Please type the animal id:"); 
+        System.out.println("Available ids from 1 to " + this.animals.getAnimals().size());
         int id = this.validate.checkForInt(this.in);
         if(this.animals.findAnimal(id) != null){ this.animals.display(this.animals.findAnimal(id)); }    
     }

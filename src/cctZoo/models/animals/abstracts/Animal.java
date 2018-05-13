@@ -131,7 +131,7 @@ public abstract class Animal extends Model{
                "Gender: " + this.getGender() + "\n" +
                "Date of Arrival: " + this.getDateOfArrival() +"\n" +
                "Date of Birth: " + this.getDOB() + "\n" +
-               "Vaccine:" +this.vaccines.toString().getBytes()+ "\n" +
+               "Vaccine:" +this.vaccines.toString() + "\n" +
                "Medicated: " + this.isMedicated() + "\n" +
                "Offspring: " + this.getNumberOfOffspring() + "\n" +
                "Keeper: " + "ID - " + this.keeper.getId() + " " + this.keeper.getName() + "\n";     

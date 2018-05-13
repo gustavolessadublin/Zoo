@@ -228,5 +228,13 @@ public class AnimalsController {
         for(Animal a: aquatics) this.view.addAnimalToTable(a);
         this.view.display();
     }
+
+    /**
+     * This method return a list of animals.
+     * @return 
+     */
+    public List<Animal> getAnimals() {
+        return animals;
+    }
     
 }
