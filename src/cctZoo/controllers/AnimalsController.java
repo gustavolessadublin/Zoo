@@ -1,5 +1,14 @@
 package cctZoo.controllers;
 
+import cctZoo.models.animals.AquaticAvian;
+import cctZoo.models.animals.AquaticMammal;
+import cctZoo.models.animals.AquaticReptile;
+import cctZoo.models.animals.AvianMammal;
+import cctZoo.models.animals.GenericAquatic;
+import cctZoo.models.animals.GenericAvian;
+import cctZoo.models.animals.GenericInsect;
+import cctZoo.models.animals.GenericMammal;
+import cctZoo.models.animals.GenericReptile;
 import cctZoo.models.animals.abstracts.Animal;
 import cctZoo.models.animals.interfaces.Aquatic;
 import cctZoo.models.animals.interfaces.Avian;
@@ -8,12 +17,9 @@ import cctZoo.models.animals.interfaces.Mammal;
 import cctZoo.models.animals.interfaces.Reptile;
 import cctZoo.models.employees.zooKeeper.ZooKeeper;
 import cctZoo.views.AnimalView;
+import cctZoo.zooData.DataFactory;
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * fersd
- */
 
 /**
  * Controller class for Animal.
@@ -22,8 +28,6 @@ import java.util.List;
 public class AnimalsController {
     private List<Animal> animals;
     private AnimalView view;
-    AnimalView animal;
-    ZooKeeper zooKeeper;
     
     /**
      * Basic constructor accepts a list of animal and animal view.
@@ -33,6 +37,43 @@ public class AnimalsController {
     public AnimalsController(List<Animal> animals, AnimalView view){
         this.animals = animals;
         this.view = view;
+    }
+    
+    public Animal createAnimalByType(String species, String name, String gender, String DOB, String dateOfArrival, List<String> types){
+        Animal a = null;
+        if(types.size() == 1){
+            if(types.get(0).equalsIgnoreCase("avian")){
+                a = new GenericAvian(species, name, gender, DOB, dateOfArrival);
+            }else if(types.get(0).equalsIgnoreCase("reptile")){
+                a = new GenericReptile(species, name, gender, DOB, dateOfArrival);
+            }else if(types.get(0).equalsIgnoreCase("mammal")){
+                a = new GenericMammal(species, name, gender, DOB, dateOfArrival);
+            }else if(types.get(0).equalsIgnoreCase("insect")){
+                a = new GenericInsect(species, name, gender, DOB, dateOfArrival);
+            }else if(types.get(0).equalsIgnoreCase("aquatic")){
+                a = new GenericAquatic(species, name, gender, DOB, dateOfArrival);
+            }
+        }else if(types.size() == 2){
+            String type1 = types.get(0);
+            String type2 = types.get(1);
+            
+            if((type1.equalsIgnoreCase("Aquatic") && type2.equalsIgnoreCase("mammal")) ||
+               (type1.equalsIgnoreCase("mammal") && type2.equalsIgnoreCase("aquatic"))    ){
+                a = new AquaticMammal(species, name, gender, DOB, dateOfArrival);
+            
+            }else if((type1.equalsIgnoreCase("Aquatic") && type2.equalsIgnoreCase("avian")) ||
+               (type1.equalsIgnoreCase("avian") && type2.equalsIgnoreCase("Aquatic"))    ){
+                a = new AquaticAvian(species, name, gender, DOB, dateOfArrival);
+           
+            }else if((type1.equalsIgnoreCase("Aquatic") && type2.equalsIgnoreCase("reptile")) ||
+               (type1.equalsIgnoreCase("reptile") && type2.equalsIgnoreCase("Aquatic"))    ){
+                a = new AquaticReptile(species, name, gender, DOB, dateOfArrival);
+            }else if((type1.equalsIgnoreCase("avian") && type2.equalsIgnoreCase("mammal")) ||
+               (type1.equalsIgnoreCase("mammal") && type2.equalsIgnoreCase("avian"))    ){
+                a = new AvianMammal(species, name, gender, DOB, dateOfArrival);
+            }
+        }
+        return a;
     }
     
     /**

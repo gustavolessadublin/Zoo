@@ -25,6 +25,14 @@ public enum Qualification {
         qualifications.addAll(Arrays.asList(Qualification.values()));
         return qualifications;
     }
+    
+    public static List<String> getNames(){
+        List<String> names = new ArrayList<>();
+        for(Enum e: Qualification.values()){
+            names.add(e.toString());
+        }
+        return names;
+    }
 
 }
 
