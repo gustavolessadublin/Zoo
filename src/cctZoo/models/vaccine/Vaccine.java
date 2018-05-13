@@ -60,7 +60,6 @@ public class Vaccine{
     
     /**
      * This method accepts a name as argument and sets the vaccine name.
-     * @return 
      */
     public void setNameVaccine(String nameVaccine) {
         this.nameVaccine = nameVaccine;

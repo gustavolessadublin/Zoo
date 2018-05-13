@@ -31,7 +31,7 @@ public abstract class Model {
 
     /**
      * This is an abstract method to be implemented on subclasses.
-     * @return 
+     * @return (String)
      */
     @Override
     public abstract String toString();

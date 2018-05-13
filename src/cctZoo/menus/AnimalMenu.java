@@ -24,7 +24,7 @@ public class AnimalMenu extends Menu{
     public AnimalMenu(ZooData zooData){
         super(zooData);
         this.animals = new AnimalsController(this.zooData.getAnimals(), new AnimalView());
-        String[] options = {"Show Animals", "Add Animal", "Medicate Animal",
+        String[] options = {"Show Animals", "Add Animal", "Update Animal Medication",
                             "Search Options", "Return to Main Menu", "Exit Program"};
         this.data = new DataFactory(zooData);
         this.setOptions(options);
@@ -65,7 +65,8 @@ public class AnimalMenu extends Menu{
         System.out.println("Available ids from 1 to " + this.animals.getAnimals().size());
         Animal a = this.animals.findAnimal(this.validate.checkForInt(in, 1, this.animals.getAnimals().size()));
         a.setMedicated(true);
-        System.out.println("\nAnimal has been medicated.");
+        System.out.println("\nAnimal has been medicated.\n");
+        System.out.println(a);
     }
     
     /**

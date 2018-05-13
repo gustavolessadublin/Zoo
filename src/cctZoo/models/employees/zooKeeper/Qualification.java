@@ -18,7 +18,7 @@ public enum Qualification {
 
     /**
      * This method returns a List of all qualifications.
-     * @return 
+     * @return (Qualification)
      */
     public static List<Qualification> getQualifications(){
         List<Qualification> qualifications = new ArrayList<>();

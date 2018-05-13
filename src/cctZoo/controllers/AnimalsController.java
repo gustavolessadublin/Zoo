@@ -17,7 +17,6 @@ import cctZoo.models.animals.interfaces.Mammal;
 import cctZoo.models.animals.interfaces.Reptile;
 import cctZoo.models.employees.zooKeeper.ZooKeeper;
 import cctZoo.views.AnimalView;
-import cctZoo.zooData.DataFactory;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +38,16 @@ public class AnimalsController {
         this.view = view;
     }
     
+    /**
+     * This method creates an animal according to provided type arguments.
+     * @param species
+     * @param name
+     * @param gender
+     * @param DOB
+     * @param dateOfArrival
+     * @param types
+     * @return 
+     */
     public Animal createAnimalByType(String species, String name, String gender, String DOB, String dateOfArrival, List<String> types){
         Animal a = null;
         if(types.size() == 1){

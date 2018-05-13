@@ -96,7 +96,7 @@ public abstract class EmployeeMenu extends Menu{
     
     /**
      * This method allows user to choose qualifications.
-     * @return List<Qualification>
+     * @return List
      */
     protected List chooseQualifications(){
         // retrieve all options available from Enum

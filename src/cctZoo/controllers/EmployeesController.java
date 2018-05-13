@@ -24,7 +24,7 @@ public class EmployeesController {
     /**
      * This constructor takes a List of ZooKeepers and a KeeperView object as 
      * arguments.
-     * @param keepers - List<ZooKeepers>
+     * @param keepers - List
      * @param view - KeeperView object.
      */
     public EmployeesController(List<ZooKeeper> keepers, KeeperView view){
@@ -33,7 +33,7 @@ public class EmployeesController {
     }
     
     /**
-     * This method generates a List<Integer> containing the ID of all the 
+     * This method generates a List containing the ID of all the 
      * keepers from the zoo.
      * @return 
      */
@@ -106,10 +106,10 @@ public class EmployeesController {
     }
     
     /**
-     * This method is overloaded and when taking a List<ZooKeepers>, it creates
+     * This method is overloaded and when taking a List, it creates
      * a table from their info and displays it, calling methods from
      * KeeperView object.
-     * @param group - List<ZooKeeper>
+     * @param group - List
      */
     public void display(List<ZooKeeper> group){
         this.view.clearTable();     // clear existing table
@@ -120,7 +120,7 @@ public class EmployeesController {
     }
     
     /**
-     * This method adds a ZooKeeper to the List<ZooKeepers> keepers.
+     * This method adds a ZooKeeper to the List keepers.
      * @param k - ZooKeeper
      */
     public void add(ZooKeeper k){
@@ -129,10 +129,10 @@ public class EmployeesController {
     
     /**
      * This method searches for and displays keepers by qualification, taking a
-     * List<Qualification> and a boolean to determine if the keepers has to have
+     * List and a boolean to determine if the keepers has to have
      * ALL qualifications from the list (true) or ANY qualifications from the 
      * list (false).
-     * @param qualifications - List<Qualification>
+     * @param qualifications - List
      * @param all - boolean (true for ALL qualifications, false for ANY)
      * @return true if matches were found, false otherwise.
      */
