@@ -67,6 +67,9 @@ public class AnimalMenu extends Menu{
         System.out.println("\nAnimal has been medicated.\n");
     }
     
+    /**
+     * This method adds an animal to the zoo.
+     */
     public void addAnimal(){  
         String species = this.chooseSpecies();
         String name = this.chooseName();
@@ -81,6 +84,10 @@ public class AnimalMenu extends Menu{
         System.out.println();
     }
     
+    /**
+     * This method interacts with user to include a offspring to an animal.
+     * @param parent 
+     */
     private void chooseOffspring(Animal parent){
         if(parent.getGender().equalsIgnoreCase("female")){
             System.out.println("Does it have a offspring?\n"
@@ -109,6 +116,10 @@ public class AnimalMenu extends Menu{
         
     }
     
+    /**
+     * This method interacts with user to choose the animal types.
+     * @return 
+     */
     private List<String> chooseTypes(){
         List<String> allTypes = Qualification.getNames();
         List<String> types = new ArrayList<>();
@@ -137,26 +148,46 @@ public class AnimalMenu extends Menu{
         return types;
     }
     
+    /**
+     * This method gets the date of arrival from user input.
+     * @return 
+     */
     private String chooseDateOfArrival(){
         System.out.println("Please type the date of arrival");
         return in.next();
     }
     
+    /**
+     * This method gets the date of birth from user input.
+     * @return 
+     */
     private String chooseDOB(){
         System.out.println("Please type the animal date of birth");
         return this.in.next();
     }
     
+    /**
+     * This method gets the animal species from user input.
+     * @return 
+     */
     private String chooseSpecies(){
         System.out.println("Please type the animal species: (Eg. Tiger, Whale, Crocodile)");  
         return this.in.next();
     }
     
+    /**
+     * This method gets the animal name from user input.
+     * @return 
+     */
     private String chooseName(){
         System.out.println("Please type the animal name:");
         return this.in.next();
     }
     
+    /**
+     * This method returns a choice of gender from user input.
+     * @return 
+     */
     private String chooseGender(){
         System.out.println("Please type the aniaml gender:\n"
                 + "1 - Male\n" + "2 - Female");
