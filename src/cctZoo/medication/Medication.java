@@ -40,7 +40,7 @@ public class Medication{
     public String getName() { return name; }
     
     /**
-     * This method accepts a name as argument and sets the medication namel.
+     * This method accepts a name as argument and sets the medication name.
      * @param name 
      */
     public void setName(String name) { this.name = name; }

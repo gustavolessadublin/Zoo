@@ -70,9 +70,7 @@ public class AnimalsController {
     public List<String> getAnimalTypes(){
         return this.animals.get(0).getAnimalTypes();
     }
-    
-    
-    
+  
     // did not understood this method //
     // TODO
     public List<String> getAnimalTypes(Animal a){
@@ -84,9 +82,7 @@ public class AnimalsController {
         if (a instanceof Insect){ types.add("Insect");}
         return types;
     }
-    
-
-    
+ 
     /**
      * This method adds a new animal to the list of animals.
      * @param a 
