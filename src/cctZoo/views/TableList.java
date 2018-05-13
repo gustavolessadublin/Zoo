@@ -5,22 +5,21 @@
  */
 package cctZoo.views;
 
-/**
- *
- * @author therealfarfetchd
- * 
- * TableList tl = new TableList(3, "ID", "String 1", "String 2").sortBy(0).withUnicode(true);
-// from a list
-yourListOrWhatever.forEach(element -> tl.addRow(element.getID(), element.getS1(), element.getS2()));
-// or manually
-tl.addRow("Hi", "I am", "Bob");
 
-tl.print();
- */
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.regex.Pattern;
 
+/**
+ * This class is responsible for creating and displaying tables to the CLI and 
+ * was retrieved from (https://github.com/therealfarfetchd/crogamp/blob/master/src/com/github/mrebhan/crogamp/cli/TableList.java).
+ * 
+ * @author therealfarfetchd (https://github.com/therealfarfetchd/)
+ * 
+ * Basic usage: TableList tl = new TableList(3, "ID", "String 1", "String 2").sortBy(0).withUnicode(true);
+ * - add row: tl.addRow("Hi", "I am", "Bob");
+ * - to print: tl.print();
+ */
 public class TableList {
 
 	private static final String[] BLINE = { "-", "\u2501" };
