@@ -7,6 +7,7 @@ import cctZoo.models.animals.interfaces.Mammal;
 /**
  * Aquatic Mammal concrete class.
  * @author rbsrafa
+ * @author lucival1
  */
 public class AquaticMammal extends Animal implements Aquatic, Mammal{
     

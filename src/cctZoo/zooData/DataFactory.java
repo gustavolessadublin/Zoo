@@ -31,6 +31,8 @@ import org.apache.commons.collections4.CollectionUtils;
  * This class is responsible for generating data.
  * @author rbsrafa
  * @author Gustavo Lessa
+ * @author lucival1
+ * @author fernandotenorio
  */
 public class DataFactory {
     FileRW rw; 
@@ -74,24 +76,19 @@ public class DataFactory {
         String[] species = {"Dolphin", "Whale", "Crocodile", "Penguin", "Dragonfly",
                             "Beetle", "Tiger", "Zebra", "Lion", "Snake", "Komodo Dragon",
                             "Seagull", "Owl", "Bat", "Shark", "Octopus", "Ant"};
-        
-        
-        
-        String specie = species[rand.nextInt(species.length)];
-        String gender = genders[rand.nextInt(genders.length)];
+                
+        String specie = species[rand.nextInt(species.length)];//select an animal species
+        String gender = genders[rand.nextInt(genders.length)];//select an animal gender
         int offsprings = 0;
-        //check if female will have offsprings
-        //when offsprings > 0, creates offsprings(max 2) 
-        //and then creates the mother
         if(gender.equals("Female")){
-            offsprings = hasOffsprings();
-            for(int i=0; i<offsprings; i++){
-                a = this.generateAnimal(specie, gender, -1);
-                zooData.getAnimals().add(a);
+            offsprings = hasOffsprings();//determine how many offsprings female will have
+            for(int i=0; i<offsprings; i++){//when offsprings > 0, creates offsprings(max 2) 
+                a = this.generateAnimal(specie, gender, -1);//create Offspring Animals
+                zooData.getAnimals().add(a);//Add the new Offspring in the Animal list
             }
-            return this.generateAnimal(specie, gender, offsprings);
+            return this.generateAnimal(specie, gender, offsprings);//creates the female with respective Offspring number
         }
-        a = this.generateAnimal(specie, gender, 0);
+        a = this.generateAnimal(specie, gender, 0);//creates the male Animals
         return a;
     }
     
@@ -113,15 +110,15 @@ public class DataFactory {
      * @param gender(String)
      * @param offsprings (int)
      * @return 
-     * Returns an Object Animal
+     * Returns an Animal Object
      */
     public Animal generateAnimal(String specie, String gender, int offsprings){
         Animal a = null;
         
-        switch (specie) {
+        switch (specie) {//verify the Animal species and select the apropriate case
             case "Dolphin":
             case "Whale":
-                switch(offsprings){
+                switch(offsprings){//verify the Offspring number and call apropriate Animal constructor
                     case(2): a = new AquaticMammal(specie, gender,
                             zooData.getAnimals().get(zooData.getAnimals().size()-1),
                             zooData.getAnimals().get(zooData.getAnimals().size()-2));
@@ -136,7 +133,7 @@ public class DataFactory {
                 }   
                 break;
             case "Crocodile":
-                switch(offsprings){
+                switch(offsprings){//follows the same idea from previous comment
                     case(2): a = new AquaticReptile(specie, gender,
                             zooData.getAnimals().get(zooData.getAnimals().size()-1),
                             zooData.getAnimals().get(zooData.getAnimals().size()-2));
@@ -151,7 +148,7 @@ public class DataFactory {
                 }
                 break;
             case "Penguin":
-                switch(offsprings){
+                switch(offsprings){//follows the same idea from previous comment
                     case(2): a = new AquaticAvian(specie, gender,
                             zooData.getAnimals().get(zooData.getAnimals().size()-1),
                             zooData.getAnimals().get(zooData.getAnimals().size()-2));
@@ -169,7 +166,7 @@ public class DataFactory {
             case "Tiger":
             case "Zebra":
             case "Lion":
-                switch(offsprings){
+                switch(offsprings){//follows the same idea from previous comment
                     case(2): a = new GenericMammal(specie, gender,
                             zooData.getAnimals().get(zooData.getAnimals().size()-1),
                             zooData.getAnimals().get(zooData.getAnimals().size()-2));
@@ -185,7 +182,7 @@ public class DataFactory {
                 break;
             case "Snake":
             case "Komodo Dragon":
-                switch(offsprings){
+                switch(offsprings){//follows the same idea from previous comment
                     case(2): a = new GenericReptile(specie, gender,
                             zooData.getAnimals().get(zooData.getAnimals().size()-1),
                             zooData.getAnimals().get(zooData.getAnimals().size()-2));
@@ -201,7 +198,7 @@ public class DataFactory {
                 break;
             case "Seagull":
             case "Owl":
-                switch(offsprings){
+                switch(offsprings){//follows the same idea from previous comment
                     case(2): a = new GenericAvian(specie, gender,
                             zooData.getAnimals().get(zooData.getAnimals().size()-1),
                             zooData.getAnimals().get(zooData.getAnimals().size()-2));
@@ -221,7 +218,7 @@ public class DataFactory {
                 
                 break;
             case "Bat":
-                switch(offsprings){
+                switch(offsprings){//follows the same idea from previous comment
                     case(2): a = new AvianMammal(specie, gender,
                             zooData.getAnimals().get(zooData.getAnimals().size()-1),
                             zooData.getAnimals().get(zooData.getAnimals().size()-2));
@@ -242,7 +239,7 @@ public class DataFactory {
                 break;
             case "Shark":
             case "Octopus":
-                switch(offsprings){
+                switch(offsprings){//follows the same idea from previous comment
                     case(2): a = new GenericAquatic(specie, gender,
                             zooData.getAnimals().get(zooData.getAnimals().size()-1),
                             zooData.getAnimals().get(zooData.getAnimals().size()-2));
@@ -265,11 +262,11 @@ public class DataFactory {
                 break;
         }
               
-        a.setName(rw.getRandomName(a.getGender())); 
+        a.setName(rw.getRandomName(a.getGender()));//sets Animal name based in its gender
         this.assingDatesToAnimal(a);
-        this.assignKeeper(a);
-        this.generateRandomlyVaccines(a);
-        this.setMedication(a);
+        this.assignKeeper(a);//assigns animal to the keeper
+        this.generateRandomlyVaccines(a);//creates the vaccines
+        this.setMedication(a);//set Animal medication
         this.assingDatesToAnimal(a);
         
         return a;

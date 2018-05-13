@@ -6,6 +6,7 @@ import cctZoo.models.animals.interfaces.Reptile;
 /**
  * Concrete Reptile animal class.
  * @author rbsrafa
+ * @author lucival1
  */
 public class GenericReptile extends Animal implements Reptile{
     

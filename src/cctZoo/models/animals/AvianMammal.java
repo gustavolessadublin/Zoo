@@ -7,6 +7,7 @@ import cctZoo.models.animals.interfaces.Mammal;
 /**
  * Concrete Avian Mammal class.
  * @author rbsrafa
+ * @author lucival1
  */
 public class AvianMammal extends Animal implements Avian, Mammal{
     private boolean canFly = false;

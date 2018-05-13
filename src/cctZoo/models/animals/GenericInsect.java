@@ -6,6 +6,7 @@ import cctZoo.models.animals.interfaces.Insect;
 /**
  * Concrete Insect animal.
  * @author rbsrafa
+ * @author lucival1
  */
 public class GenericInsect extends Animal implements Insect{
     

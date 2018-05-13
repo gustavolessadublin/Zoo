@@ -6,6 +6,7 @@ import cctZoo.models.animals.interfaces.Mammal;
 /**
  * Concrete Mammal class.
  * @author rbsrafa
+ * @author lucival1
  */
 public class GenericMammal extends Animal implements Mammal{
     

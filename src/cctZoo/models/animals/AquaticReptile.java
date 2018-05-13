@@ -7,6 +7,7 @@ import cctZoo.models.animals.interfaces.Reptile;
 /**
  * Concrete Aquatic Reptile class.
  * @author rbsrafa
+ * @author lucival1
  */
 public class AquaticReptile extends Animal implements Aquatic, Reptile{
     

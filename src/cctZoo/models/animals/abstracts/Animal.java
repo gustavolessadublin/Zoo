@@ -10,6 +10,8 @@ import java.util.List;
 /**
  *
  * @author rbsrafa
+ * @author lucival1
+ * @author fernandotenorio
  */
 public abstract class Animal extends Model{
     private static int lastId;
@@ -21,10 +23,10 @@ public abstract class Animal extends Model{
     protected List<Vaccine>vaccines = new ArrayList<>();    
     
     /**
-     * Animal constructor.
-     * @param species
-     * @param name
-     * @param gender 
+     *  Animal Constructor for Animal with no Offspring
+     * @param species (String)
+     * @param name (String)
+     * @param gender (String)
      */
     public Animal(String species, String name, String gender) {
         super(++lastId);
@@ -34,9 +36,9 @@ public abstract class Animal extends Model{
     }
     
     /**
-     * Animal Constructor
-     * @param species
-     * @param gender 
+     * Basic Animal Constructor for Animal 
+     * @param species (String)
+     * @param gender  (String)
      */
     public Animal(String species, String gender) {
         super(++lastId);
@@ -45,11 +47,11 @@ public abstract class Animal extends Model{
     }
     
     /**
-     * Animal constructor
-     * @param species
-     * @param gender
-     * @param offspring1
-     * @param offspring2 
+     * Animal constructor for female with two Offspring
+     * @param species (String)
+     * @param gender (String)
+     * @param offspring1 (Animal)
+     * @param offspring2 (Animal)
      */
     public Animal(String species, String gender, Animal offspring1, Animal offspring2) {
         super(++lastId);
@@ -59,10 +61,10 @@ public abstract class Animal extends Model{
     }
     
     /**
-     * Animal constructor
-     * @param species
-     * @param gender
-     * @param offspring1 
+     * Animal constructor for female with one Offspring
+     * @param species (String)
+     * @param gender(String)
+     * @param offspring1 (Animal)
      */
     public Animal(String species, String gender, Animal offspring1) {
         super(++lastId);
@@ -72,10 +74,10 @@ public abstract class Animal extends Model{
     }
     
     /**
-     * Animal constructor
-     * @param species
-     * @param gender
-     * @param offspring 
+     * Animal constructor for Offspring Animal
+     * @param species (String)
+     * @param gender (String)
+     * @param offspring (String)
      */
     public Animal(String species, String gender, boolean offspring) {
         super(++lastId);
@@ -86,11 +88,11 @@ public abstract class Animal extends Model{
 
     /**
      * Animal constructor
-     * @param species
-     * @param name
-     * @param gender
-     * @param doa
-     * @param DOB 
+     * @param species (String)
+     * @param name (String)
+     * @param gender (String)
+     * @param doa (String)
+     * @param DOB (String)
      */
     public Animal(String species, String name, String gender, String doa, String DOB){
         super(++lastId);
@@ -103,10 +105,10 @@ public abstract class Animal extends Model{
     
     /**
      * Animal constructor
-     * @param species
-     * @param name
-     * @param gender
-     * @param DOB 
+     * @param species (String)
+     * @param name (String)
+     * @param gender (String)
+     * @param DOB (String)
      */
     public Animal(String species, String name, String gender, String DOB){
         super(++lastId);
@@ -303,19 +305,22 @@ public abstract class Animal extends Model{
     public void addVaccines(Vaccine vaccine) {this.vaccines.add(vaccine);}
 
     /**
-     * @author lucinal1
+     * Nested class to store Offspring information
      */
     private class Offspring{  
         private List<Animal> offspringList;
         
+        /**
+         * Basic Offspring constructor to initialize the class
+         */
         public Offspring(){
             this.offspringList = new ArrayList<>();
         }
         
         /**
          * Offspring constructor that accepts two animal offsprings.
-         * @param offspring1
-         * @param offspring2 
+         * @param offspring1 (Animal)
+         * @param offspring2 (Animal)
          */
         public Offspring(Animal offspring1, Animal offspring2){
             this.offspringList = new ArrayList<>();
@@ -326,7 +331,7 @@ public abstract class Animal extends Model{
 
         /**
          * Animal constructor that accepts one animal offspring.
-         * @param offspring1 
+         * @param offspring1 (Animal) 
          */
         public Offspring(Animal offspring1){
             this.offspringList = new ArrayList<>();

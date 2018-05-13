@@ -7,6 +7,7 @@ import cctZoo.models.animals.interfaces.Avian;
 /**
  * Concrete Aquatic Avian class.
  * @author rbsrafa
+ * @author lucival1
  */
 public class AquaticAvian extends Animal implements Aquatic, Avian{
     private boolean canFly = false;

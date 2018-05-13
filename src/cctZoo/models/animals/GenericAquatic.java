@@ -6,6 +6,7 @@ import cctZoo.models.animals.interfaces.Aquatic;
 /**
  * Concrete Aquatic animal.
  * @author rbsrafa
+ * @author lucival1
  */
 public class GenericAquatic extends Animal implements Aquatic{
     

@@ -6,6 +6,7 @@ import cctZoo.models.animals.interfaces.Avian;
 /**
  * Concrete Avian animal class.
  * @author rbsrafa
+ * @author lucival1
  */
 public class GenericAvian extends Animal implements Avian{
     private boolean canFly = false;
