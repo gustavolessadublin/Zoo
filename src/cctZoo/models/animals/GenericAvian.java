@@ -72,6 +72,13 @@ public class GenericAvian extends Animal implements Avian{
         super(species, name, gender, doa, DOB);
     }
     
+    /**
+     * Avian animal constructor.
+     * @param species
+     * @param name
+     * @param gender
+     * @param DOB 
+     */
     public GenericAvian(String species, String name, String gender,String DOB){
         super(species, name, gender,DOB);
     }

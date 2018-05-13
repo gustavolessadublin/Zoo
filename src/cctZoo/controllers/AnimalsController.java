@@ -78,10 +78,10 @@ public class AnimalsController {
     public List<String> getAnimalTypes(Animal a){
         List<String> types = new ArrayList<>();
         if (a instanceof Mammal){ types.add("Mammal");}
-        if (a instanceof Reptile){ types.add("Mammal");}
-        if (a instanceof Avian){ types.add("Mammal");}
-        if (a instanceof Aquatic){ types.add("Mammal");}
-        if (a instanceof Insect){ types.add("Mammal");}
+        if (a instanceof Reptile){ types.add("Reptile");}
+        if (a instanceof Avian){ types.add("Avian");}
+        if (a instanceof Aquatic){ types.add("Aquatic");}
+        if (a instanceof Insect){ types.add("Insect");}
         return types;
     }
     

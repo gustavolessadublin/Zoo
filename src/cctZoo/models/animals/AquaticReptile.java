@@ -72,6 +72,13 @@ public class AquaticReptile extends Animal implements Aquatic, Reptile{
         super(species, name, gender, doa, DOB);
     }
     
+    /**
+     * Aquatic Reptile constructor
+     * @param species
+     * @param name
+     * @param gender
+     * @param DOB 
+     */
     public AquaticReptile(String species, String name, String gender,String DOB){
         super(species, name, gender,DOB);
     }

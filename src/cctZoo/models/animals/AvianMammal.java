@@ -73,6 +73,13 @@ public class AvianMammal extends Animal implements Avian, Mammal{
         super(species, name, gender, doa, DOB);
     }
     
+    /**
+     * Avian Mammal constructor.
+     * @param species
+     * @param name
+     * @param gender
+     * @param DOB 
+     */
     public AvianMammal(String species, String name, String gender,String DOB){
         super(species, name, gender,DOB);
     }

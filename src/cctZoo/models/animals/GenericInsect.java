@@ -20,7 +20,7 @@ public class GenericInsect extends Animal implements Insect{
     }
     
     /**
-     * Avian animal constructor.
+     * Insect constructor.
      * @param species
      * @param gender 
      */
@@ -29,7 +29,7 @@ public class GenericInsect extends Animal implements Insect{
     }
     
     /**
-     * Avian animal constructor.
+     * Insect constructor.
      * @param species
      * @param name
      * @param gender
@@ -40,6 +40,13 @@ public class GenericInsect extends Animal implements Insect{
         super(species, name, gender, doa, DOB);
     }
     
+    /**
+     * Insect constructor
+     * @param species
+     * @param name
+     * @param gender
+     * @param DOB 
+     */
     public GenericInsect(String species, String name, String gender,String DOB){
         super(species, name, gender,DOB);
     }

@@ -72,6 +72,13 @@ public class AquaticMammal extends Animal implements Aquatic, Mammal{
         super(species, name, gender, doa, DOB);
     }
     
+    /**
+     * Aquatic Mammal constructor 
+     * @param species
+     * @param name
+     * @param gender
+     * @param DOB 
+     */
     public AquaticMammal(String species, String name, String gender,String DOB){
         super(species, name, gender,DOB);
     }
