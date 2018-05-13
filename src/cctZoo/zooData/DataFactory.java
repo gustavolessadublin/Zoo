@@ -339,8 +339,7 @@ public class DataFactory {
                     assigned = true; // set assigned true
                     break;
                 } 
-            }
-            
+            }            
             // if none was found, generate randomly
             if(a.getKeeper()==null){
                 zooData.getZooKeepers().add(this.generateRandomKeeper(animalTypes));
@@ -422,11 +421,9 @@ public class DataFactory {
     public void generateRandomlyVaccines(Animal a){
         List<Vaccine> vaccines = zooData.getVaccines();
         List<Vaccine> options = new ArrayList<>();
-        List<String> types = a.getAnimalTypes();
+        List<String> types = a.getAnimalTypes();        
         
-        
-        for(Vaccine v : vaccines){
-            
+        for(Vaccine v : vaccines){            
             for(String s : types){
                
                 if (s.equalsIgnoreCase(v.getType())){
@@ -434,10 +431,10 @@ public class DataFactory {
                 }               
             }
         }
-            Random rand = new Random();
-            if(options.size()>0){
-             a.addVaccines(options.get(rand.nextInt(options.size())));   
-            } 
+        Random rand = new Random();
+        if(options.size()>0){
+         a.addVaccines(options.get(rand.nextInt(options.size())));   
+        } 
     } 
     /**
      * Method to Generate a List of Vaccines to Animals, note that insects are not included
