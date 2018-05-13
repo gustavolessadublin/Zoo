@@ -39,18 +39,32 @@ public class DataFactory {
     ZooData zooData; //object that holds access to the 
     DateFormat dateFormat;
     
+    /**
+     * Initiaclize the DataFactory class.
+     * @param zooData (ZooData)
+     */
     public DataFactory(ZooData zooData){
         rw = new FileRW();
         this.zooData = zooData;
         dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     }
     
+    /**
+     * This method receive a number n and then generates a n number of Animal
+     * Objects.
+     * @param amount 
+     */
     public void getRandomAnimals(int amount){
         for(int i = 0; i < amount; i++){
             zooData.getAnimals().add(this.defineRandomAnimal());
         }
     }
       
+    /**
+     * This method generates a random date.
+     * @return 
+     * Returns a random date in the format dd/mm/yyyy
+     */
     public Date getRandomDate(){
         Random rand = new Random();
         //DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
