@@ -27,6 +27,10 @@ public class KeeperMenu extends EmployeeMenu {
         this.startMenu(); // start menu (method from super)
     }
     
+    /**
+     * This method is responsible for linking the menu options with their
+     * respective actions.
+     */
     @Override
     public void optionSelector() {
         System.out.println("\nPlease select an option:");

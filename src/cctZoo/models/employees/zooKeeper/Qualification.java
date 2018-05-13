@@ -26,11 +26,13 @@ public enum Qualification {
         return qualifications;
     }
     
+    /**
+     * This method returns a list of the enum names.
+     * @return 
+     */
     public static List<String> getNames(){
         List<String> names = new ArrayList<>();
-        for(Enum e: Qualification.values()){
-            names.add(e.toString());
-        }
+        for(Enum e: Qualification.values()) names.add(e.toString());
         return names;
     }
 

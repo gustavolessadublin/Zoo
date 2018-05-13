@@ -31,7 +31,10 @@ public class SearchKeeperMenu extends EmployeeMenu{
         this.startMenu(); // display menu
     }
 
-
+    /**
+     * This method is responsible for linking the menu options with their
+     * respective actions.
+     */
     @Override
     public void optionSelector() {
         System.out.println("\nPlease select an option:");

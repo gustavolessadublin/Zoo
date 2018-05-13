@@ -61,6 +61,11 @@ public class EmployeesController {
         return null;                         // returns null if not found
     }
     
+    /**
+     * This method returns a keeper by its id.
+     * @param index
+     * @return 
+     */
     public ZooKeeper getKeeper(int index){
         return this.keepers.get(index);
     }
